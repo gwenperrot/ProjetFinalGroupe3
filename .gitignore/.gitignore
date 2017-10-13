@@ -20,6 +20,7 @@ build/
 MANIFEST.MF
 pom.properties
 */target/**
+db.properties
 
 # Local configuration file (sdk path, etc)
 local.properties
