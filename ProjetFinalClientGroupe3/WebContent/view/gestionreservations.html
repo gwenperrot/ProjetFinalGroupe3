@@ -4,5 +4,49 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<div><h2>{{msg}}</h2></div>
+<div><h2>{{msg}}</h2>
+<div ng-switch="varReservation">
+		<div ng-switch-default="recherche">
+			Rechercher un adhérent par: <select ng-model="typeRechercheEmprunt"><option
+					value="nom">Nom</option>
+				<option value="prenom">Prénom</option></select>
+			<form>
+				<input type="text" ng-model="rechercheAdherent">
+				<button ng-click="rechercherAdhérent()">Rechercher</button>
+			</form>
+			<h3>Liste d'adhérents</h3>
+			<table>
+				<tr>
+					<th>Bla</th>
+					<th>Bla</th>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr>
+					<td>Blou</td>
+					<td>Blou</td>
+					<td><a ng-click="consulterEmprunts()">Consulter</a></td>
+				</tr>
+			</table>
+		</div>
+		<div ng-switch-when="modifier">
+		
+		</div>
+	</div>
+	<h3>Liste des réservation</h3>
+	<table>
+		<tr>
+			<th>Bla</th>
+			<th>Bla</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr>
+			<td>Blou</td>
+			<td>Blou</td>
+			<td><a ng-click="editerEmprunts()">Editer</a></td>
+			<td><a ng-click="supprimerEmprunts()">Supprimer</a></td>
+		</tr>
+	</table>
+</div>
 </html>
