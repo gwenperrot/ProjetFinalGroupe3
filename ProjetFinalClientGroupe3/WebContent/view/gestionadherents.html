@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<div>
+	<h2>{{msg}}</h2>
+	<form action="#!gestionAdherents">
+		Nom : <input type="text" ng-model="nom"> 
+		Prenom : <input type="text" ng-model="prenom"> 
+		Téléphone : <input type="text" ng-model="telephone"> 
+		Ville : <input type="text" ng-model="ville"> 
+		Code Postal : <input type="text" ng-model="codePostal">
+		<button ng-click="gererAdherent()">Valider</button>
+	</form>
+
+	<table>
+		<tr>
+			<th>Bla</th>
+			<th>Bla</th>
+			<th>Bla</th>
+		</tr>
+		<tr>
+			<td>Blou</td>
+			<td>Blou</td>
+			<td>Blou</td>
+		</tr>
+	</table>
+</div>
+</html>

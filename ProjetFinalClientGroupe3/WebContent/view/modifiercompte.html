@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<div>
+	<form action="#!monCompte">
+		<div ng-switch="varNom">
+			<div ng-switch-default="afficherNom">
+				Nom: {{nom}} <a ng-click="modifierNom()">Editer</a>
+			</div>
+			<div ng-switch-when="modifierNom">
+
+				<input type="text" ng-model="$root.nom">
+				<button ng-click="changerNom()">Valider</button>
+			</div>
+		</div>
+	</form>
+	<div ng-switch="varPrenom">
+		<div ng-switch-default="afficherPrenom">
+			Prenom: {{prenom}} <a ng-click="modifierPrenom()">Editer</a>
+		</div>
+		<div ng-switch-when="modifierPrenom">
+			<form action="#!monCompte">
+				<input type="text" ng-model="$root.prenom">
+				<button ng-click="changerPrenom()">Valider</button>
+			</form>
+		</div>
+	</div>
+	<div ng-switch="varTel">
+		<div ng-switch-default="afficherTel">
+			Téléphone: {{tel}} <a ng-click="modifierTel()">Editer</a>
+		</div>
+		<div ng-switch-when="modifierTel">
+			<form action="#!monCompte">
+				<input type="text" ng-model="$root.tel">
+				<button ng-click="changerTel()">Valider</button>
+			</form>
+		</div>
+	</div>
+	<div ng-switch="varVille">
+		<div ng-switch-default="afficherVille">
+			Ville: {{ville}} <a ng-click="modifierVille()">Editer</a>
+		</div>
+		<div ng-switch-when="modifierVille">
+			<form action="#!monCompte">
+				<input type="text" ng-model="$root.ville">
+				<button ng-click="changerVille()">Valider</button>
+			</form>
+		</div>
+	</div>
+	<div ng-switch="varCodePostal">
+		<div ng-switch-default="afficherCodePostal">
+			Code Postal:{{codePostal}} <a ng-click="modifierCodePostal()">Editer</a>
+		</div>
+		<div ng-switch-when="modifierCodePostal">
+			<form action="#!monCompte">
+				<input type="text" ng-model="$root.codePostal">
+				<button ng-click="changerCodePostal()">Valider</button>
+			</form>
+		</div>
+	</div>
+
+</div>
+</html>

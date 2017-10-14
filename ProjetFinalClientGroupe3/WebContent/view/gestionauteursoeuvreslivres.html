@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<div>
+	<a ng-click="gererAuteurs()">Gestion des auteurs</a> <a
+		ng-click="gererOeuvres()">Gestion des oeuvres</a> <a
+		ng-click="gererLivres()">Gestion des livres</a>
+
+	<div ng-switch="varLivre">
+		<div ng-switch-when="oeuvres">
+			<div ng-include=" 'view/gestionoeuvres.html' "></div>
+		</div>
+		<div ng-switch-when="livres">
+			<div ng-include=" 'view/gestionlivres.html' "></div>
+		</div>
+		<div ng-switch-default="auteurs">
+			<div ng-include=" 'view/gestionauteurs.html' "></div>
+		</div>
+	</div>
+</div>
+</html>

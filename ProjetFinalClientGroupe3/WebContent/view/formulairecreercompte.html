@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<div>
+<form action="#!index">
+Nom : <input type="text" ng-model="adherent.nom">
+Prenom : <input type="text" ng-model="adherent.prenom">
+Téléphone : <input type="text" ng-model="adherent.telephone">
+Ville : <input type="text" ng-model="adherent.ville">
+Code Postal : <input type="text" ng-model="adherent.codePostal">
+<button ng-click="creerCompte()">Créer</button>
+</form>
+</div>
+</html>

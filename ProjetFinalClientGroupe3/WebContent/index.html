@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styleSheet" type="text/css" href="./css/bootstrap.min.css" />
+<link rel="styleSheet" type="text/css" href="./css/style.css" />
+</head>
+<body ng-controller="indexCtrl">
+
+	<div class="container">
+
+		<div class="jumbotron">
+			<h1>GBibli</h1>
+			<p>Bienvenue sur notre site d'emprunt en ligne.</p>
+		</div>
+
+	
+
+								<div ng-switch="varConnecte">
+									<div ng-switch-when="connecte">
+										<div ng-include=" 'view/barregestioncompte.html' "></div>
+									</div>
+									
+									
+									<div ng-switch-default=deconnecte>
+										<div ng-include=" 'view/barreconnexion.html' "></div>
+									</div>
+								</div>
+
+
+		<!-- Containeur principal corps -->
+		<div class="container-fluid text-center">
+			<div class="row content">
+
+				<!-- Containeur gauche contenant les fonctionnalités  -->
+				<div class="col-sm-2 sidenav">
+					<div ng-switch="typeUtilisateur">
+						<div ng-switch-when="admin">
+							<div ng-include=" 'view/navigationadmin.html' "></div>
+						</div>
+						<div ng-switch-when="adherent">
+							<div ng-include=" 'view/navigationadherent.html' "></div>
+						</div>
+						<div ng-switch-default="visiteur">
+							<div ng-include=""></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- containeur droit - corps-->
+				<div class="col-sm-10 text-left">
+					<div ng-view></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--  Pied de page -->
+	<footer class="container-fluid text-center">
+		<p>Copyrigth DGJM</p>
+	</footer>
+	
+	
+	<script type="text/javascript" src="./angular/angular.min.js"></script>
+	<script type="text/javascript" src="./angular/angular-route.js"></script>
+	<script type="text/javascript" src="./js/app.js"></script>
+</body>
+</html>

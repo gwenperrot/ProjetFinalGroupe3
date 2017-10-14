@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<div>
+Rechercher par:
+<select ng-model="typeRecherche"><option value="auteur">Auteur</option>
+	<option value="titre">Titre</option></select>
+<form>
+	<input type="text" ng-model="rechercheLivre">
+	<button ng-click="rechercherLivre()">Rechercher</button>
+</form>
+
+
+ <ul style="list-style-type:none">
+  <li>Coffee <a ng-click="reserver()">Réserver</a> <a ng-click="emprunter()">Emprunter</a></li>
+  <li>Tea <a ng-click="reserver()">Réserver</a> <a ng-click="emprunter()">Emprunter</a></li>
+  <li>Milk <a ng-click="reserver()">Réserver</a> <a ng-click="emprunter()">Emprunter</a></li>
+</ul> 
+</div>
+</html>
