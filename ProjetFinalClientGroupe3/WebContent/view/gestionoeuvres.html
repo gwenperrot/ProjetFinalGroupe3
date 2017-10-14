@@ -6,29 +6,61 @@
 </head>
 <div>
 	<h2>{{msg}}</h2>
-	
-	<h3>{{msg2}}</h3>
-	<form>
-		Titre : <input type="text" ng-model="$root.titre"> <select
-			ng-model="$root.auteurAssocie"><option value="auteur1">Auteur 1</option>
-			<option value="auteur2">Auteur 2</option></select>
-		<button ng-click="validerOeuvre()">Valider</button>
-	</form>
 
-	<table>
-		<tr>
-			<th>Bla</th>
-			<th>Bla</th>
-			<th></th>
-			<th></th>
-		</tr>
-		<tr>
-			<td>Blou</td>
-			<td>Blou</td>
-			<td><a>Ajouter un livre</a></td>
-			<td><a>Editer</a> </td>
-			<td><a>Supprimer</a></td>
-		</tr>
-	</table>
+
+	<div ng-switch="varOeuvre">
+		<div ng-switch-default="oeuvre">
+			<h3>Ajouter une oeuvre</h3>
+			<form>
+				Titre : <input type="text" ng-model="$root.titre"> <select
+					ng-model="$root.auteurAssocie"><option value="auteur1">Auteur 1</option>
+					<option value="auteur2">Auteur 2</option></select>
+				<button ng-click="validerOeuvre()">Valider</button>
+			</form>
+			<h3>Liste des oeuvres</h3>
+			<table>
+				<tr>
+					<th>Bla</th>
+					<th>Bla</th>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr>
+					<td>Blou</td>
+					<td>Blou</td>
+					<td><a ng-click="ajouterLivre()">Ajouter/Modifier un livre</a></td>
+					<td><a ng-click="editerOeuvre()">Editer</a></td>
+					<td><a ng-click="supprimerOeuvre()">Supprimer</a></td>
+				</tr>
+			</table>
+		</div>
+		<div ng-switch-when="livre">
+			<h3>Ajouter un livre</h3>
+			Oeuvre: {{oeuvre}}, Auteur: {{prenomAuteur}} {{nomAuteur}}
+			<form>
+				<select ng-model="$root.etat"><option value="neuf">Neuf/Comme neuf</option>
+					<option value="correct">Correct</option>
+					<option value="abime">Abîmé</option>
+					<option value="mauvais">Mauvais état</option>
+				</select> <input type="text" ng-model="$root.numInventaire">
+				<button ng-click="validerLivre()">Valider</button>
+			</form>
+			<h3>Liste des Livres</h3>
+			<table>
+				<tr>
+					<th>Bla</th>
+					<th>Bla</th>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr>
+					<td>Blou</td>
+					<td>Blou</td>
+					<td><a ng-click="editerLivre()">Editer</a></td>
+					<td><a ng-click="supprimerLivre()">Supprimer</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </div>
 </html>
