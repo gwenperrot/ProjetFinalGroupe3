@@ -69,13 +69,13 @@ public class AdherentController {
 	
 	/*Methodes d'emprunt et de reservation pour l'Adherent*/
 	
-	@RequestMapping("/emprunter")
-	public void emprunter(Livre l , Adherent ad) {
-		service.emprunter(l, ad);
-	}
-	
-	@RequestMapping("/reserver")
-	public void reserver(Oeuvre o , Adherent ad) {
-		service.reserver(o, ad);
-	}
+//	@RequestMapping("/emprunterReserver")
+//	public void emprunter(Oeuvre o , Adherent ad) {
+//		if (Oeuvre.nbLivreLibre != 0 ) {
+//			service.emprunter(o, ad);
+//		}
+//		else  {
+//			service.reserver(o, ad);
+//		}
+//	}
 }
