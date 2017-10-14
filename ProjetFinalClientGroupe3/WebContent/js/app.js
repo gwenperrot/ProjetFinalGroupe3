@@ -140,7 +140,21 @@ app.controller("gestionLivresCtrl", function($scope) {
 	$scope.validerOeuvre = function() {
 		alert($scope.titre + " " + $scope.auteurAssocie);
 	};
-
+	
+	$scope.ajouterLivre = function() {
+		$scope.varOeuvre="livre";
+	};
+	$scope.validerLivre = function() {
+		alert($scope.etat+" "+$scope.numInventaire);
+		$scope.varOeuvre="oeuvre";
+	};
+	$scope.editerLivre = function() {
+		
+	};
+	$scope.supprimerLivre = function() {
+		
+	};
+	
 });
 // définition du controller de la page gestionEmprunts
 app.controller("gestionEmpruntsCtrl", function($scope) {
