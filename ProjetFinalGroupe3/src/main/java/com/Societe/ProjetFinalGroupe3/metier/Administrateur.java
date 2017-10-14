@@ -12,12 +12,23 @@ import org.springframework.stereotype.Component;
 @Entity
 @DiscriminatorValue("Administrateur") 
 public class Administrateur extends Utilisateur {
+	
+	private boolean administrateur;
 
 	public Administrateur() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	public boolean isAdministrateur() {
+		return administrateur;
+	}
+
+	public void setAdministrateur(boolean administrateur) {
+		this.administrateur = administrateur;
+	}
+
+	
 }
 
 

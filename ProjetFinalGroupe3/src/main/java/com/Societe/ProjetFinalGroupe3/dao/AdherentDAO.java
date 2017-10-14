@@ -17,7 +17,7 @@ import com.Societe.ProjetFinalGroupe3.metier.Oeuvre;
 public interface AdherentDAO extends JpaRepository<Adherent, Long> {
 
 
-
+ 
 	@Query("select l from Livre l left join fetch l.adherent  where l.adherent.idUtilisateur=?1")
 	void emprunter (Livre l, Adherent ad);
 
