@@ -46,8 +46,8 @@ app.controller("indexCtrl", function($scope) {
 app.controller("creerCompteCtrl", function($scope) {
 	// définiton de la fonction de création de compte
 	$scope.creerCompte = function() {
-		alert($scope.nom + " " + $scope.prenom + " " + $scope.telephone + " "
-				+ $scope.ville + " " + $scope.codePostal);
+		alert($scope.adherent.nom + " " + $scope.adherent.prenom + " " + $scope.adherent.telephone + " "
+				+ $scope.adherent.ville + " " + $scope.adherent.codePostal);
 	};
 
 });
