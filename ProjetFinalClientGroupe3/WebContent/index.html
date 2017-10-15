@@ -15,7 +15,6 @@
 			<p>Bienvenue sur notre site d'emprunt en ligne.</p>
 		</div>
 
-	
 
 								<div ng-switch="varConnecte">
 									<div ng-switch-when="connecte">
@@ -30,11 +29,11 @@
 
 
 		<!-- Containeur principal corps -->
-		<div class="container-fluid text-center">
+		<div class="container-fluid text-center principal">
 			<div class="row content">
 
 				<!-- Containeur gauche contenant les fonctionnalités  -->
-				<div class="col-sm-2 sidenav">
+				<div id="fonctionnalite" class="col-sm-2 sidenav">
 					<div ng-switch="typeUtilisateur">
 						<div ng-switch-when="admin">
 							<div ng-include=" 'view/navigationadmin.html' "></div>
@@ -57,7 +56,7 @@
 	</div>
 
 	<!--  Pied de page -->
-	<footer class="container-fluid text-center">
+	<footer id="footer" class="container-fluid text-center">
 		<p>Copyrigth DGJM</p>
 	</footer>
 	

@@ -1,9 +1,38 @@
 @charset "UTF-8";
 .lien{
 	margin-right: 10px;
+	color : #5f5f5f;
 }
 
-#formulaireConnexion{
-	margin-top: 12px;
-	margin-left: 15%;
+.formulaireConnexion{
+	margin-top: 0.7%;
+	/* margin-left: 40%; */
+	color : #5f5f5f;
+}
+
+
+.navig{
+	margin-top:14px;
+}
+
+.principal{
+	background-color: #ff7275;
+	border-top : solid;
+	border-top-color: grey;
+}
+
+.formulaire{
+	margin-top: 10%;
+	margin-bottom: 10%;
+	color : #5f5f5f;
+}
+
+#fonctionnalite{
+	background-color: #edeeed;
+}
+
+#formulaire1{
+	margin-top: 10%;
+	margin-bottom: 20%;
+	color : #5f5f5f;
 }
