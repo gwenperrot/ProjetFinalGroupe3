@@ -61,14 +61,27 @@ app.controller("creerCompteCtrl", function($scope,$http) {
 });
 // définition du controller de la page modifierCompte
 app.controller("modifierCompteCtrl", function($scope,$http) {
+	$http.get("http://localhost:8080/ProjetFinalGroupe3/getAdherent").then(function(response) {
+        $scope.adherent = response.data;
+    }).catch(function(reason) {
 
+    	alert("Erreur récupération");
+    	console.log(reason);
+    });
 	// définition des différentes fonctions utile à la modification du compte
 	// utilisateur
 	$scope.modifierNom = function() {
 		$scope.varNom = "modifierNom";
 	};
 	$scope.changerNom = function() {
-		alert($scope.nom);
+		$scope.adherent.nom=$scope.nom;
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
+			$scope.adherent=data;
+			alert("modifié");
+		}).catch(function(reason) {
+			alert("Pas ajouté, erreur");
+			console.log(reason);
+		});
 		$scope.varNom = "afficherNom";
 	};
 
@@ -76,7 +89,14 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 		$scope.varPrenom = "modifierPrenom";
 	};
 	$scope.changerPrenom = function() {
-		alert($scope.prenom);
+		$scope.adherent.prenom=$scope.nom;
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
+			$scope.adherent=data;
+			alert("modifié");
+		}).catch(function(reason) {
+			alert("Pas ajouté, erreur");
+			console.log(reason);
+		});
 		$scope.varPrenom = "afficherPrenom";
 	};
 
@@ -84,7 +104,14 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 		$scope.varTel = "modifierTel";
 	};
 	$scope.changerTel = function() {
-		alert($scope.tel);
+		$scope.adherent.tel=$scope.tel;
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
+			$scope.adherent=data;
+			alert("modifié");
+		}).catch(function(reason) {
+			alert("Pas ajouté, erreur");
+			console.log(reason);
+		});
 		$scope.varTel = "afficherTel";
 	};
 
@@ -92,7 +119,14 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 		$scope.varVille = "modifierVille";
 	};
 	$scope.changerVille = function() {
-		alert($scope.ville);
+		$scope.adherent.ville=$scope.ville;
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
+			$scope.adherent=data;
+			alert("modifié");
+		}).catch(function(reason) {
+			alert("Pas ajouté, erreur");
+			console.log(reason);
+		});
 		$scope.varVille = "afficherVille";
 	};
 
@@ -100,7 +134,14 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 		$scope.varCodePostal = "modifierCodePostal";
 	};
 	$scope.changerCodePostal = function() {
-		alert($scope.codePostal);
+		$scope.adherent.codePostale=$scope.codePostal;
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
+			$scope.adherent=data;
+			alert("modifié");
+		}).catch(function(reason) {
+			alert("Pas ajouté, erreur");
+			console.log(reason);
+		});
 		$scope.varCodePostal = "afficherCodePostal";
 	};
 });
@@ -197,10 +238,31 @@ app.controller("gestionLivresCtrl", function($scope,$http) {
 // définition du controller de la page gestionEmprunts
 app.controller("gestionEmpruntsCtrl", function($scope) {
 	$scope.msg = "Emprunts";
+	
+	$scope.consulterEmprunts = function(){
+		
+	};
+	$scope.editerEmprunts = function(){
+		
+	};
+	$scope.supprimerEmprunts = function(){
+	
+	};
+	
 });
 // définition du controller de la page gestionReservations
 app.controller("gestionReservationsCtrl", function($scope) {
 	$scope.msg = "Reservations";
+	
+	$scope.consulterReservations = function(){
+		
+	};
+	$scope.editerReservations = function(){
+		
+	};
+	$scope.supprimerReservations = function(){
+	
+	};
 });
 
 app.controller("mesReservationsCtrl", function($scope) {
