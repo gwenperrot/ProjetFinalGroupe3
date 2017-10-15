@@ -43,11 +43,19 @@ app.controller("indexCtrl", function($scope) {
 
 });
 // définition du controller de la page creerCompte
-app.controller("creerCompteCtrl", function($scope) {
+app.controller("creerCompteCtrl", function($scope,$http) {
 	// définiton de la fonction de création de compte
+	$scope.adherent={};
 	$scope.creerCompte = function() {
-		alert($scope.adherent.nom + " " + $scope.adherent.prenom + " " + $scope.adherent.telephone + " "
-				+ $scope.adherent.ville + " " + $scope.adherent.codePostal);
+		$http.post("http://localhost:8080/projetfinalgroupe3/saveAdherent", $scope.adherent).then(function(data) {
+			$scope.adherent=data;
+			alert("ajouté à la bd");
+		}).catch(function(reason) {
+			alert("Pas ajouté, erreur");
+			console.log(reason);
+		});
+		
+		
 	};
 
 });
