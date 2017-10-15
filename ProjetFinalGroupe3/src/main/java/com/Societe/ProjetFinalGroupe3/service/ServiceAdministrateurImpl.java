@@ -21,8 +21,11 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	AdministrateurDAO administrateurDAO;
 	@Autowired
 	AdherentDAO adherentDAO;
+	@Autowired
 	LivreDAO livreDAO;
+	@Autowired
 	OeuvreDAO oeuvreDAO;
+	@Autowired
 	AuteurDAO auteurDAO;
 
 	

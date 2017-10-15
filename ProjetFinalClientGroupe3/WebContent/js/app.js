@@ -60,7 +60,7 @@ app.controller("creerCompteCtrl", function($scope,$http) {
 
 });
 // définition du controller de la page modifierCompte
-app.controller("modifierCompteCtrl", function($scope) {
+app.controller("modifierCompteCtrl", function($scope,$http) {
 
 	// définition des différentes fonctions utile à la modification du compte
 	// utilisateur
@@ -105,7 +105,7 @@ app.controller("modifierCompteCtrl", function($scope) {
 	};
 });
 // définition du controller de la page rechercheLivre
-app.controller("rechercheLivreCtrl", function($scope) {
+app.controller("rechercheLivreCtrl", function($scope,$http) {
 	// définition de la fonction de recherche de livre
 	$scope.rechercherLivre = function() {
 		alert($scope.typeRecherche + ' ' + $scope.rechercheLivre);
@@ -120,15 +120,21 @@ app.controller("rechercheLivreCtrl", function($scope) {
 	};
 });
 // définition du controller de la page gestionAdherents
-app.controller("gestionAdherentsCtrl", function($scope) {
+app.controller("gestionAdherentsCtrl", function($scope,$http) {
 	$scope.msg = "Adherents";
 	$scope.validerAdherent = function() {
-		alert($scope.nom + " " + $scope.prenom + " " + $scope.telephone + " "
-				+ $scope.ville + " " + $scope.codePostal);
+		$scope.adherent={};
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAdherent", $scope.adherent).then(function(data) {
+			$scope.adherent=data;
+			alert("ajouté à la bd");
+		}).catch(function(reason) {
+			alert("Pas ajouté, erreur");
+			console.log(reason);
+		});
 	};
 });
 // définition du controller de la page gestionLivres
-app.controller("gestionLivresCtrl", function($scope) {
+app.controller("gestionLivresCtrl", function($scope,$http) {
 	$scope.msg = "Gestion des auteurs";
 
 	$scope.gererAuteurs = function() {
@@ -140,20 +146,44 @@ app.controller("gestionLivresCtrl", function($scope) {
 		$scope.msg = "Gestion des oeuvres";
 		$scope.varLivre = "oeuvres";
 	};
-
+	$scope.auteur={};
 	$scope.validerAuteur = function() {
-		alert($scope.nom + " " + $scope.prenom);
+		$scope.auteur.nom=$scope.nom;
+		$scope.auteur.prenom=$scope.prenom;
+		alert($scope.auteur.nom);
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAuteur", $scope.auteur).then(function(data) {
+			$scope.auteur=data;
+			alert("ajouté à la bd");
+		}).catch(function(reason) {
+			alert("Pas ajouté, erreur");
+			console.log(reason);
+		});
 	};
-
+	$scope.oeuvre={};
 	$scope.validerOeuvre = function() {
-		alert($scope.titre + " " + $scope.auteurAssocie);
+		
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/saveOeuvre", $scope.oeuvre).then(function(data) {
+			$scope.oeuvre=data;
+			alert("ajouté à la bd");
+		}).catch(function(reason) {
+			alert("Pas ajouté, erreur");
+			console.log(reason);
+		});
 	};
 	
 	$scope.ajouterLivre = function() {
 		$scope.varOeuvre="livre";
 	};
+	$scope.livre={};
 	$scope.validerLivre = function() {
-		alert($scope.etat+" "+$scope.numInventaire);
+		
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/saveLivre", $scope.livre).then(function(data) {
+			$scope.livre=data;
+			alert("ajouté à la bd");
+		}).catch(function(reason) {
+			alert("Pas ajouté, erreur");
+			console.log(reason);
+		});
 		$scope.varOeuvre="oeuvre";
 	};
 	$scope.editerLivre = function() {
