@@ -20,7 +20,7 @@ public interface IServiceAdherent {
 		public List<Oeuvre> rechercherParAuteur(Oeuvre o);
 		public List<Oeuvre> rechercheParOeuvre(Oeuvre o );
 		
-		public void emprunter (Livre l , Adherent ad);
+		public void emprunter (Oeuvre o , Adherent ad);
 		public void reserver (Oeuvre o , Adherent ad);
 		void setAdherentDAO(AdherentDAO adherentDAO);
 		

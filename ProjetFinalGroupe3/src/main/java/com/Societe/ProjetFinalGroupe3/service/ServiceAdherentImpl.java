@@ -78,8 +78,8 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	/*Methode d'emprunt et de reservation de livres*/
 	
 	@Override
-	public void emprunter(Livre l, Adherent ad) {
-		adherentDAO.emprunter(l,ad);
+	public void emprunter(Oeuvre o, Adherent ad) {
+		adherentDAO.emprunter(o,ad);
 	}
 
 	@Override
