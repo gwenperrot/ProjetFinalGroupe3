@@ -333,3 +333,15 @@ app.controller("gestionReservationsCtrl", function($scope) {
 app.controller("mesReservationsCtrl", function($scope) {
 	$scope.msg = "Mes reservations/emprunts";
 });
+
+app.controller("allAdherentCtrl",function($scope, $http){
+	$http.get("http://localhost:8080/ProjetFinalGroupe3/allAdherent")
+    .then(function(response) {
+        $scope.adherents = response.data;
+       
+    })
+    .catch (function(reason){
+    	alert("erreur de récupération des données");
+    	console.log(reason);	
+    })
+});
