@@ -221,14 +221,20 @@ app.controller("gestionAdherentsCtrl", function($scope,$http) {
 	    });
 	};
 	$scope.supprimerAdherent = function(idUtilisateur) {
-		
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/deleteAdherentAdmin",idUtilisateur).then(function(response) {
+			alert("supprimé");
+	    }).catch(function(reason) {
+
+	    	alert("Erreur récupération");
+	    	console.log(reason);
+	    });
 	};
 });
 // définition du controller de la page gestionLivres
 app.controller("gestionLivresCtrl", function($scope,$http) {
 
 
-	$scope.auteur={};
+	
 	$scope.validerAuteur = function() {
 		if($scope.auteur.id==0){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAuteur", $scope.auteur).then(function(data) {
@@ -247,12 +253,25 @@ app.controller("gestionLivresCtrl", function($scope,$http) {
 					console.log(reason);
 				});
 			};
+			$scope.auteur={};
 	};
 	$scope.editerAuteur = function() {
-		
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/getAuteurAdmin",idUtilisateur).then(function(response) {
+	        $scope.adherent = response.data;
+	    }).catch(function(reason) {
+
+	    	alert("Erreur récupération");
+	    	console.log(reason);
+	    });
 	};
 	$scope.supprimerAuteur = function() {
-		
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/deleteAuteurAdmin",idUtilisateur).then(function(response) {
+			alert("supprimé");
+	    }).catch(function(reason) {
+
+	    	alert("Erreur récupération");
+	    	console.log(reason);
+	    });
 	};
 	$scope.oeuvre={};
 	$scope.validerOeuvre = function() {
