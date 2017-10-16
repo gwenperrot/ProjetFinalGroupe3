@@ -4,24 +4,45 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<div>
+<div class="formulaire">
 	<h2>{{msg}}</h2>
 
 
 	<div ng-switch="varOeuvre">
 		<div ng-switch-default="oeuvre">
 			<h3>Ajouter une oeuvre</h3>
-			<form>
-				Titre : <input type="text" ng-model="$root.titre"> <select
-					ng-model="$root.auteurAssocie"><option value="auteur1">Auteur 1</option>
-					<option value="auteur2">Auteur 2</option></select>
-				<button ng-click="validerOeuvre()">Valider</button>
+			
+			<form class="form-horizontal">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="titre">Titre :</label>
+				<div class="col-sm-10">
+				 <input type="text"class="form-control" name="titre" ng-model="$root.titre"> 
+				</div>
+				</div>
+			<div class="form-group">	
+				 <label class="control-label col-sm-2">Auteur :</label>
+				 <select class="col-sm-4" id="select1" ng-model="$root.auteurAssocie">
+				 	<option value="auteur1">Auteur 1</option>
+					<option value="auteur2">Auteur 2</option>
+				</select>
+				
+				</div>
+			
+			
+			<div class="form-group">
+    			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-default" ng-click="validerOeuvre()">Valider</button>
+			</div>	
+			</div>
 			</form>
+
+			
 			<h3>Liste des oeuvres</h3>
 			<table class="table table-striped">
 				<tr>
 					<th>Bla</th>
 					<th>Bla</th>
+					<th></th>
 					<th></th>
 					<th></th>
 				</tr>
