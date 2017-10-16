@@ -20,6 +20,12 @@ app.config(function($routeProvider) {
 	}).when("/gestionLivres", {
 		templateUrl : "view/gestionlivres.html",
 		controller : "gestionLivresCtrl"
+	}).when("/gestionAuteurs", {
+		templateUrl : "view/gestionauteurs.html",
+		controller : "gestionLivresCtrl"
+	}).when("/gestionOeuvres", {
+		templateUrl : "view/gestionoeuvres.html",
+		controller : "gestionLivresCtrl"
 	}).when("/gestionEmprunts", {
 		templateUrl : "view/gestionemprunts.html",
 		controller : "gestionEmpruntsCtrl"
@@ -41,7 +47,15 @@ app.controller("indexCtrl", function($scope) {
 		$scope.typeUtilisateur = "visiteur";
 	};
 
+
+	$scope.gestionLivres = function() {
+		$scope.varGestionLivres = "liens";
+	};
+	$scope.gestionAutres = function() {
+		$scope.varGestionLivres = "vide";
+	};
 });
+
 // définition du controller de la page creerCompte
 app.controller("creerCompteCtrl", function($scope,$http) {
 	// définiton de la fonction de création de compte
