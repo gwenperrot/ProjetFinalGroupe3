@@ -11,12 +11,12 @@
 		<div ng-switch="varNom">
 			<div ng-switch-default="afficherNom">
 				<label class="control-label" for="nom">Nom :</label>
-				 {{nom}} <a ng-click="modifierNom()">Editer</a>
+				 {{adherent.nom}} <a ng-click="modifierNom()">Editer</a>
 			</div>
 			<div ng-switch-when="modifierNom">
 				<form class="form-horizontal" action="#!monCompte">
 					<div class="col-sm-8">
-					<input type="text" class="form-control" placeholder="{{nom}}" name="nom" ng-model="$root.nom">
+					<input type="text" class="form-control" value="adherent.nom" name="nom" ng-model="adherent.nom">
 				</div>
 				<div class="col-sm-4">
 					<button class="btn btn-default" ng-click="changerNom()">Valider</button>
@@ -31,12 +31,12 @@
 	<div ng-switch="varPrenom">
 		<div ng-switch-default="afficherPrenom">
 		<label class="control-label" for="prenom">Prenom :</label>
-			{{prenom}} <a ng-click="modifierPrenom()">Editer</a>
+			{{adherent.prenom}} <a ng-click="modifierPrenom()">Editer</a>
 		</div>
 		<div ng-switch-when="modifierPrenom">
 		<form class="form-horizontal" action="#!monCompte">
 			<div class="col-sm-8">
-				<input type="text" class="form-control" placeholder="{{prenom}}" name="prenom" ng-model="$root.prenom">
+				<input type="text" class="form-control" value="adherent.prenom" name="prenom" ng-model="adherent.prenom">
 				</div>
 				<div class="col-sm-4">
 				<button class="btn btn-default" ng-click="changerPrenom()">Valider</button>
@@ -50,12 +50,13 @@
 	<div ng-switch="varTel">
 		<div ng-switch-default="afficherTel">
 		<label class="control-label" for="telephone">Téléphone :</label>
-			 {{tel}} <a ng-click="modifierTel()">Editer</a>
+			 {{adherent.numTel}} <a ng-click="modifierTel()">Editer</a>
 		</div>
 		<div ng-switch-when="modifierTel">
 			<form class="form-horizontal" action="#!monCompte">
 				<div class="col-sm-8">
-				<input type="text" class="form-control" placeholder="{{tel}}" name="telephone" ng-model="$root.tel">
+				<label class="control-label" for="telephone">Téléphone :</label>
+				<input type="text" class="form-control" value="adherent.numTel" name="telephone" ng-model="adherent.numTel">
 				</div>
 				<div class="col-sm-4">
 				<button class="btn btn-default" ng-click="changerTel()">Valider</button>
@@ -68,12 +69,13 @@
 	<div ng-switch="varVille">
 		<div ng-switch-default="afficherVille">
 		<label class="control-label" for="ville">Ville :</label>
-			 {{ville}} <a ng-click="modifierVille()">Editer</a>
+			 {{adherent.ville}} <a ng-click="modifierVille()">Editer</a>
 		</div>
 		<div ng-switch-when="modifierVille">
 			<form class="form-horizontal" action="#!monCompte">
 				<div class="col-sm-8">
-				<input type="text" class="form-control" placeholder="{{ville}}" name="ville" ng-model="$root.ville">
+				<label class="control-label" for="ville">Ville :</label>
+				<input type="text" class="form-control" value="adherent.ville" name="ville" ng-model="adherent.ville">
 				</div>
 				<div class="col-sm-4">
 				<button  class="btn btn-default" ng-click="changerVille()">Valider</button>
@@ -86,12 +88,13 @@
 	<div ng-switch="varCodePostal">
 		<div ng-switch-default="afficherCodePostal">
 			<label class="control-label" for="cp">Code postal :</label>		
-			{{codePostal}} <a ng-click="modifierCodePostal()">Editer</a>
+			{{adherent.codePostal}} <a ng-click="modifierCodePostal()">Editer</a>
 		</div>
 		<div ng-switch-when="modifierCodePostal">
 			<form class="form-horizontal" action="#!monCompte">
 			<div class="col-sm-8">
-				<input type="text" class="form-control" placeholder="{{codePostal}}" name="cp" ng-model="$root.codePostal">
+				<label class="control-label" for="cp">Code postal :</label>
+				<input type="text" class="form-control" value="adherent.codePostal" name="cp" ng-model="adherent.codePostal">
 			</div>
 			<div class="col-sm-4">	
 				<button class="btn btn-default" ng-click="changerCodePostal()">Valider</button>
@@ -100,5 +103,23 @@
 		</div>
 	</div>
 
+
+<div ng-switch="varLogin">
+		<div ng-switch-default="afficherLogin">
+			<label class="control-label" for="login">Login :</label>		
+			{{adherent.login}} <a ng-click="modifierLogin()">Editer</a>
+		</div>
+		<div ng-switch-when="modifierCodePostal">
+			<form class="form-horizontal" action="#!monCompte">
+			<div class="col-sm-8">
+				<label class="control-label" for="login">Login :</label>
+				<input type="text" class="form-control" value="adherent.login" name="login" ng-model="adherent.login">
+			</div>
+			<div class="col-sm-4">	
+				<button class="btn btn-default" ng-click="changerLogin()">Valider</button>
+			</div>	
+			</form>
+		</div>
+	</div>
 </div>
 </html>

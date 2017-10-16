@@ -85,9 +85,8 @@ app.controller("creerCompteCtrl", function($scope,$http) {
 });
 // définition du controller de la page modifierCompte
 app.controller("modifierCompteCtrl", function($scope,$http) {
-	$scope.adherent={};
-	$scope.adherent.idUtilisateur=21;
-	$http.get("http://localhost:8080/ProjetFinalGroupe3/getAdherent", $scope.adherent).then(function(response) {
+	$scope.idUtilisateur="21";
+	$http.post("http://localhost:8080/ProjetFinalGroupe3/getAdherent", $scope.idUtilisateur).then(function(response) {
         $scope.adherent = response.data;
     }).catch(function(reason) {
 
@@ -100,9 +99,7 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 		$scope.varNom = "modifierNom";
 	};
 	$scope.changerNom = function() {
-		$scope.adherent.nom=$scope.nom;
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
-			$scope.adherent=data;
 			alert("modifié");
 		}).catch(function(reason) {
 			alert("Pas ajouté, erreur");
@@ -115,9 +112,7 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 		$scope.varPrenom = "modifierPrenom";
 	};
 	$scope.changerPrenom = function() {
-		$scope.adherent.prenom=$scope.nom;
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
-			$scope.adherent=data;
 			alert("modifié");
 		}).catch(function(reason) {
 			alert("Pas ajouté, erreur");
@@ -130,9 +125,7 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 		$scope.varTel = "modifierTel";
 	};
 	$scope.changerTel = function() {
-		$scope.adherent.tel=$scope.tel;
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
-			$scope.adherent=data;
 			alert("modifié");
 		}).catch(function(reason) {
 			alert("Pas ajouté, erreur");
@@ -145,9 +138,7 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 		$scope.varVille = "modifierVille";
 	};
 	$scope.changerVille = function() {
-		$scope.adherent.ville=$scope.ville;
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
-			$scope.adherent=data;
 			alert("modifié");
 		}).catch(function(reason) {
 			alert("Pas ajouté, erreur");
@@ -160,9 +151,7 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 		$scope.varCodePostal = "modifierCodePostal";
 	};
 	$scope.changerCodePostal = function() {
-		$scope.adherent.codePostale=$scope.codePostal;
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
-			$scope.adherent=data;
 			alert("modifié");
 		}).catch(function(reason) {
 			alert("Pas ajouté, erreur");

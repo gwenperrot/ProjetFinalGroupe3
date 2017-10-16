@@ -43,8 +43,8 @@ public class AdherentController {
 		service.updateAdherent(ad);
 	}
 
-	@RequestMapping(value = "/getAdherent", method = RequestMethod.GET)
-	public Adherent getAdherent(long idUtilisateur) {
+	@RequestMapping(value = "/getAdherent", method = RequestMethod.POST)
+	public Adherent getAdherent(@RequestBody long idUtilisateur) {
 		return service.getAdherent(idUtilisateur);
 	}
 
