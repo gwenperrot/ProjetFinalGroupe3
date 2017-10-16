@@ -28,7 +28,7 @@ public class Adherent extends Utilisateur{
 	private String prenom;
 	private String numTel;
 	private Date dateIns;
-	private String Ville;
+	private String ville;
 	private int codePostal;
 	
 	@JsonIgnore
@@ -89,12 +89,17 @@ public class Adherent extends Utilisateur{
 	public void setDateIns(Date dateIns) {
 		this.dateIns = dateIns;
 	}
+	
 	public String getVille() {
-		return Ville;
+		return ville;
 	}
+
+
 	public void setVille(String ville) {
-		Ville = ville;
+		this.ville = ville;
 	}
+
+
 	public int getCodePostal() {
 		return codePostal;
 	}
@@ -106,7 +111,7 @@ public class Adherent extends Utilisateur{
 	@Override
 	public String toString() {
 		return "Adherent [ nom=" + nom + ", prenom=" + prenom + ", numTel=" + numTel + ", dateIns="
-				+ dateIns + ", Ville=" + Ville + ", codePostal=" + codePostal + "]";
+				+ dateIns + ", Ville=" + ville + ", codePostal=" + codePostal + "]";
 	}
 	
 	
