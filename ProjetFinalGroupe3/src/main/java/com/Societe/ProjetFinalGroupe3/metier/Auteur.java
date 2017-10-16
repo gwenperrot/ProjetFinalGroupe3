@@ -1,10 +1,12 @@
 package com.Societe.ProjetFinalGroupe3.metier;
+import java.util.ArrayList;
 /*
  * La classe Auteur a une relation avec oeuvre : un auteur peut �crire plusieurs oeuvres,
  *  et une oeuvre est �crite par un auteur
  */
-import java.util.HashSet;
-import java.util.Set;
+
+import java.util.List;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +36,7 @@ public class Auteur {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="lauteur")
-	private Set<Oeuvre> OeuvresAuteur = new HashSet<Oeuvre>();
+	private List<Oeuvre> OeuvresAuteur = new ArrayList<Oeuvre>();
 
 	public Long getIdAuteur() {
 		return idAuteur;
@@ -55,10 +57,11 @@ public class Auteur {
 		this.prenom = prenom;
 	}
 	
-	public Set<Oeuvre> getOeuvresAuteur() {
+
+	public List<Oeuvre> getOeuvresAuteur() {
 		return OeuvresAuteur;
 	}
-	public void setOeuvresAuteur(Set<Oeuvre> oeuvresAuteur) {
+	public void setOeuvresAuteur(List<Oeuvre> oeuvresAuteur) {
 		OeuvresAuteur = oeuvresAuteur;
 	}
 	@Override

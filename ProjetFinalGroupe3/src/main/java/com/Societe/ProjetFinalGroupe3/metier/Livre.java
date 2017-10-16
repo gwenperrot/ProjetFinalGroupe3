@@ -36,6 +36,7 @@ private boolean dispo ;
 @OneToMany(mappedBy="idLA.livre")
 private List<LivreAdherent> livreAdherent;
 
+
 @ManyToOne
 private Oeuvre loeuvre;
 

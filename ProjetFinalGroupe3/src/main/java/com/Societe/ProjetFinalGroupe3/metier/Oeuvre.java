@@ -1,4 +1,5 @@
 package com.Societe.ProjetFinalGroupe3.metier;
+import java.util.ArrayList;
 /*
  * Une oeuvre peut �tre imprim�e sur plusieurs livre, un livre raconte une oeuvre
  * Une oeuvre peut �tre r�serv�e par plusieurs adh�rents, un adh�rent peut r�server plusieurs oeuvres
@@ -32,7 +33,7 @@ private int nbLivreLibre;
 
 @JsonIgnore
 @OneToMany(mappedBy="idOA.oeuvre")
-private List<OeuvreAdherent> oeuvreAdherent;
+private List<OeuvreAdherent> oeuvreAdherent = new ArrayList<OeuvreAdherent>();
 
 @JsonIgnore
 @OneToMany(mappedBy="loeuvre")
