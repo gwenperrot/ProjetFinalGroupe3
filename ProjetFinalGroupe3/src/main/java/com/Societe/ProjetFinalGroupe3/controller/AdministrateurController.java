@@ -142,17 +142,17 @@ public class AdministrateurController {
 	}
 	
 	/*Methodes de recherche pour l'administrateur*/
-	@RequestMapping(value = "/livreParMC", method = RequestMethod.POST)
+	@RequestMapping(value = "/livreParMCAdmin", method = RequestMethod.POST)
 	public List<Livre> rechercherParMC(String mc) {
 		return service.rechercherParMC(mc);
 	}
 	
-	@RequestMapping(value = "/livreParAuteur", method = RequestMethod.POST)
+	@RequestMapping(value = "/livreParAuteurAdmin", method = RequestMethod.POST)
 	public List<Oeuvre> rechercherParAuteur(Oeuvre o) {
 		return service.rechercherParAuteur(o);
 	}
 	
-	@RequestMapping(value = "/parOeuvre", method = RequestMethod.POST)
+	@RequestMapping(value = "/parOeuvreAdmin", method = RequestMethod.POST)
 	public List<Oeuvre> rechercherParOeuvre(Oeuvre o ) {
 		return service.rechercheParOeuvre(o);
 	}
