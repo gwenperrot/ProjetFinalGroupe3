@@ -39,7 +39,7 @@ public class AdherentController {
 	}
 
 	@RequestMapping(value = "/updateAdherent",method = RequestMethod.POST)
-	public void updateAdherent(Adherent ad) {
+	public void updateAdherent(@RequestBody Adherent ad) {
 		service.updateAdherent(ad);
 	}
 

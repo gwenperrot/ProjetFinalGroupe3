@@ -32,13 +32,13 @@ public class AdministrateurController {
 		this.service = service;
 	}
 
-	@RequestMapping(value = "/saveAuteur", method = RequestMethod.GET)
-	public void save(Auteur a) {
+	@RequestMapping(value = "/saveAuteur", method = RequestMethod.POST)
+	public void save(@RequestBody Auteur a) {
 		service.createAuteur(a);
 	}
 
-	@RequestMapping(value = "/updateAuteur", method = RequestMethod.GET)
-	public void updateAuteur(Auteur a) {
+	@RequestMapping(value = "/updateAuteur", method = RequestMethod.POST)
+	public void updateAuteur(@RequestBody Auteur a) {
 		service.updateAuteur(a);
 	}
 	
@@ -60,13 +60,13 @@ public class AdministrateurController {
 	/*CRUD Adherent*/
 	
 
-	@RequestMapping(value = "/saveAdherentAdmin", method = RequestMethod.GET)
-	public void save(Adherent ad) {
+	@RequestMapping(value = "/saveAdherentAdmin", method = RequestMethod.POST)
+	public void save(@RequestBody Adherent ad) {
 		service.createAdherent(ad);
 	}
 
-	@RequestMapping(value = "/updateAdherentAdmin", method = RequestMethod.GET)
-	public void updateAdherent(Adherent ad) {
+	@RequestMapping(value = "/updateAdherentAdmin", method = RequestMethod.POST)
+	public void updateAdherent(@RequestBody Adherent ad) {
 		service.updateAdherent(ad);
 	}
 
@@ -88,13 +88,13 @@ public class AdministrateurController {
 	
 	/*CRUD Oeuvre*/
 	
-	@RequestMapping(value = "/saveOeuvre", method = RequestMethod.GET)
-	public void save(Oeuvre o) {
+	@RequestMapping(value = "/saveOeuvre", method = RequestMethod.POST)
+	public void save(@RequestBody Oeuvre o) {
 		service.createOeuvre(o);
 	}
 
-	@RequestMapping(value = "/updateOeuvre", method = RequestMethod.GET)
-	public void updateOeuvre(Oeuvre o) {
+	@RequestMapping(value = "/updateOeuvre", method = RequestMethod.POST)
+	public void updateOeuvre(@RequestBody Oeuvre o) {
 		service.updateOeuvre(o);
 	}
 
@@ -115,13 +115,13 @@ public class AdministrateurController {
 	
 	/*CRUD Livre*/
 	
-	@RequestMapping(value = "/saveLivre", method = RequestMethod.GET)
-	public void save(Livre l) {
+	@RequestMapping(value = "/saveLivre", method = RequestMethod.POST)
+	public void save(@RequestBody Livre l) {
 		service.createLivre(l);
 	}
 
-	@RequestMapping(value = "/updateLivre l", method = RequestMethod.GET)
-	public void updateLivre(Livre l) {
+	@RequestMapping(value = "/updateLivre l", method = RequestMethod.POST)
+	public void updateLivre(@RequestBody Livre l) {
 		service.updateLivre(l);
 	}
 
