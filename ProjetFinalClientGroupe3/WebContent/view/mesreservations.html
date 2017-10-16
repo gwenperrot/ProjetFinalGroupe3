@@ -6,24 +6,28 @@
 </head>
 <div>
 	<h2>{{msg}}</h2>
-	<h3>Mes réservations</h3>
+
+<div ng-controller="">	
+	<!-- <h3>Mes réservations/Mes emprunts</h3> -->
 	<table class="table table-striped">
 		<tr>
-			<th>Bla</th>
-			<th>Bla</th>
+			<th>Titre de l'oeuvre</th>
+			<th>numéro d'emprunt</th>
 			<th></th>
-			<th></th>
+			
 		</tr>
 		<tr>
-			<td>Blou</td>
-			<td>Blou</td>
-			<td><a ng-click="annulerReservation()">Annuler</a></td>
+			<td></td>
+			<td></td>
+			<td><a ng-click="annulerReservation()">Annuler/Rendre</a></td>
 		</tr>
 	</table>
-	<h3>Mes emprunts</h3>
+</div>
+	
+<!-- 	<h3>Mes emprunts</h3>
 	<table class="table table-striped">
 		<tr>
-			<th>Bla</th>
+			<th>Oeuvre</th>
 			<th>Bla</th>
 			<th></th>
 			<th></th>
@@ -33,6 +37,6 @@
 			<td>Blou</td>
 			<td><a ng-click="rendreEmprunt()">Rendre</a></td>
 		</tr>
-	</table>
+	</table> -->
 </div>
 </html>

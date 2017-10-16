@@ -401,3 +401,38 @@ app.controller("allAdherentCtrl",function($scope, $http){
     	console.log(reason);	
     })
 });
+app.controller("allAuteursCtrl",function($scope, $http){
+	$http.get("http://localhost:8080/ProjetFinalGroupe3/allAuteur")
+    .then(function(response) {
+        $scope.auteurs = response.data;
+       
+    })
+    .catch (function(reason){
+    	alert("erreur de récupération des données");
+    	console.log(reason);	
+    })
+});
+
+app.controller("allOeuvresCtrl",function($scope, $http){
+	$http.get("http://localhost:8080/ProjetFinalGroupe3/allOeuvre")
+    .then(function(response) {
+        $scope.oeuvres = response.data;
+       
+    })
+    .catch (function(reason){
+    	alert("erreur de récupération des données");
+    	console.log(reason);	
+    })
+});
+
+app.controller("allLivresCtrl",function($scope, $http){
+	$http.get("http://localhost:8080/ProjetFinalGroupe3/allLivre")
+    .then(function(response) {
+        $scope.oeuvres = response.data;
+       
+    })
+    .catch (function(reason){
+    	alert("erreur de récupération des données");
+    	console.log(reason);	
+    })
+});
