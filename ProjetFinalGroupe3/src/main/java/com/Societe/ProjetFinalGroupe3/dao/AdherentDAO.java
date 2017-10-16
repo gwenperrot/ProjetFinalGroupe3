@@ -17,13 +17,13 @@ import com.Societe.ProjetFinalGroupe3.metier.Oeuvre;
 public interface AdherentDAO extends JpaRepository<Adherent, Long> {
 
 
- 
+ /*
 	@Query("select l from Livre l left join fetch l.adherent  where l.adherent.idUtilisateur=?")
 	void emprunter (Livre l, Adherent ad);
 
 	@Query("select o from Oeuvre o left join fetch o.adherent  where o.adherent.idUtilisateur=?")
 	void reserver(Oeuvre o, Adherent ad);
-
+*/
 }
 
 

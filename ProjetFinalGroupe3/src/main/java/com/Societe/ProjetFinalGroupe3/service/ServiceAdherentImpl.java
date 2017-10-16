@@ -79,12 +79,12 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	
 	@Override
 	public void emprunter(Livre l , Adherent ad) {
-		adherentDAO.emprunter(l,ad);
+		//adherentDAO.emprunter(l,ad);
 	}
 
 	@Override
 	public void reserver(Oeuvre o, Adherent ad) {
-		adherentDAO.reserver(o,ad);
+		//adherentDAO.reserver(o,ad);
 	}
 
 }
