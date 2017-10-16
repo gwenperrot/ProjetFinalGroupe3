@@ -40,6 +40,7 @@ public interface IServiceAdministrateur {
 		public List<Oeuvre> findByTitre(String titre);
 		
 		public void attribuerLivreOeuvre(Livre l , Oeuvre o );
+		public void attribuerOeuvreAuteur(Oeuvre o, Auteur a);
 		
 	}
 

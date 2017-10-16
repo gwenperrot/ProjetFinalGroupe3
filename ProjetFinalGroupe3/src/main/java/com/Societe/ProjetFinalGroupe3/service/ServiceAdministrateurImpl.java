@@ -203,11 +203,17 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	public List<Adherent> rechercherParId(long idUtilisateur) {
 		return administrateurDAO.rechercherParId(idUtilisateur);
 	}
+	
+	@Override
+	public void attribuerOeuvreAuteur(Oeuvre o, Auteur a) {
+			o.setLauteur(a);
+			oeuvreDAO.saveAndFlush(o);
+	}
 
 	@Override
 	public void attribuerLivreOeuvre(Livre l, Oeuvre o) {
-			
-		
+			l.setLoeuvre(o);
+			livreDAO.saveAndFlush(l);
 	}
 
 	@Override

@@ -54,7 +54,7 @@ public class AdherentController {
 	}
 	
 	@RequestMapping(value = "/deleteAdherent", method = RequestMethod.POST)
-	public void deleteAdherent(long idUtilisateur) {
+	public void deleteAdherent(@RequestBody long idUtilisateur) {
 		service.deleteAdherent(idUtilisateur);
 	}
 
@@ -62,17 +62,17 @@ public class AdherentController {
 	
 	
 	@RequestMapping(value = "/livreParMC", method = RequestMethod.POST)
-	public List<Oeuvre> rechercherParMC(String mc) {
+	public List<Oeuvre> rechercherParMC(@RequestBody String mc) {
 		return service.rechercherParMC(mc);
 	}
 	
 	@RequestMapping(value = "/livreParAuteur",method = RequestMethod.POST)
-	public List<Oeuvre> rechercherParAuteur(Oeuvre o) {
+	public List<Oeuvre> rechercherParAuteur(@RequestBody Oeuvre o) {
 		return service.rechercherParAuteur(o);
 	}
 	
 	@RequestMapping(value = "/parOeuvre",  method = RequestMethod.POST)
-	public List<Oeuvre> rechercherParOeuvre(Oeuvre o ) {
+	public List<Oeuvre> rechercherParOeuvre(@RequestBody Oeuvre o ) {
 		return service.rechercheParOeuvre(o);
 	}
 	
@@ -82,10 +82,10 @@ public class AdherentController {
 	@RequestMapping(value = "/emprunterReserver", method = RequestMethod.POST)
 	public boolean emprunter(Livre l  , Adherent ad) {
 		Oeuvre o = new Oeuvre();
-		int nbs = o.getNbLivreLibre();
+		int nbs = o.getNbLivreLibre();							
 		if (l.isDispo() == true) {
 			service.emprunter(l, ad);
-			if (nbs < 0){
+			if (nbs >0){
 				nbs--;
 			}
 		} 

@@ -71,7 +71,7 @@ public class AdministrateurController {
 	}
 
 	@RequestMapping(value =  "/getAdherentAdmin", method = RequestMethod.POST)
-	public Adherent getAdherent(long idUtilisateur) {
+	public Adherent getAdherent(@RequestBody long idUtilisateur) {
 		return service.getAdherent(idUtilisateur);
 	}
 
@@ -81,7 +81,7 @@ public class AdministrateurController {
 	}
 	
 	@RequestMapping(value = "/deleteAdherentAdmin" , method = RequestMethod.POST)
-	public void deleteAdherent(long idUtilisateur) {
+	public void deleteAdherent(@RequestBody long idUtilisateur) {
 		service.deleteAdherent(idUtilisateur);
 	}
 
@@ -99,7 +99,7 @@ public class AdministrateurController {
 	}
 
 	@RequestMapping(value = "/getOeuvre", method = RequestMethod.POST)
-	public Oeuvre getOeuvre(long idOeuvre) {
+	public Oeuvre getOeuvre(@RequestBody long idOeuvre) {
 		return service.getOeuvre(idOeuvre);
 	}
 
@@ -109,7 +109,7 @@ public class AdministrateurController {
 	}
 	
 	@RequestMapping(value = "/deleteOeuvre", method = RequestMethod.POST)
-	public void deleteOeuvre(long idOeuvre) {
+	public void deleteOeuvre(@RequestBody long idOeuvre) {
 		service.deleteOeuvre(idOeuvre);
 	}
 	
@@ -126,7 +126,7 @@ public class AdministrateurController {
 	}
 
 	@RequestMapping(value = "/getLivre", method = RequestMethod.POST)
-	public Livre getLivre(long idLivre) {
+	public Livre getLivre(@RequestBody long idLivre) {
 		return service.getLivre(idLivre);
 	}
 
@@ -136,28 +136,38 @@ public class AdministrateurController {
 	}
 	
 	@RequestMapping(value = "/deleteLivre", method = RequestMethod.POST)
-	public void deleteLivre (long idLivre) {
+	public void deleteLivre (@RequestBody long idLivre) {
 		service.deleteLivre(idLivre);
 	}
 	
 	/*Methodes de recherche pour l'administrateur*/
 	@RequestMapping(value = "/livreParMCAdmin", method = RequestMethod.POST)
-	public List<Oeuvre> rechercherParMC(String mc) {
+	public List<Oeuvre> rechercherParMC(@RequestBody String mc) {
 		return service.rechercherParMC(mc);
 	}
 	
 	@RequestMapping(value = "/livreParAuteurAdmin", method = RequestMethod.POST)
-	public List<Oeuvre> rechercherParAuteur(Oeuvre o) {
+	public List<Oeuvre> rechercherParAuteur(@RequestBody Oeuvre o) {
 		return service.rechercherParAuteur(o);
 	}
 	
 	@RequestMapping(value = "/parOeuvreAdmin", method = RequestMethod.POST)
-	public List<Oeuvre> rechercherParOeuvre(Oeuvre o ) {
+	public List<Oeuvre> rechercherParOeuvre(@RequestBody Oeuvre o ) {
 		return service.rechercheParOeuvre(o);
 	}
 	
 	@RequestMapping(value = "/adherentParId" , method = RequestMethod.POST)
-	public List<Adherent> rechercherParId(long idUtilisateur ) {
+	public List<Adherent> rechercherParId(@RequestBody long idUtilisateur ) {
 		return service.rechercherParId(idUtilisateur);
 	}
+	@RequestMapping(value = "/attibuerOeuvreAuteur " ,  method = RequestMethod.POST)
+	public void attribuerOeuvreAuteur(@RequestBody Oeuvre o, Auteur a) {
+		service.attribuerOeuvreAuteur(o, a);
+	}
+		
+	@RequestMapping(value = "/attibuerLivreOeuvre " ,  method = RequestMethod.POST)
+	public void attribuerLivreOeuvre(@RequestBody Livre l , Oeuvre o ) {
+		service.attribuerLivreOeuvre(l, o);
+	}
+	
 }
