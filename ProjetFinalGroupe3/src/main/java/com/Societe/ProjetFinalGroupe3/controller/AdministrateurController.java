@@ -88,7 +88,6 @@ public class AdministrateurController {
 	
 	/*CRUD Oeuvre*/
 	
-	@Autowired
 	@RequestMapping(value = "/saveOeuvre", method = RequestMethod.POST)
 	public void save(@RequestBody Oeuvre o) {
 		service.createOeuvre(o);
