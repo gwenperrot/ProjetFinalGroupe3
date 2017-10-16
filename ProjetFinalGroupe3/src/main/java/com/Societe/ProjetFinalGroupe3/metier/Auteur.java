@@ -31,12 +31,11 @@ public class Auteur {
 	
 	public Auteur() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="lauteur")
-	private List<Oeuvre> OeuvresAuteur = new ArrayList<Oeuvre>();
+	private List<Oeuvre> oeuvresAuteur = new ArrayList<Oeuvre>();
 
 	public Long getIdAuteur() {
 		return idAuteur;
@@ -58,11 +57,12 @@ public class Auteur {
 	}
 	
 
+
 	public List<Oeuvre> getOeuvresAuteur() {
-		return OeuvresAuteur;
+		return oeuvresAuteur;
 	}
 	public void setOeuvresAuteur(List<Oeuvre> oeuvresAuteur) {
-		OeuvresAuteur = oeuvresAuteur;
+		this.oeuvresAuteur = oeuvresAuteur;
 	}
 	@Override
 	public String toString() {
