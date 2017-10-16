@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -37,8 +37,8 @@
 		<tr ng-repeat="au in auteurs">
 			<td>{{au.nom}}</td>
 			<td>{{au.prenom}}</td>
-			<td><a href="" ng-click="editerAuteur()">Editer</a></td>
-			<td><a href="" ng-click="supprimerAuteur()">Supprimer</a></td>
+			<td><a href="" ng-click="editerAuteur(au.idAuteur)">Editer</a></td>
+			<td><a href="" ng-click="supprimerAuteur(au.idAuteur)">Supprimer</a></td>
 		</tr>
 	</table>
 	</div>
