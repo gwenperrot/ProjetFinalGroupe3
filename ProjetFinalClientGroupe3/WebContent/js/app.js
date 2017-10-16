@@ -172,11 +172,34 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 		$scope.varLogin = "afficherLogin";
 	};
 });
+
 // définition du controller de la page rechercheLivre
 app.controller("rechercheLivreCtrl", function($scope,$http) {
+	
 	// définition de la fonction de recherche de livre
-	$scope.rechercherLivre = function() {
-		alert($scope.typeRecherche + ' ' + $scope.rechercheLivre);
+	$scope.rechercherLivre = function(typeRecherche) {
+		alert(typeRecherche);
+		if(typeRecherche=="auteur"){
+			$http.get("http://localhost:8080/ProjetFinalGroupe3/livreParAuteurAdmin")
+		    .then(function(response) {
+		        $scope.livres = response.data;
+		       
+		    })
+		    .catch (function(reason){
+		    	alert("erreur de récupération des données");
+		    	console.log(reason);	
+		    })
+		}else if (typeRecherche=="livre"){
+			$http.get("http://localhost:8080/ProjetFinalGroupe3/livreParMCAdmin")
+		    .then(function(response) {
+		        $scope.livres = response.data;
+		       
+		    })
+		    .catch (function(reason){
+		    	alert("erreur de récupération des données");
+		    	console.log(reason);	
+		    })
+		} else { alert("erreur");}
 	};
 
 	$scope.reserver = function() {
