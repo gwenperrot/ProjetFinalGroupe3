@@ -33,7 +33,7 @@ public class AdministrateurController {
 	}
 
 	@RequestMapping(value = "/saveAuteur", method = RequestMethod.GET)
-	public void save(@RequestBody Auteur a) {
+	public void save(Auteur a) {
 		service.createAuteur(a);
 	}
 
@@ -61,7 +61,7 @@ public class AdministrateurController {
 	
 
 	@RequestMapping(value = "/saveAdherentAdmin", method = RequestMethod.GET)
-	public void save(@RequestBody Adherent ad) {
+	public void save(Adherent ad) {
 		service.createAdherent(ad);
 	}
 
@@ -89,7 +89,7 @@ public class AdministrateurController {
 	/*CRUD Oeuvre*/
 	
 	@RequestMapping(value = "/saveOeuvre", method = RequestMethod.GET)
-	public void save(@RequestBody Oeuvre o) {
+	public void save(Oeuvre o) {
 		service.createOeuvre(o);
 	}
 
@@ -116,7 +116,7 @@ public class AdministrateurController {
 	/*CRUD Livre*/
 	
 	@RequestMapping(value = "/saveLivre", method = RequestMethod.GET)
-	public void save(@RequestBody Livre l) {
+	public void save(Livre l) {
 		service.createLivre(l);
 	}
 

@@ -34,7 +34,7 @@ public class AdherentController {
 	}
 
 	@RequestMapping(value = "/saveAdherent", method = RequestMethod.GET)
-	public void save(@RequestBody Adherent ad) {
+	public void save(Adherent ad) {
 		service.createAdherent(ad);
 	}
 
