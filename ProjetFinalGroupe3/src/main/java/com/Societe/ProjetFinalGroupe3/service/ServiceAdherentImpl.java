@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Societe.ProjetFinalGroupe3.dao.AdherentDAO;
+import com.Societe.ProjetFinalGroupe3.dao.LivreAdherentDAO;
 import com.Societe.ProjetFinalGroupe3.dao.LivreDAO;
 import com.Societe.ProjetFinalGroupe3.dao.OeuvreDAO;
 import com.Societe.ProjetFinalGroupe3.metier.Adherent;
 import com.Societe.ProjetFinalGroupe3.metier.Auteur;
 import com.Societe.ProjetFinalGroupe3.metier.Livre;
+import com.Societe.ProjetFinalGroupe3.metier.LivreAdherent;
+import com.Societe.ProjetFinalGroupe3.metier.LivreAdherentId;
 import com.Societe.ProjetFinalGroupe3.metier.Oeuvre;
 @Service
 public class ServiceAdherentImpl implements IServiceAdherent {
@@ -20,10 +23,21 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	LivreDAO livreDAO;
 	@Autowired
 	OeuvreDAO oeuvreDAO;
+	@Autowired
+	LivreAdherentDAO livreAdherentDAO;
+	
+	
+	
+	public LivreAdherentDAO getLivreAdherentDAO() {
+		return livreAdherentDAO;
+	}
 
-	
-	
-	
+
+	public void setLivreAdherentDAO(LivreAdherentDAO livreAdherentDAO) {
+		this.livreAdherentDAO = livreAdherentDAO;
+	}
+
+
 	public LivreDAO getLivreDAO() {
 		return livreDAO;
 	}
@@ -101,9 +115,10 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	
 	@Override
 	public void emprunter(Livre l , Adherent ad) {
-		//adherentDAO.emprunter(l,ad);
+		LivreAdherent la = new LivreAdherent(l, ad);
+		livreAdherentDAO.save(la);	
 	}
-
+	
 	@Override
 	public void reserver(Oeuvre o, Adherent ad) {
 		//adherentDAO.reserver(o,ad);
