@@ -22,6 +22,28 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	OeuvreDAO oeuvreDAO;
 
 	
+	
+	
+	public LivreDAO getLivreDAO() {
+		return livreDAO;
+	}
+
+
+	public void setLivreDAO(LivreDAO livreDAO) {
+		this.livreDAO = livreDAO;
+	}
+
+
+	public OeuvreDAO getOeuvreDAO() {
+		return oeuvreDAO;
+	}
+
+
+	public void setOeuvreDAO(OeuvreDAO oeuvreDAO) {
+		this.oeuvreDAO = oeuvreDAO;
+	}
+
+
 	public void setAdherentDAO(AdherentDAO adherentDAO) {
 		this.adherentDAO = adherentDAO;
 	}
