@@ -203,21 +203,41 @@ app.controller("gestionLivresCtrl", function($scope,$http) {
 	$scope.oeuvre={};
 	$scope.validerOeuvre = function() {
 		
-		$http.post("http://localhost:8080/ProjetFinalGroupe3/saveOeuvre", $scope.oeuvre).then(function(data) {
-			$scope.oeuvre=data;
-			alert("ajouté à la bd");
-		}).catch(function(reason) {
-			alert("Pas ajouté, erreur");
-			console.log(reason);
-		});
-	};
+		if($scope.oeuvre.id!=0){
+			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveOeuvre", $scope.oeuvre).then(function(data) {
+				$scope.oeuvre=data;
+				alert("ajouté à la bd");
+			}).catch(function(reason) {
+				alert("Pas ajouté, erreur");
+				console.log(reason);
+			});
+			}else{
+				$http.post("http://localhost:8080/ProjetFinalGroupe3/updateOeuvre", $scope.oeuvre).then(function(data) {
+					$scope.oeuvre=data;
+					alert("ajouté à la bd");
+				}).catch(function(reason) {
+					alert("Pas ajouté, erreur");
+					console.log(reason);
+				});
+			}
+			$scope.varOeuvre="oeuvre";
+		};
+		$scope.editerOeuvre = function() {
+			$http.get("http://localhost:8080/ProjetFinalGroupe3/getOeuvre").then(function(response) {
+		        $scope.oeuvre = response.data;
+		    }).catch(function(reason) {
+
+		    	alert("Erreur récupération");
+		    	console.log(reason);
+		    });
+		};
 	
 	$scope.ajouterLivre = function() {
 		$scope.varOeuvre="livre";
 	};
 	$scope.livre={};
 	$scope.validerLivre = function() {
-		
+		if($scope.livre.id!=0){
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/saveLivre", $scope.livre).then(function(data) {
 			$scope.livre=data;
 			alert("ajouté à la bd");
@@ -225,10 +245,25 @@ app.controller("gestionLivresCtrl", function($scope,$http) {
 			alert("Pas ajouté, erreur");
 			console.log(reason);
 		});
+		}else{
+			$http.post("http://localhost:8080/ProjetFinalGroupe3/updateLivre", $scope.livre).then(function(data) {
+				$scope.livre=data;
+				alert("ajouté à la bd");
+			}).catch(function(reason) {
+				alert("Pas ajouté, erreur");
+				console.log(reason);
+			});
+		}
 		$scope.varOeuvre="oeuvre";
 	};
 	$scope.editerLivre = function() {
-		
+		$http.get("http://localhost:8080/ProjetFinalGroupe3/getLivre").then(function(response) {
+	        $scope.livre = response.data;
+	    }).catch(function(reason) {
+
+	    	alert("Erreur récupération");
+	    	console.log(reason);
+	    });
 	};
 	$scope.supprimerLivre = function() {
 		
@@ -238,9 +273,15 @@ app.controller("gestionLivresCtrl", function($scope,$http) {
 // définition du controller de la page gestionEmprunts
 app.controller("gestionEmpruntsCtrl", function($scope) {
 	$scope.msg = "Emprunts";
-	
+	$scope.adherent={};
 	$scope.consulterEmprunts = function(){
-		
+		$http.get("http://localhost:8080/ProjetFinalGroupe3/getAdherent").then(function(response) {
+	        $scope.adherent = response.data;
+	    }).catch(function(reason) {
+
+	    	alert("Erreur récupération");
+	    	console.log(reason);
+	    });
 	};
 	$scope.editerEmprunts = function(){
 		
@@ -253,10 +294,17 @@ app.controller("gestionEmpruntsCtrl", function($scope) {
 // définition du controller de la page gestionReservations
 app.controller("gestionReservationsCtrl", function($scope) {
 	$scope.msg = "Reservations";
-	
+	$scope.adherent={};
 	$scope.consulterReservations = function(){
-		
+		$http.get("http://localhost:8080/ProjetFinalGroupe3/getAdherent").then(function(response) {
+	        $scope.adherent = response.data;
+	    }).catch(function(reason) {
+
+	    	alert("Erreur récupération");
+	    	console.log(reason);
+	    });
 	};
+	
 	$scope.editerReservations = function(){
 		
 	};
