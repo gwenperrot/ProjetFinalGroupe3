@@ -255,8 +255,8 @@ app.controller("gestionLivresCtrl", function($scope,$http) {
 			};
 			$scope.auteur={};
 	};
-	$scope.editerAuteur = function() {
-		$http.post("http://localhost:8080/ProjetFinalGroupe3/getAuteurAdmin",idUtilisateur).then(function(response) {
+	$scope.editerAuteur = function(idAuteur) {
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/getAuteur",idAuteur).then(function(response) {
 	        $scope.adherent = response.data;
 	    }).catch(function(reason) {
 
@@ -265,7 +265,7 @@ app.controller("gestionLivresCtrl", function($scope,$http) {
 	    });
 	};
 	$scope.supprimerAuteur = function() {
-		$http.post("http://localhost:8080/ProjetFinalGroupe3/deleteAuteurAdmin",idUtilisateur).then(function(response) {
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/deleteAuteur",idUtilisateur).then(function(response) {
 			alert("supprimé");
 	    }).catch(function(reason) {
 
@@ -273,10 +273,10 @@ app.controller("gestionLivresCtrl", function($scope,$http) {
 	    	console.log(reason);
 	    });
 	};
-	$scope.oeuvre={};
+	
 	$scope.validerOeuvre = function() {
 		
-		if($scope.oeuvre.id==0){
+		if($scope.oeuvre.idOeuvre==0){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveOeuvre", $scope.oeuvre).then(function(data) {
 				$scope.oeuvre=data;
 				alert("ajouté à la bd");
@@ -293,10 +293,11 @@ app.controller("gestionLivresCtrl", function($scope,$http) {
 					console.log(reason);
 				});
 			}
+			$scope.oeuvre={};
 			$scope.varOeuvre="oeuvre";
 		};
-		$scope.editerOeuvre = function() {
-			$http.get("http://localhost:8080/ProjetFinalGroupe3/getOeuvre").then(function(response) {
+		$scope.editerOeuvre = function(idOeuvre) {
+			$http.post("http://localhost:8080/ProjetFinalGroupe3/getOeuvre", idOeuvre).then(function(response) {
 		        $scope.oeuvre = response.data;
 		    }).catch(function(reason) {
 
