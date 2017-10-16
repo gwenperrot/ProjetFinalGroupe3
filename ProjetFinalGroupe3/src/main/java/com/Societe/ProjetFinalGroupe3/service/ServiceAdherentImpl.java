@@ -112,8 +112,8 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 
 	/*Methodes de recherche des livres/oeuvre pour les adherents*/
 	@Override
-	public List<Livre> rechercherParMC(String mc) {
-		return  livreDAO.rechercherParMC(mc+"%");
+	public List<Oeuvre> rechercherParMC(String mc) {
+		return  oeuvreDAO.rechercherParMC(mc+"%");
 	}
 
 	@Override
@@ -147,6 +147,13 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 		LivreAdherent la = new LivreAdherent(l, ad);
 		livreAdherentDAO.delete(la);;
 		
+	}
+
+
+	@Override
+	public List<Oeuvre> findByTitre(String titre) {
+		// TODO Auto-generated method stub
+		return oeuvreDAO.findByTitre(titre);
 	}
 	
 

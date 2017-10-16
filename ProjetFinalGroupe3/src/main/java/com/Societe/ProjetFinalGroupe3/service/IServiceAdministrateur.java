@@ -30,13 +30,14 @@ public interface IServiceAdministrateur {
 		public void createLivre(Livre l );
 		public void updateLivre(Livre l);
 		public Livre getLivre(long idLivre);
-		List<Livre> findAllLivre();
+		public List<Livre> findAllLivre();
 		public void deleteLivre(long idLivre);
 		
-		public List<Livre> rechercherParMC(String mc);
+		public List<Oeuvre> rechercherParMC(String mc);
 		public List<Oeuvre> rechercherParAuteur(Oeuvre o);
 		public List<Oeuvre> rechercheParOeuvre(Oeuvre o );
 		public List<Adherent> rechercherParId(long idAdherent);
+		public List<Oeuvre> findByTitre(String titre);
 		
 		public void attribuerLivreOeuvre(Livre l , Oeuvre o );
 		

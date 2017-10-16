@@ -17,7 +17,7 @@ public interface IServiceAdherent {
 		List<Adherent> findAllAdherent();
 		public void deleteAdherent(long idAdherent);
 		
-		public List<Livre> rechercherParMC(String mc);
+		public List<Oeuvre> rechercherParMC(String mc);
 		public List<Oeuvre> rechercherParAuteur(Oeuvre o);
 		public List<Oeuvre> rechercheParOeuvre(Oeuvre o );
 		
@@ -25,6 +25,7 @@ public interface IServiceAdherent {
 		public void reserver (Oeuvre o , Adherent ad);
 		public void retour(Livre l, Adherent ad);
 		void setAdherentDAO(AdherentDAO adherentDAO);
+		public List<Oeuvre> findByTitre(String titre);
 		
 	}
 

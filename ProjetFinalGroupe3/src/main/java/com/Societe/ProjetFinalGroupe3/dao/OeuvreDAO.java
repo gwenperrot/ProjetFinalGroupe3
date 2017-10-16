@@ -19,4 +19,7 @@ public interface OeuvreDAO extends JpaRepository<Oeuvre, Long> {
 	List<Oeuvre> findByTitre(String titre);
 	@Query("select o from Oeuvre o where o.titre like :z")
 	List<Oeuvre> rechercherParOeuvre (@Param ("z") Oeuvre o);
+	
+	@Query("select o from Oeuvre o where o.titre like :x")
+	List <Oeuvre> rechercherParMC(@Param("x") String mc);
 }

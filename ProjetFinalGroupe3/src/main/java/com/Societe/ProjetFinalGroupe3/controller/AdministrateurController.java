@@ -42,7 +42,7 @@ public class AdministrateurController {
 		service.updateAuteur(a);
 	}
 	
-	@RequestMapping(value = "/getAuteur", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAuteur", method = RequestMethod.POST)
 	public Auteur getAuteur(long idAuteur) {
 		return service.getAuteur(idAuteur);
 	}
@@ -142,7 +142,7 @@ public class AdministrateurController {
 	
 	/*Methodes de recherche pour l'administrateur*/
 	@RequestMapping(value = "/livreParMCAdmin", method = RequestMethod.POST)
-	public List<Livre> rechercherParMC(String mc) {
+	public List<Oeuvre> rechercherParMC(String mc) {
 		return service.rechercherParMC(mc);
 	}
 	

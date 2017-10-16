@@ -62,7 +62,7 @@ public class AdherentController {
 	
 	
 	@RequestMapping(value = "/livreParMC", method = RequestMethod.POST)
-	public List<Livre> rechercherParMC(String mc) {
+	public List<Oeuvre> rechercherParMC(String mc) {
 		return service.rechercherParMC(mc);
 	}
 	

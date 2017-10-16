@@ -186,8 +186,8 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 		return oeuvreDAO.rechercherParOeuvre(o);
 	}
 	@Override
-	public List<Livre> rechercherParMC(String mc) {
-		return livreDAO.rechercherParMC(mc+"%");
+	public List<Oeuvre> rechercherParMC(String mc) {
+		return oeuvreDAO.rechercherParMC(mc+"%");
 	}
 
 	@Override
@@ -208,6 +208,12 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	public void attribuerLivreOeuvre(Livre l, Oeuvre o) {
 			
 		
+	}
+
+	@Override
+	public List<Oeuvre> findByTitre(String titre) {
+		// TODO Auto-generated method stub
+		return oeuvreDAO.findByTitre(titre);
 	}
 
 	

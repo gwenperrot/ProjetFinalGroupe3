@@ -8,10 +8,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.Societe.ProjetFinalGroupe3.metier.Livre;
+import com.Societe.ProjetFinalGroupe3.metier.Oeuvre;
 @Repository
 public interface LivreDAO extends JpaRepository<Livre, Long> {
 	
-	List<Livre> findByLoeuvre(String loeuvre);
-	@Query("select l from Livre l where l.loeuvre like :x")
-	List <Livre> rechercherParMC(@Param("x") String mc);
+
 }
