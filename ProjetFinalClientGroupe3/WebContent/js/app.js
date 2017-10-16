@@ -209,7 +209,6 @@ app.controller("gestionLivresCtrl", function($scope,$http) {
 	$scope.validerAuteur = function() {
 		$scope.auteur.nom=$scope.nom;
 		$scope.auteur.prenom=$scope.prenom;
-		alert($scope.auteur.nom);
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAuteur", $scope.auteur).then(function(data) {
 			$scope.auteur=data;
 			alert("ajouté à la bd");
