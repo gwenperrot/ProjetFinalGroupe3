@@ -69,7 +69,7 @@ app.controller("creerCompteCtrl", function($scope,$http) {
 	// définiton de la fonction de création de compte
 	$scope.adherent={};
 	$scope.creerCompte = function() {
-		$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAdherent", $scope.adherent).then(function(data) {
+		$http.GET("http://localhost:8080/ProjetFinalGroupe3/saveAdherent", $scope.adherent).then(function(data) {
 			$scope.adherent=data;
 			alert("ajouté à la bd");
 		}).catch(function(reason) {
