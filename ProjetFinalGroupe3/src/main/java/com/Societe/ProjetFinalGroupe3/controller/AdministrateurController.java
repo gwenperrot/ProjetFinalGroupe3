@@ -43,7 +43,7 @@ public class AdministrateurController {
 	}
 	
 	@RequestMapping(value = "/getAuteur", method = RequestMethod.POST)
-	public Auteur getAuteur(long idAuteur) {
+	public Auteur getAuteur(@RequestBody long idAuteur) {
 		return service.getAuteur(idAuteur);
 	}
 
