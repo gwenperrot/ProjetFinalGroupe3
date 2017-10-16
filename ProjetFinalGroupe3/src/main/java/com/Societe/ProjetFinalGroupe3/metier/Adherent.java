@@ -1,4 +1,5 @@
 package com.Societe.ProjetFinalGroupe3.metier;
+import java.util.ArrayList;
 /*
  * La classe adherent herite d'Utilisateur, l'adh�rent va pouvoir s'enregister, s'authentifier
  * consulter la liste des oeuvres, r�server une oeuvre, emprunter un livre et g�rer son compte
@@ -11,9 +12,12 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Component
 @Entity
@@ -27,10 +31,13 @@ public class Adherent extends Utilisateur{
 	private String Ville;
 	private int codePostal;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="idOA.adherent")
-	private List<OeuvreAdherent> adherentOeuvre;
+	private List<OeuvreAdherent> adherentOeuvre = new ArrayList<OeuvreAdherent>();
+	
+	@JsonIgnore
 	@OneToMany(mappedBy="idLA.adherent")
-	private List<LivreAdherent> adherentLivre;
+	private List<LivreAdherent> adherentLivre = new ArrayList<LivreAdherent>();
 	
 
 	
