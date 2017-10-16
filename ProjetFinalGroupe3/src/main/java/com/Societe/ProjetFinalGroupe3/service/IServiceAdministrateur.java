@@ -38,6 +38,8 @@ public interface IServiceAdministrateur {
 		public List<Oeuvre> rechercheParOeuvre(Oeuvre o );
 		public List<Adherent> rechercherParId(long idAdherent);
 		
+		public void attribuerLivreOeuvre(Livre l , Oeuvre o );
+		
 	}
 
 

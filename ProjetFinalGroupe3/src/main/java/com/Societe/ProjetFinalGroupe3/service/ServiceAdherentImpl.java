@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.Societe.ProjetFinalGroupe3.dao.AdherentDAO;
 import com.Societe.ProjetFinalGroupe3.dao.LivreAdherentDAO;
 import com.Societe.ProjetFinalGroupe3.dao.LivreDAO;
+import com.Societe.ProjetFinalGroupe3.dao.OeuvreAdherentDAO;
 import com.Societe.ProjetFinalGroupe3.dao.OeuvreDAO;
 import com.Societe.ProjetFinalGroupe3.metier.Adherent;
 import com.Societe.ProjetFinalGroupe3.metier.Auteur;
@@ -15,6 +16,7 @@ import com.Societe.ProjetFinalGroupe3.metier.Livre;
 import com.Societe.ProjetFinalGroupe3.metier.LivreAdherent;
 import com.Societe.ProjetFinalGroupe3.metier.LivreAdherentId;
 import com.Societe.ProjetFinalGroupe3.metier.Oeuvre;
+import com.Societe.ProjetFinalGroupe3.metier.OeuvreAdherent;
 @Service
 public class ServiceAdherentImpl implements IServiceAdherent {
 	@Autowired
@@ -25,9 +27,23 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	OeuvreDAO oeuvreDAO;
 	@Autowired
 	LivreAdherentDAO livreAdherentDAO;
+	@Autowired
+	OeuvreAdherentDAO oeuvreAdherentDAO;
 	
 	
 	
+	
+	
+	public OeuvreAdherentDAO getOeuvreAdherentDAO() {
+		return oeuvreAdherentDAO;
+	}
+
+
+	public void setOeuvreAdherentDAO(OeuvreAdherentDAO oeuvreAdherentDAO) {
+		this.oeuvreAdherentDAO = oeuvreAdherentDAO;
+	}
+
+
 	public LivreAdherentDAO getLivreAdherentDAO() {
 		return livreAdherentDAO;
 	}
@@ -121,7 +137,9 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	
 	@Override
 	public void reserver(Oeuvre o, Adherent ad) {
-		//adherentDAO.reserver(o,ad);
+		OeuvreAdherent oa = new OeuvreAdherent(o, ad);
+		oeuvreAdherentDAO.save(oa);
 	}
+	
 
 }

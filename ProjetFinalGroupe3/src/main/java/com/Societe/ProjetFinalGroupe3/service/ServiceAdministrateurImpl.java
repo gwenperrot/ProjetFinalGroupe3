@@ -13,6 +13,7 @@ import com.Societe.ProjetFinalGroupe3.dao.OeuvreDAO;
 import com.Societe.ProjetFinalGroupe3.metier.Adherent;
 import com.Societe.ProjetFinalGroupe3.metier.Auteur;
 import com.Societe.ProjetFinalGroupe3.metier.Livre;
+import com.Societe.ProjetFinalGroupe3.metier.LivreAdherent;
 import com.Societe.ProjetFinalGroupe3.metier.Oeuvre;
 
 @Service
@@ -201,6 +202,12 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	@Override
 	public List<Adherent> rechercherParId(long idUtilisateur) {
 		return administrateurDAO.rechercherParId(idUtilisateur);
+	}
+
+	@Override
+	public void attribuerLivreOeuvre(Livre l, Oeuvre o) {
+			
+		
 	}
 
 	

@@ -81,7 +81,9 @@ public class AdherentController {
 	@RequestMapping(value = "/emprunterReserver", method = RequestMethod.GET)
 	public void emprunter(Livre l  , Adherent ad) {
 		if (l.isDispo() == true) {
-			service.emprunter(l, ad);
+			service.emprunter(l, ad)
+			;
+			
 		}
 		else  {
 			Oeuvre o = new Oeuvre();
