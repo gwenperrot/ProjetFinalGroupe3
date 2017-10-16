@@ -27,12 +27,50 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	OeuvreDAO oeuvreDAO;
 	@Autowired
 	AuteurDAO auteurDAO;
-
-	
 	
 	
 	/*CRUD Auteur*/
 	
+	public AdministrateurDAO getAdministrateurDAO() {
+		return administrateurDAO;
+	}
+
+	public void setAdministrateurDAO(AdministrateurDAO administrateurDAO) {
+		this.administrateurDAO = administrateurDAO;
+	}
+
+	public AdherentDAO getAdherentDAO() {
+		return adherentDAO;
+	}
+
+	public void setAdherentDAO(AdherentDAO adherentDAO) {
+		this.adherentDAO = adherentDAO;
+	}
+
+	public LivreDAO getLivreDAO() {
+		return livreDAO;
+	}
+
+	public void setLivreDAO(LivreDAO livreDAO) {
+		this.livreDAO = livreDAO;
+	}
+
+	public OeuvreDAO getOeuvreDAO() {
+		return oeuvreDAO;
+	}
+
+	public void setOeuvreDAO(OeuvreDAO oeuvreDAO) {
+		this.oeuvreDAO = oeuvreDAO;
+	}
+
+	public AuteurDAO getAuteurDAO() {
+		return auteurDAO;
+	}
+
+	public void setAuteurDAO(AuteurDAO auteurDAO) {
+		this.auteurDAO = auteurDAO;
+	}
+
 	@Override
 	public void createAuteur(Auteur a) {
 		auteurDAO.save(a);

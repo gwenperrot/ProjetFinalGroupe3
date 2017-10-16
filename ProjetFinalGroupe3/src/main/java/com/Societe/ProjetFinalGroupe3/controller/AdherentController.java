@@ -33,27 +33,27 @@ public class AdherentController {
 		this.service = service;
 	}
 
-	@RequestMapping(value = "/saveAdherent", method = RequestMethod.POST)
+	@RequestMapping(value = "/saveAdherent", method = RequestMethod.GET)
 	public void save(@RequestBody Adherent ad) {
 		service.createAdherent(ad);
 	}
 
-	@RequestMapping(value = "/updateAdherent",method = RequestMethod.POST)
+	@RequestMapping(value = "/updateAdherent",method = RequestMethod.GET)
 	public void updateAdherent(Adherent ad) {
 		service.updateAdherent(ad);
 	}
 
-	@RequestMapping(value = "/getAdherent", method = RequestMethod.POST)
+	@RequestMapping(value = "/getAdherent", method = RequestMethod.GET)
 	public Adherent getAdherent(long idAdherent) {
 		return service.getAdherent(idAdherent);
 	}
 
-	@RequestMapping(value = "/allAdherent", method = RequestMethod.POST)
+	@RequestMapping(value = "/allAdherent", method = RequestMethod.GET)
 	public List<Adherent> allAdherent() {
 		return service.findAllAdherent();
 	}
 	
-	@RequestMapping(value = "/deleteAdherent", method = RequestMethod.POST)
+	@RequestMapping(value = "/deleteAdherent", method = RequestMethod.GET)
 	public void deleteAdherent(long idAdherent) {
 		service.deleteAdherent(idAdherent);
 	}
@@ -61,24 +61,24 @@ public class AdherentController {
 	/*Methodes de recherche pour l'Adherent*/
 	
 	
-	@RequestMapping(value = "/livreParMC", method = RequestMethod.POST)
+	@RequestMapping(value = "/livreParMC", method = RequestMethod.GET)
 	public List<Livre> rechercherParMC(String mc) {
 		return service.rechercherParMC(mc);
 	}
 	
-	@RequestMapping(value = "/livreParAuteur",method = RequestMethod.POST)
+	@RequestMapping(value = "/livreParAuteur",method = RequestMethod.GET)
 	public List<Oeuvre> rechercherParAuteur(Oeuvre o) {
 		return service.rechercherParAuteur(o);
 	}
 	
-	@RequestMapping(value = "/parOeuvre",  method = RequestMethod.POST)
+	@RequestMapping(value = "/parOeuvre",  method = RequestMethod.GET)
 	public List<Oeuvre> rechercherParOeuvre(Oeuvre o ) {
 		return service.rechercheParOeuvre(o);
 	}
 	
 	/*Methodes d'emprunt et de reservation pour l'Adherent*/
 	
-	@RequestMapping(value = "/emprunterReserver", method = RequestMethod.POST)
+	@RequestMapping(value = "/emprunterReserver", method = RequestMethod.GET)
 	public void emprunter(Livre l  , Adherent ad) {
 		if (l.isDispo() == true) {
 			service.emprunter(l, ad);
