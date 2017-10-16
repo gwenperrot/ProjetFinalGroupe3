@@ -33,12 +33,12 @@ public class AdherentController {
 		this.service = service;
 	}
 
-	@RequestMapping(value = "/saveAdherent", method = RequestMethod.GET)
+	@RequestMapping(value = "/saveAdherent", method = RequestMethod.POST)
 	public void save(Adherent ad) {
 		service.createAdherent(ad);
 	}
 
-	@RequestMapping(value = "/updateAdherent",method = RequestMethod.GET)
+	@RequestMapping(value = "/updateAdherent",method = RequestMethod.POST)
 	public void updateAdherent(Adherent ad) {
 		service.updateAdherent(ad);
 	}
