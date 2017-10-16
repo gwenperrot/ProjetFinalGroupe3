@@ -207,15 +207,23 @@ app.controller("gestionLivresCtrl", function($scope,$http) {
 
 	$scope.auteur={};
 	$scope.validerAuteur = function() {
-		$scope.auteur.nom=$scope.nom;
-		$scope.auteur.prenom=$scope.prenom;
-		$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAuteur", $scope.auteur).then(function(data) {
-			$scope.auteur=data;
-			alert("ajouté à la bd");
-		}).catch(function(reason) {
-			alert("Pas ajouté, erreur");
-			console.log(reason);
-		});
+		if($scope.auteur.id!=0){
+			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAuteur", $scope.auteur).then(function(data) {
+				$scope.auteur=data;
+				alert("ajouté à la bd");
+			}).catch(function(reason) {
+				alert("Pas ajouté, erreur");
+				console.log(reason);
+			});
+			}else{
+				$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAuteur", $scope.auteur).then(function(data) {
+					$scope.auteur=data;
+					alert("ajouté à la bd");
+				}).catch(function(reason) {
+					alert("Pas ajouté, erreur");
+					console.log(reason);
+				});
+			}
 	};
 	$scope.oeuvre={};
 	$scope.validerOeuvre = function() {
