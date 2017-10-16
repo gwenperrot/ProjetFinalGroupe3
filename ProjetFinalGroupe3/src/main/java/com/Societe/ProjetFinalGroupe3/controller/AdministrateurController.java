@@ -142,7 +142,7 @@ public class AdministrateurController {
 	
 	/*Methodes de recherche pour l'administrateur*/
 	@RequestMapping(value = "/livreParMCAdmin", method = RequestMethod.POST)
-	public List<Oeuvre> rechercherParMC(String mc) {
+	public List<Livre> rechercherParMC(String mc) {
 		return service.rechercherParMC(mc);
 	}
 	
