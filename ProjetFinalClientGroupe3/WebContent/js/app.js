@@ -190,15 +190,38 @@ app.controller("rechercheLivreCtrl", function($scope,$http) {
 // définition du controller de la page gestionAdherents
 app.controller("gestionAdherentsCtrl", function($scope,$http) {
 	$scope.msg = "Adherents";
-	$scope.validerAdherent = function() {
+	$scope.gererAdherent = function() {
+		
+		if($scope.adherent.idUtilisateur==0){
+			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAdherent", $scope.adherent).then(function(data) {
+				$scope.adherent=data;
+				alert("ajouté à la bd");
+			}).catch(function(reason) {
+				alert("Pas ajouté, erreur");
+				console.log(reason);
+			});
+			}else{
+				$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
+					$scope.adherent=data;
+					alert("modifié");
+				}).catch(function(reason) {
+					alert("Pas ajouté, erreur");
+					console.log(reason);
+				});
+			};
 		$scope.adherent={};
-		$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAdherent", $scope.adherent).then(function(data) {
-			$scope.adherent=data;
-			alert("ajouté à la bd");
-		}).catch(function(reason) {
-			alert("Pas ajouté, erreur");
-			console.log(reason);
-		});
+	};
+	$scope.editerAdherent = function(idUtilisateur) {
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/getAdherent",idUtilisateur).then(function(response) {
+	        $scope.adherent = response.data;
+	    }).catch(function(reason) {
+
+	    	alert("Erreur récupération");
+	    	console.log(reason);
+	    });
+	};
+	$scope.supprimerAdherent = function(idUtilisateur) {
+		
 	};
 });
 // définition du controller de la page gestionLivres
@@ -207,7 +230,7 @@ app.controller("gestionLivresCtrl", function($scope,$http) {
 
 	$scope.auteur={};
 	$scope.validerAuteur = function() {
-		if($scope.auteur.id!=0){
+		if($scope.auteur.id==0){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAuteur", $scope.auteur).then(function(data) {
 				$scope.auteur=data;
 				alert("ajouté à la bd");
@@ -223,12 +246,18 @@ app.controller("gestionLivresCtrl", function($scope,$http) {
 					alert("Pas ajouté, erreur");
 					console.log(reason);
 				});
-			}
+			};
+	};
+	$scope.editerAuteur = function() {
+		
+	};
+	$scope.supprimerAuteur = function() {
+		
 	};
 	$scope.oeuvre={};
 	$scope.validerOeuvre = function() {
 		
-		if($scope.oeuvre.id!=0){
+		if($scope.oeuvre.id==0){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveOeuvre", $scope.oeuvre).then(function(data) {
 				$scope.oeuvre=data;
 				alert("ajouté à la bd");
