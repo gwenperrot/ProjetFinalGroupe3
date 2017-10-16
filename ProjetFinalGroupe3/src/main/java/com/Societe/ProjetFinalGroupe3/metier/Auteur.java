@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Component
 @Entity
 public class Auteur {
@@ -29,6 +31,8 @@ public class Auteur {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	@JsonIgnore
 	@OneToMany(mappedBy="lauteur")
 	private Set<Oeuvre> OeuvresAuteur = new HashSet<Oeuvre>();
 

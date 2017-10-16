@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Component
 @Entity
 public class Oeuvre 
@@ -28,9 +30,11 @@ private String isbn;
 private String titre;
 private int nbLivreLibre;
 
+@JsonIgnore
 @OneToMany(mappedBy="idOA.oeuvre")
 private List<OeuvreAdherent> oeuvreAdherent;
 
+@JsonIgnore
 @OneToMany(mappedBy="loeuvre")
 private Set<Livre> livres = new HashSet<Livre>();
 

@@ -20,6 +20,8 @@ import javax.persistence.OneToMany;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Component
 @Entity
@@ -30,6 +32,7 @@ private Long idLivre;
 private int numInventaire;
 private boolean dispo ;
 
+@JsonIgnore
 @OneToMany(mappedBy="idLA.livre")
 private List<LivreAdherent> livreAdherent;
 
