@@ -36,24 +36,27 @@
 			</div>
 			</form>
 
-			
+<div ng-controller="allOeuvresCtrl">		
 			<h3>Liste des oeuvres</h3>
 			<table class="table table-striped">
 				<tr>
-					<th>Bla</th>
-					<th>Bla</th>
+					<th>Titre</th>
+					<th>Auteur</th>
+					<th>Nombre de livres disponibles</th>
 					<th></th>
 					<th></th>
 					<th></th>
 				</tr>
-				<tr>
-					<td>Blou</td>
-					<td>Blou</td>
+				<tr ng-repeat="o in oeuvres">
+					<td>{{o.titre}}</td>
+					<th>auteur</th>
+					<td>{{o.compteur}}</td>
 					<td><a ng-click="ajouterLivre()">Ajouter/Modifier un livre</a></td>
 					<td><a ng-click="editerOeuvre()">Editer</a></td>
 					<td><a ng-click="supprimerOeuvre()">Supprimer</a></td>
 				</tr>
 			</table>
+			</div>
 		</div>
 		<div ng-switch-when="livre">
 			<h3>Ajouter un livre</h3>
@@ -66,21 +69,26 @@
 				</select> Num. inventaire: <input type="text" ng-model="$root.numInventaire">
 				<button ng-click="validerLivre()">Valider</button>
 			</form>
+			
+	<div ng-controller="allLivresCtrl">	
 			<h3>Liste des Livres</h3>
 			<table class="table table-striped">
 				<tr>
-					<th>Bla</th>
-					<th>Bla</th>
+					<th>numInventaire</th>
+					<th>Disponibilité</th>
+					<th>Oeuvre</th>
 					<th></th>
 					<th></th>
 				</tr>
-				<tr>
-					<td>Blou</td>
-					<td>Blou</td>
+				<tr ng-repeat="l in livres">
+					<td>{{i.numInventaire}}</td>
+					<td>{{i.dispo}}</td>
+					<th>{{i.loeuvre}}
 					<td><a ng-click="editerLivre()">Editer</a></td>
 					<td><a ng-click="supprimerLivre()">Supprimer</a></td>
 				</tr>
 			</table>
+			</div>
 		</div>
 	</div>
 </div>

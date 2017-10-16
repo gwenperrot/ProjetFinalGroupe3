@@ -26,19 +26,21 @@
 		</div></div>	
 	</form>
 
+<div ng-controller="allAuteursCtrl">
 	<table class="table table-striped">
 		<tr>
-			<th>Bla</th>
-			<th>Bla</th>
+			<th>Nom</th>
+			<th>Prenom</th>
 			<th></th>
 			<th></th>
 		</tr>
-		<tr>
-			<td>Blou</td>
-			<td>Blou</td>
+		<tr ng-repeat="au in auteurs">
+			<td>{{au.nom}}</td>
+			<td>{{au.prenom}}</td>
 			<td><a>Editer</a></td>
 			<td><a>Supprimer</a></td>
 		</tr>
 	</table>
+	</div>
 </div>
 </html>
