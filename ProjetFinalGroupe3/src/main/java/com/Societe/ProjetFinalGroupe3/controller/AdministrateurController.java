@@ -71,8 +71,8 @@ public class AdministrateurController {
 	}
 
 	@RequestMapping(value =  "/getAdherentAdmin", method = RequestMethod.GET)
-	public Adherent getAdherent(long idAdherent) {
-		return service.getAdherent(idAdherent);
+	public Adherent getAdherent(long idUtilisateur) {
+		return service.getAdherent(idUtilisateur);
 	}
 
 	@RequestMapping(value = "/allAdherentAdmin", method = RequestMethod.GET)
@@ -81,8 +81,8 @@ public class AdministrateurController {
 	}
 	
 	@RequestMapping(value = "/deleteAdherentAdmin" , method = RequestMethod.GET)
-	public void deleteAdherent(long idAdherent) {
-		service.deleteAdherent(idAdherent);
+	public void deleteAdherent(long idUtilisateur) {
+		service.deleteAdherent(idUtilisateur);
 	}
 
 	
@@ -157,7 +157,7 @@ public class AdministrateurController {
 	}
 	
 	@RequestMapping(value = "/adherentParId" , method = RequestMethod.GET)
-	public List<Adherent> rechercherParId(long idAdherent ) {
-		return service.rechercherParId(idAdherent);
+	public List<Adherent> rechercherParId(long idUtilisateur ) {
+		return service.rechercherParId(idUtilisateur);
 	}
 }

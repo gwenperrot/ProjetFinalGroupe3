@@ -109,8 +109,8 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	}
 	
 	@Override
-	public Adherent getAdherent(long idAdherent) {
-		return 	adherentDAO.findById(idAdherent).get();
+	public Adherent getAdherent(long idUtilisateur) {
+		return 	adherentDAO.findById(idUtilisateur).get();
 	}
 
 	@Override
@@ -197,8 +197,8 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	/*Recherche d'ADHERENT pour l'Administrateur*/
 	
 	@Override
-	public List<Adherent> rechercherParId(long idAdherent) {
-		return administrateurDAO.rechercherParId(idAdherent);
+	public List<Adherent> rechercherParId(long idUtilisateur) {
+		return administrateurDAO.rechercherParId(idUtilisateur);
 	}
 
 	

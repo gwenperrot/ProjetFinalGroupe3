@@ -66,8 +66,8 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	}
 	
 	@Override
-	public Adherent getAdherent(long idAdherent) {
-		return adherentDAO.findById(idAdherent).get();
+	public Adherent getAdherent(long idUtilisateur) {
+		return adherentDAO.findById(idUtilisateur).get();
 	}
 
 	@Override
@@ -76,8 +76,8 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	}
 	
 	@Override
-	public void deleteAdherent(long idAdherent) {
-		adherentDAO.deleteById(idAdherent);
+	public void deleteAdherent(long idUtilisateur) {
+		adherentDAO.deleteById(idUtilisateur);
 	}
 
 	/*Methodes de recherche des livres/oeuvre pour les adherents*/

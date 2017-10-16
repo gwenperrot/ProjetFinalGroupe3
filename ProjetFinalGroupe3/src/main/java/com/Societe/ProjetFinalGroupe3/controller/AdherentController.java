@@ -44,8 +44,8 @@ public class AdherentController {
 	}
 
 	@RequestMapping(value = "/getAdherent", method = RequestMethod.GET)
-	public Adherent getAdherent(long idAdherent) {
-		return service.getAdherent(idAdherent);
+	public Adherent getAdherent(long idUtilisateur) {
+		return service.getAdherent(idUtilisateur);
 	}
 
 	@RequestMapping(value = "/allAdherent", method = RequestMethod.GET)
@@ -54,8 +54,8 @@ public class AdherentController {
 	}
 	
 	@RequestMapping(value = "/deleteAdherent", method = RequestMethod.GET)
-	public void deleteAdherent(long idAdherent) {
-		service.deleteAdherent(idAdherent);
+	public void deleteAdherent(long idUtilisateur) {
+		service.deleteAdherent(idUtilisateur);
 	}
 
 	/*Methodes de recherche pour l'Adherent*/
