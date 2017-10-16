@@ -12,8 +12,8 @@
 			
 			<div ng-switch-default="vide"></div>
 			<div ng-switch-when="liens">
-				<a href="#!gestionAuteurs"  class="list-group-item">Gestion des auteurs</a> 
-				<a href="#!gestionOeuvres"  class="list-group-item">Gestion des oeuvres</a>
+				<a href="#!gestionAuteurs"  class="list-group-item" ng-click="gererAuteurs()">Gestion des auteurs</a> 
+				<a href="#!gestionOeuvres"  class="list-group-item" ng-click="gererOeuvres()">Gestion des oeuvres</a>
 			</div>
 		</div>
 		<a href="#!gestionReservations" class="list-group-item" ng-click="gestionAutres()">Gestion des reservations</a>

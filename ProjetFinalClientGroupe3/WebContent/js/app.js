@@ -54,6 +54,14 @@ app.controller("indexCtrl", function($scope) {
 	$scope.gestionAutres = function() {
 		$scope.varGestionLivres = "vide";
 	};
+	
+	$scope.gererAuteurs = function() {
+		$scope.msg = "Gestion des auteurs";
+	};
+
+	$scope.gererOeuvres = function() {
+		$scope.msg = "Gestion des oeuvres";
+	};
 });
 
 // définition du controller de la page creerCompte
@@ -190,17 +198,8 @@ app.controller("gestionAdherentsCtrl", function($scope,$http) {
 });
 // définition du controller de la page gestionLivres
 app.controller("gestionLivresCtrl", function($scope,$http) {
-	$scope.msg = "Gestion des auteurs";
 
-	$scope.gererAuteurs = function() {
-		$scope.msg = "Gestion des auteurs";
-		$scope.varLivre = "auteurs";
-	};
 
-	$scope.gererOeuvres = function() {
-		$scope.msg = "Gestion des oeuvres";
-		$scope.varLivre = "oeuvres";
-	};
 	$scope.auteur={};
 	$scope.validerAuteur = function() {
 		$scope.auteur.nom=$scope.nom;
