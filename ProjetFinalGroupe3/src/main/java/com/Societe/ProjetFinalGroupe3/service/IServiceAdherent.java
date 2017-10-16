@@ -18,8 +18,8 @@ public interface IServiceAdherent {
 		public void deleteAdherent(long idAdherent);
 		
 		public List<Oeuvre> rechercherParMC(String mc);
-		public List<Oeuvre> rechercherParAuteur(Oeuvre o);
-		public List<Oeuvre> rechercheParOeuvre(Oeuvre o );
+		public List<Auteur> rechercherParAuteur(String auteur);
+		public List<Oeuvre> rechercheParOeuvre(String oeuvre);
 		
 		public void emprunter (Livre l , Adherent ad);
 		public void reserver (Oeuvre o , Adherent ad);

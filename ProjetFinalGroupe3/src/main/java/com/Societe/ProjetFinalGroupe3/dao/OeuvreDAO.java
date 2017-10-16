@@ -12,13 +12,10 @@ import com.Societe.ProjetFinalGroupe3.metier.Oeuvre;
 @Repository
 public interface OeuvreDAO extends JpaRepository<Oeuvre, Long> {
 	
-	List<Oeuvre> findByLauteur(String lauteur);
-	@Query("select o from Oeuvre o where o.lauteur like :y")
-	List<Oeuvre> rechercheParAuteur(@Param("y") Oeuvre o);
 	
 	List<Oeuvre> findByTitre(String titre);
 	@Query("select o from Oeuvre o where o.titre like :z")
-	List<Oeuvre> rechercherParOeuvre (@Param ("z") Oeuvre o);
+	List<Oeuvre> rechercherParOeuvre (@Param ("z") String oeuvre);
 	
 	@Query("select o from Oeuvre o where o.titre like :x")
 	List <Oeuvre> rechercherParMC(@Param("x") String mc);

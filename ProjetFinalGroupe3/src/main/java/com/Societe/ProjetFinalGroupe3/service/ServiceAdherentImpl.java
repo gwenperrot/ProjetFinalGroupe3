@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Societe.ProjetFinalGroupe3.dao.AdherentDAO;
+import com.Societe.ProjetFinalGroupe3.dao.AuteurDAO;
 import com.Societe.ProjetFinalGroupe3.dao.LivreAdherentDAO;
 import com.Societe.ProjetFinalGroupe3.dao.LivreDAO;
 import com.Societe.ProjetFinalGroupe3.dao.OeuvreAdherentDAO;
@@ -29,11 +30,22 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	LivreAdherentDAO livreAdherentDAO;
 	@Autowired
 	OeuvreAdherentDAO oeuvreAdherentDAO;
+	@Autowired
+	AuteurDAO auteurDAO;
 	
 	
 	
 	
-	
+	public AuteurDAO getAuteurDAO() {
+		return auteurDAO;
+	}
+
+
+	public void setAuteurDAO(AuteurDAO auteurDAO) {
+		this.auteurDAO = auteurDAO;
+	}
+
+
 	public OeuvreAdherentDAO getOeuvreAdherentDAO() {
 		return oeuvreAdherentDAO;
 	}
@@ -117,13 +129,13 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	}
 
 	@Override
-	public List<Oeuvre> rechercherParAuteur(Oeuvre o) {
-		return oeuvreDAO.rechercheParAuteur(o);
+	public List<Auteur> rechercherParAuteur(String auteur) {
+		return auteurDAO.rechercheParAuteur(auteur);
 	}
 
 
 	@Override
-	public List<Oeuvre> rechercheParOeuvre(Oeuvre o) {
+	public List<Oeuvre> rechercheParOeuvre(String o) {
 		return oeuvreDAO.rechercherParOeuvre(o);
 	}
 

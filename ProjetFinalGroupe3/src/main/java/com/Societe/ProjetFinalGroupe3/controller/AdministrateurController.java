@@ -147,19 +147,19 @@ public class AdministrateurController {
 	}
 	
 	@RequestMapping(value = "/livreParAuteurAdmin", method = RequestMethod.POST)
-	public List<Oeuvre> rechercherParAuteur(@RequestBody Oeuvre o) {
-		return service.rechercherParAuteur(o);
+	public List<Auteur> rechercherParAuteur(@RequestBody String a) {
+		return service.rechercherParAuteur(a);
 	}
 	
 	@RequestMapping(value = "/parOeuvreAdmin", method = RequestMethod.POST)
-	public List<Oeuvre> rechercherParOeuvre(@RequestBody Oeuvre o ) {
+	public List<Oeuvre> rechercherParOeuvre(@RequestBody String o ) {
 		return service.rechercheParOeuvre(o);
 	}
 	
-	@RequestMapping(value = "/adherentParId" , method = RequestMethod.POST)
-	public List<Adherent> rechercherParId(@RequestBody long idUtilisateur ) {
-		return service.rechercherParId(idUtilisateur);
-	}
+//	@RequestMapping(value = "/adherentParId" , method = RequestMethod.POST)
+//	public List<Adherent> rechercherParId(@RequestBody long idUtilisateur ) {
+//		return service.rechercherParId(idUtilisateur);
+//	}
 	@RequestMapping(value = "/attibuerOeuvreAuteur " ,  method = RequestMethod.POST)
 	public void attribuerOeuvreAuteur(@RequestBody Oeuvre o, Auteur a) {
 		service.attribuerOeuvreAuteur(o, a);

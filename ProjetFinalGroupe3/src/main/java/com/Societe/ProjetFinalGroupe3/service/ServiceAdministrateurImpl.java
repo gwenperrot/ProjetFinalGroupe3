@@ -182,7 +182,7 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	/*Recherche de LIVRE pour l'Administrateur*/
 	
 	@Override
-	public List<Oeuvre> rechercheParOeuvre(Oeuvre o) {
+	public List<Oeuvre> rechercheParOeuvre(String o) {
 		return oeuvreDAO.rechercherParOeuvre(o);
 	}
 	@Override
@@ -191,18 +191,18 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	}
 
 	@Override
-	public List<Oeuvre> rechercherParAuteur(Oeuvre o) {
-		return oeuvreDAO.rechercheParAuteur(o);
+	public List<Auteur> rechercherParAuteur(String auteur) {
+		return auteurDAO.rechercheParAuteur(auteur);
 	}
 
 
 
 	/*Recherche d'ADHERENT pour l'Administrateur*/
 	
-	@Override
-	public List<Adherent> rechercherParId(long idUtilisateur) {
-		return administrateurDAO.rechercherParId(idUtilisateur);
-	}
+//	@Override
+//	public List<Adherent> rechercherParId(long idUtilisateur) {
+//		return administrateurDAO.rechercherParId(idUtilisateur);
+//	}
 	
 	@Override
 	public void attribuerOeuvreAuteur(Oeuvre o, Auteur a) {

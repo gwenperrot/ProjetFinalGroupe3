@@ -67,12 +67,12 @@ public class AdherentController {
 	}
 	
 	@RequestMapping(value = "/livreParAuteur",method = RequestMethod.POST)
-	public List<Oeuvre> rechercherParAuteur(@RequestBody Oeuvre o) {
-		return service.rechercherParAuteur(o);
+	public List<Auteur> rechercherParAuteur(@RequestBody String a) {
+		return service.rechercherParAuteur(a);
 	}
 	
 	@RequestMapping(value = "/parOeuvre",  method = RequestMethod.POST)
-	public List<Oeuvre> rechercherParOeuvre(@RequestBody Oeuvre o ) {
+	public List<Oeuvre> rechercherParOeuvre(@RequestBody String o ) {
 		return service.rechercheParOeuvre(o);
 	}
 	

@@ -34,9 +34,9 @@ public interface IServiceAdministrateur {
 		public void deleteLivre(long idLivre);
 		
 		public List<Oeuvre> rechercherParMC(String mc);
-		public List<Oeuvre> rechercherParAuteur(Oeuvre o);
-		public List<Oeuvre> rechercheParOeuvre(Oeuvre o );
-		public List<Adherent> rechercherParId(long idAdherent);
+		public List<Auteur> rechercherParAuteur(String auteur);
+		public List<Oeuvre> rechercheParOeuvre(String oeuvre);
+	//	public List<Adherent> rechercherParId(long idAdherent);
 		public List<Oeuvre> findByTitre(String titre);
 		
 		public void attribuerLivreOeuvre(Livre l , Oeuvre o );

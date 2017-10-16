@@ -14,8 +14,8 @@ import com.Societe.ProjetFinalGroupe3.metier.Administrateur;
 @Repository
 public interface AdministrateurDAO extends JpaRepository<Administrateur, Long> {
 
-	@Query("select ad from Adherent ad where ad.idUtilisateur =?")
-	List<Adherent> rechercherParId(long idAdherent);
+//	@Query("select ad from Adherent ad where ad.idUtilisateur =?")
+//	List<Adherent> rechercherParId(long idAdherent);
 	
 
 }
