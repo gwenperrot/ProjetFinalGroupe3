@@ -140,6 +140,14 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 		OeuvreAdherent oa = new OeuvreAdherent(o, ad);
 		oeuvreAdherentDAO.save(oa);
 	}
+
+
+	@Override
+	public void retour (Livre l, Adherent ad) {
+		LivreAdherent la = new LivreAdherent(l, ad);
+		livreAdherentDAO.delete(la);;
+		
+	}
 	
 
 }

@@ -53,7 +53,7 @@ public class AdherentController {
 		return service.findAllAdherent();
 	}
 	
-	@RequestMapping(value = "/deleteAdherent", method = RequestMethod.GET)
+	@RequestMapping(value = "/deleteAdherent", method = RequestMethod.POST)
 	public void deleteAdherent(long idUtilisateur) {
 		service.deleteAdherent(idUtilisateur);
 	}
@@ -61,24 +61,25 @@ public class AdherentController {
 	/*Methodes de recherche pour l'Adherent*/
 	
 	
-	@RequestMapping(value = "/livreParMC", method = RequestMethod.GET)
+	@RequestMapping(value = "/livreParMC", method = RequestMethod.POST)
 	public List<Livre> rechercherParMC(String mc) {
 		return service.rechercherParMC(mc);
 	}
 	
-	@RequestMapping(value = "/livreParAuteur",method = RequestMethod.GET)
+	@RequestMapping(value = "/livreParAuteur",method = RequestMethod.POST)
 	public List<Oeuvre> rechercherParAuteur(Oeuvre o) {
 		return service.rechercherParAuteur(o);
 	}
 	
-	@RequestMapping(value = "/parOeuvre",  method = RequestMethod.GET)
+	@RequestMapping(value = "/parOeuvre",  method = RequestMethod.POST)
 	public List<Oeuvre> rechercherParOeuvre(Oeuvre o ) {
 		return service.rechercheParOeuvre(o);
 	}
 	
+	
 	/*Methodes d'emprunt et de reservation pour l'Adherent*/
 	
-	@RequestMapping(value = "/emprunterReserver", method = RequestMethod.GET)
+	@RequestMapping(value = "/emprunterReserver", method = RequestMethod.POST)
 	public void emprunter(Livre l  , Adherent ad) {
 		if (l.isDispo() == true) {
 			service.emprunter(l, ad)
@@ -89,5 +90,10 @@ public class AdherentController {
 			Oeuvre o = new Oeuvre();
 			service.reserver(o, ad);
 		}
+	}
+	
+	@RequestMapping(value = "/retour", method = RequestMethod.POST) 
+	public void retour(Livre l , Adherent ad) {
+		service.retour(l, ad);
 	}
 }
