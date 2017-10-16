@@ -21,30 +21,39 @@ public class AdherentController {
 	@Autowired
 	private IServiceAdherent service;
 
+	
 	/*CRUD adherent*/
 	
+
+	public IServiceAdherent getService() {
+		return service;
+	}
+
+	public void setService(IServiceAdherent service) {
+		this.service = service;
+	}
 
 	@RequestMapping(value = "/saveAdherent", method = RequestMethod.POST)
 	public void save(@RequestBody Adherent ad) {
 		service.createAdherent(ad);
 	}
 
-	@RequestMapping("/updateAdherent")
+	@RequestMapping(value = "/updateAdherent",method = RequestMethod.POST)
 	public void updateAdherent(Adherent ad) {
 		service.updateAdherent(ad);
 	}
 
-	@RequestMapping("/getAdherent")
+	@RequestMapping(value = "/getAdherent", method = RequestMethod.POST)
 	public Adherent getAdherent(long idAdherent) {
 		return service.getAdherent(idAdherent);
 	}
 
-	@RequestMapping("/allAdherent")
+	@RequestMapping(value = "/allAdherent", method = RequestMethod.POST)
 	public List<Adherent> allAdherent() {
 		return service.findAllAdherent();
 	}
 	
-	@RequestMapping("/deleteAdherent")
+	@RequestMapping(value = "/deleteAdherent", method = RequestMethod.POST)
 	public void deleteAdherent(long idAdherent) {
 		service.deleteAdherent(idAdherent);
 	}
@@ -52,29 +61,30 @@ public class AdherentController {
 	/*Methodes de recherche pour l'Adherent*/
 	
 	
-	@RequestMapping("/livreParMC")
+	@RequestMapping(value = "/livreParMC", method = RequestMethod.POST)
 	public List<Livre> rechercherParMC(String mc) {
 		return service.rechercherParMC(mc);
 	}
 	
-	@RequestMapping("/livreParAuteur")
+	@RequestMapping(value = "/livreParAuteur",method = RequestMethod.POST)
 	public List<Oeuvre> rechercherParAuteur(Oeuvre o) {
 		return service.rechercherParAuteur(o);
 	}
 	
-	@RequestMapping("/parOeuvre")
+	@RequestMapping(value = "/parOeuvre",  method = RequestMethod.POST)
 	public List<Oeuvre> rechercherParOeuvre(Oeuvre o ) {
 		return service.rechercheParOeuvre(o);
 	}
 	
 	/*Methodes d'emprunt et de reservation pour l'Adherent*/
 	
-	@RequestMapping("/emprunterReserver")
-	public void emprunter(Oeuvre o , Adherent ad) {
-		if (Oeuvre.getNbLivreLibre() > 0 ) {
-			service.emprunter(o, ad);
+	@RequestMapping(value = "/emprunterReserver", method = RequestMethod.POST)
+	public void emprunter(Livre l  , Adherent ad) {
+		if (l.isDispo() == true) {
+			service.emprunter(l, ad);
 		}
 		else  {
+			Oeuvre o = new Oeuvre();
 			service.reserver(o, ad);
 		}
 	}

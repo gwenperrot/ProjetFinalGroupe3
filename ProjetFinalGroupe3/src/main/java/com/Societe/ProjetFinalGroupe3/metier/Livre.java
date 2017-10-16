@@ -28,7 +28,7 @@ public class Livre {
 @Id@GeneratedValue(strategy=GenerationType.AUTO)
 private Long idLivre;
 private int numInventaire;
-private String etat;
+private boolean dispo ;
 
 @OneToMany(mappedBy="idLA.livre")
 private List<LivreAdherent> livreAdherent;
@@ -49,8 +49,6 @@ public void setLivreAdherent(List<LivreAdherent> livreAdherent) {
 	this.livreAdherent = livreAdherent;
 }
 
-
-
 public Long getIdLivre() {
 	return idLivre;
 }
@@ -63,13 +61,14 @@ public int getNumInventaire() {
 public void setNumInventaire(int numInventaire) {
 	this.numInventaire = numInventaire;
 }
-public String getEtat() {
-	return etat;
-}
-public void setEtat(String etat) {
-	this.etat = etat;
+
+public boolean isDispo() {
+	return dispo;
 }
 
+public void setDispo(boolean dispo) {
+	this.dispo = dispo;
+}
 
 public Oeuvre getLoeuvre() {
 	return loeuvre;
@@ -80,9 +79,8 @@ public void setLoeuvre(Oeuvre loeuvre) {
 
 @Override
 public String toString() {
-	return "Livre [idLivre=" + idLivre + ", numInventaire=" + numInventaire + ", etat=" + etat + "]";
+	return "Livre [idLivre=" + idLivre + ", numInventaire=" + numInventaire + ", dispo=" + dispo + "]";
 }
-
 
 
 }

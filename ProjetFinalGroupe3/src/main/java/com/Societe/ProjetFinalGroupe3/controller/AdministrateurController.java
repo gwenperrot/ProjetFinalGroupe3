@@ -21,29 +21,38 @@ public class AdministrateurController {
 	@Autowired
 	private IServiceAdministrateur service;
 	
+	
 	/*CRUD Auteur*/
+
+	public IServiceAdministrateur getService() {
+		return service;
+	}
+
+	public void setService(IServiceAdministrateur service) {
+		this.service = service;
+	}
 
 	@RequestMapping(value = "/saveAuteur", method = RequestMethod.POST)
 	public void save(@RequestBody Auteur a) {
 		service.createAuteur(a);
 	}
 
-	@RequestMapping("/updateAuteur")
+	@RequestMapping(value = "/updateAuteur", method = RequestMethod.POST)
 	public void updateAuteur(Auteur a) {
 		service.updateAuteur(a);
 	}
 	
-	@RequestMapping("/getAuteur")
+	@RequestMapping(value = "/getAuteur", method = RequestMethod.POST)
 	public Auteur getAuteur(long idAuteur) {
 		return service.getAuteur(idAuteur);
 	}
 
-	@RequestMapping("/allAuteur")
+	@RequestMapping(value = "/allAuteur", method = RequestMethod.POST)
 	public List<Auteur> allAuteur() {
 		return service.findAllAuteur();
 	}
 	
-	@RequestMapping("/deleteAuteur")
+	@RequestMapping(value = "/deleteAuteur", method = RequestMethod.POST)
 	public void deleteAuteur(long idAuteur) {
 		service.deleteAuteur(idAuteur);
 	}
@@ -51,27 +60,27 @@ public class AdministrateurController {
 	/*CRUD Adherent*/
 	
 
-	@RequestMapping(value = "/saveAdherent", method = RequestMethod.POST)
+	@RequestMapping(value = "/saveAdherentAdmin", method = RequestMethod.POST)
 	public void save(@RequestBody Adherent ad) {
 		service.createAdherent(ad);
 	}
 
-	@RequestMapping("/updateAdherent")
+	@RequestMapping(value = "/updateAdherentAdmin", method = RequestMethod.POST)
 	public void updateAdherent(Adherent ad) {
 		service.updateAdherent(ad);
 	}
 
-	@RequestMapping("/getAdherent")
+	@RequestMapping(value =  "/getAdherentAdmin", method = RequestMethod.POST)
 	public Adherent getAdherent(long idAdherent) {
 		return service.getAdherent(idAdherent);
 	}
 
-	@RequestMapping("/allAdherent")
+	@RequestMapping(value = "/allAdherentAdmin", method = RequestMethod.POST)
 	public List<Adherent> allAdherent() {
 		return service.findAllAdherent();
 	}
 	
-	@RequestMapping("/deleteAdherent")
+	@RequestMapping(value = "/deleteAdherentAdmin" , method = RequestMethod.POST)
 	public void deleteAdherent(long idAdherent) {
 		service.deleteAdherent(idAdherent);
 	}
@@ -85,22 +94,22 @@ public class AdministrateurController {
 		service.createOeuvre(o);
 	}
 
-	@RequestMapping("/updateOeuvre")
+	@RequestMapping(value = "/updateOeuvre", method = RequestMethod.POST)
 	public void updateOeuvre(Oeuvre o) {
 		service.updateOeuvre(o);
 	}
 
-	@RequestMapping("/getOeuvre")
+	@RequestMapping(value = "/getOeuvre", method = RequestMethod.POST)
 	public Oeuvre getOeuvre(long idOeuvre) {
 		return service.getOeuvre(idOeuvre);
 	}
 
-	@RequestMapping("/allOeuvre")
+	@RequestMapping(value = "/allOeuvre", method = RequestMethod.POST)
 	public List<Oeuvre> allOeuvre() {
 		return service.findAllOeuvre();
 	}
 	
-	@RequestMapping("/deleteOeuvre")
+	@RequestMapping(value = "/deleteOeuvre", method = RequestMethod.POST)
 	public void deleteOeuvre(long idOeuvre) {
 		service.deleteOeuvre(idOeuvre);
 	}
@@ -112,43 +121,43 @@ public class AdministrateurController {
 		service.createLivre(l);
 	}
 
-	@RequestMapping("/updateLivre l")
+	@RequestMapping(value = "/updateLivre l", method = RequestMethod.POST)
 	public void updateLivre(Livre l) {
 		service.updateLivre(l);
 	}
 
-	@RequestMapping("/getLivre")
+	@RequestMapping(value = "/getLivre", method = RequestMethod.POST)
 	public Livre getLivre(long idLivre) {
 		return service.getLivre(idLivre);
 	}
 
-	@RequestMapping("/allLivre")
+	@RequestMapping(value = "/allLivre", method = RequestMethod.POST)
 	public List<Livre> allLivre() {
 		return service.findAllLivre();
 	}
 	
-	@RequestMapping("/deleteLivre")
+	@RequestMapping(value = "/deleteLivre", method = RequestMethod.POST)
 	public void deleteLivre (long idLivre) {
 		service.deleteLivre(idLivre);
 	}
 	
 	/*Methodes de recherche pour l'administrateur*/
-	@RequestMapping("/livreParMC")
+	@RequestMapping(value = "/livreParMC", method = RequestMethod.POST)
 	public List<Livre> rechercherParMC(String mc) {
 		return service.rechercherParMC(mc);
 	}
 	
-	@RequestMapping("/livreParAuteur")
+	@RequestMapping(value = "/livreParAuteur", method = RequestMethod.POST)
 	public List<Oeuvre> rechercherParAuteur(Oeuvre o) {
 		return service.rechercherParAuteur(o);
 	}
 	
-	@RequestMapping("/parOeuvre")
+	@RequestMapping(value = "/parOeuvre", method = RequestMethod.POST)
 	public List<Oeuvre> rechercherParOeuvre(Oeuvre o ) {
 		return service.rechercheParOeuvre(o);
 	}
 	
-	@RequestMapping("/adherentParId")
+	@RequestMapping(value = "/adherentParId" , method = RequestMethod.POST)
 	public List<Adherent> rechercherParId(long idAdherent ) {
 		return service.rechercherParId(idAdherent);
 	}

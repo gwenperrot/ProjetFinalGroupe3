@@ -26,9 +26,18 @@ public class Utilisateur {
 	private Long idUtilisateur;
 	private String login;
 	private String mdp;
+	private boolean admin;
 	
 	
 	
+	
+	
+	public boolean isAdmin() {
+		return admin;
+	}
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
 	public Utilisateur() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -53,7 +62,8 @@ public class Utilisateur {
 	}
 	@Override
 	public String toString() {
-		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", login=" + login + ", mdp=" + mdp + "]";
+		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", login=" + login + ", mdp=" + mdp + ", admin=" + admin
+				+ "]";
 	}
 	
 	

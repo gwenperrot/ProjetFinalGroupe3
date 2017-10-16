@@ -11,11 +11,22 @@ import com.Societe.ProjetFinalGroupe3.metier.Utilisateur;
 public class ConnexionController {
 	Utilisateur u = new Utilisateur();
 
+	
+	public Utilisateur getU() {
+		return u;
+	}
+
+
+	public void setU(Utilisateur u) {
+		this.u = u;
+	}
+
+
 	@Autowired
 	public String checkPassword() {
-		if (u.getLogin() != null && u.getMdp() != null && u.getAdministrateur() == true) {
+		if (u.getLogin() != null && u.getMdp() != null && u.isAdmin() == true) {
 			return "navigationadmin";
-		} else if (u.getLogin() != null && u.getMdp() != null && u.getAdministrateur() == false) {
+		} else if (u.getLogin() != null && u.getMdp() != null && u.isAdmin() == false) {
 			return "navigationadherent";
 		} else {
 			return "";
