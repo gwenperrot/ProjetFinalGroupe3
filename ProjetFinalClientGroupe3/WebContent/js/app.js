@@ -159,6 +159,18 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 		});
 		$scope.varCodePostal = "afficherCodePostal";
 	};
+	$scope.modifierLogin = function() {
+		$scope.varLogin = "modifierLogin";
+	};
+	$scope.changerLogin = function() {
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
+			alert("modifié");
+		}).catch(function(reason) {
+			alert("Pas ajouté, erreur");
+			console.log(reason);
+		});
+		$scope.varLogin = "afficherLogin";
+	};
 });
 // définition du controller de la page rechercheLivre
 app.controller("rechercheLivreCtrl", function($scope,$http) {

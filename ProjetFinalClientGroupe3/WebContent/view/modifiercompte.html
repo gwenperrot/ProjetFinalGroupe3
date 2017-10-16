@@ -16,6 +16,7 @@
 			<div ng-switch-when="modifierNom">
 				<form class="form-horizontal" action="#!monCompte">
 					<div class="col-sm-8">
+					<label class="control-label" for="prenom">Nom :</label>
 					<input type="text" class="form-control" value="adherent.nom" name="nom" ng-model="adherent.nom">
 				</div>
 				<div class="col-sm-4">
@@ -36,6 +37,7 @@
 		<div ng-switch-when="modifierPrenom">
 		<form class="form-horizontal" action="#!monCompte">
 			<div class="col-sm-8">
+				<label class="control-label" for="prenom">Prenom :</label>
 				<input type="text" class="form-control" value="adherent.prenom" name="prenom" ng-model="adherent.prenom">
 				</div>
 				<div class="col-sm-4">
@@ -109,7 +111,7 @@
 			<label class="control-label" for="login">Login :</label>		
 			{{adherent.login}} <a ng-click="modifierLogin()">Editer</a>
 		</div>
-		<div ng-switch-when="modifierCodePostal">
+		<div ng-switch-when="modifierLogin">
 			<form class="form-horizontal" action="#!monCompte">
 			<div class="col-sm-8">
 				<label class="control-label" for="login">Login :</label>
