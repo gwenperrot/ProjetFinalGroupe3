@@ -7,6 +7,7 @@ import com.Societe.ProjetFinalGroupe3.metier.Adherent;
 import com.Societe.ProjetFinalGroupe3.metier.Auteur;
 import com.Societe.ProjetFinalGroupe3.metier.Livre;
 import com.Societe.ProjetFinalGroupe3.metier.Oeuvre;
+import com.Societe.ProjetFinalGroupe3.metier.Utilisateur;
 
 public interface IServiceAdministrateur {
 		public void createAuteur(Auteur a );
@@ -41,7 +42,8 @@ public interface IServiceAdministrateur {
 		
 		public void attribuerLivreOeuvre(Livre l , Oeuvre o );
 		public void attribuerOeuvreAuteur(Oeuvre o, Auteur a);
-		
+		public Utilisateur rechercheByLogin (String login);
+		public String rechercherType(Utilisateur u);
 	}
 
 

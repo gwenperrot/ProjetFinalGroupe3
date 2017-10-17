@@ -80,25 +80,24 @@ public class AdherentController {
 	/*Methodes d'emprunt et de reservation pour l'Adherent*/
 	
 	@RequestMapping(value = "/emprunterReserver", method = RequestMethod.POST)
-	public boolean emprunter(Livre l  , Adherent ad) {
+	public void emprunter(Livre l  , Adherent ad) {
 		Oeuvre o = new Oeuvre();
 		int nbs = o.getNbLivreLibre();							
-		if (l.isDispo() == true) {
+		if (nbs > 0) {
 			service.emprunter(l, ad);
-			if (nbs >0){
 				nbs--;
-			}
 		} 
 		else  {
 			
 			service.reserver(o, ad);
 		}
 		
-		return l.isDispo() == false;
 	}
 	
 	@RequestMapping(value = "/retour", method = RequestMethod.POST) 
 	public void retour(Livre l , Adherent ad) {
+		Oeuvre o ;
 		service.retour(l, ad);
+		
 	}
 }

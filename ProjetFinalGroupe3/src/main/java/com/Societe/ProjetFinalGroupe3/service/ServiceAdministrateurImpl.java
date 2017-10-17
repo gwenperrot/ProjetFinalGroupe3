@@ -10,11 +10,13 @@ import com.Societe.ProjetFinalGroupe3.dao.AdministrateurDAO;
 import com.Societe.ProjetFinalGroupe3.dao.AuteurDAO;
 import com.Societe.ProjetFinalGroupe3.dao.LivreDAO;
 import com.Societe.ProjetFinalGroupe3.dao.OeuvreDAO;
+import com.Societe.ProjetFinalGroupe3.dao.UtilisateurDAO;
 import com.Societe.ProjetFinalGroupe3.metier.Adherent;
 import com.Societe.ProjetFinalGroupe3.metier.Auteur;
 import com.Societe.ProjetFinalGroupe3.metier.Livre;
 import com.Societe.ProjetFinalGroupe3.metier.LivreAdherent;
 import com.Societe.ProjetFinalGroupe3.metier.Oeuvre;
+import com.Societe.ProjetFinalGroupe3.metier.Utilisateur;
 
 @Service
 public class ServiceAdministrateurImpl implements IServiceAdministrateur {
@@ -28,10 +30,21 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	OeuvreDAO oeuvreDAO;
 	@Autowired
 	AuteurDAO auteurDAO;
+	@Autowired
+	UtilisateurDAO utilisateurDAO;
+	
 	
 	
 	/*CRUD Auteur*/
 	
+	public UtilisateurDAO getUtilisateurDAO() {
+		return utilisateurDAO;
+	}
+
+	public void setUtilisateurDAO(UtilisateurDAO utilisateurDAO) {
+		this.utilisateurDAO = utilisateurDAO;
+	}
+
 	public AdministrateurDAO getAdministrateurDAO() {
 		return administrateurDAO;
 	}
@@ -218,8 +231,18 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 
 	@Override
 	public List<Oeuvre> findByTitre(String titre) {
-		// TODO Auto-generated method stub
 		return oeuvreDAO.findByTitre(titre);
+	}
+	
+	@Override
+	public Utilisateur rechercheByLogin (String login) {
+		return utilisateurDAO.rechercheByLogin(login);
+		
+	}
+	
+	@Override
+	public String rechercherType(Utilisateur u) {
+		return utilisateurDAO.rechercherType(u);
 	}
 
 	
