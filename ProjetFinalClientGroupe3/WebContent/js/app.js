@@ -38,16 +38,18 @@ app.config(function($routeProvider) {
 app.controller("indexCtrl", function($scope,$http) {
 
 	$scope.seConnecter = function() {
-		
-		$http.get("http://localhost:8080/ProjetFinalGroupe3/connexion", {params: {login: $scope.login, mdp: $scope.mdp}}).then(function(value) {
-			$scope.typeUtilisateur=value;
+		$scope.varConnecte = "connecte";
+		$scope.typeUtilisateur = "admin";
+		/*$http.get("http://localhost:8080/ProjetFinalGroupe3/connexion", {params: {login: $scope.login, mdp: $scope.mdp}})
+		.then(function(value) {
+		$scope.typeUtilisateur=value;
 			$scope.varConnecte = "connecte";
 
 			alert("connecté");
 		}).catch(function(reason) {
 			alert("erreur de connexion");
 			console.log(reason);
-		});
+		});*/
 		
 
 	};
@@ -386,6 +388,17 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 		    	console.log(reason);
 		    });
 		};
+		
+		$http.get("http://localhost:8080/ProjetFinalGroupe3/allOeuvres")
+	    .then(function(response) {
+	        $scope.oeuvres = response.data;
+	       
+	    })
+	    .catch (function(reason){
+	    	alert("erreur de récupération des données");
+	    	console.log(reason);	
+	    });
+		
 	$scope.ajouterLivre = function() {
 		$scope.varOeuvre="livre";
 	};

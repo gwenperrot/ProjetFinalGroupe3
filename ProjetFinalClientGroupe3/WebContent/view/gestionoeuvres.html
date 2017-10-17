@@ -71,7 +71,7 @@
 		<div ng-switch-when="livre">
 			<h3>Ajouter un livre</h3>
 			
-			Oeuvre: {{oeuvre}}, Auteur: {{prenomAuteur}} {{nomAuteur}}
+			 Oeuvre: {{oeuvre}}, Auteur: {{prenomAuteur}} {{nomAuteur}}
 			<form class="form-horizontal">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="num"> Numéro d'inventaire:</label>
@@ -91,16 +91,6 @@
 				
 				</div>
 				 
-			<div class="form-group">	
-				 <label class="control-label col-sm-2">Oeuvre :</label>
-				 <select class="col-sm-4" id="select1" ng-model="$root.loeuvre" >
-				 	
-				 	<option ng-repeat="o in oeuvres" value="{{o}}">{{o.titre}}</option>
-					
-				</select>
-				
-				</div>
-			
 			
 			<div class="form-group">
     			<div class="col-sm-offset-2 col-sm-10">
