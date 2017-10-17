@@ -169,7 +169,7 @@ public class AdministrateurController {
 //	public List<Adherent> rechercherParId(@RequestBody long idUtilisateur ) {
 //		return service.rechercherParId(idUtilisateur);
 //	}
-	@RequestMapping(value = "/attibuerOeuvreAuteur " ,  method = RequestMethod.POST)
+	@RequestMapping(value = "/attibuerOeuvreAuteur" ,  method = RequestMethod.GET)
 	public void attribuerOeuvreAuteur(@RequestParam long idOeuvre,@RequestParam long idAuteur) {
 		
 		Auteur a = service.getAuteur(idAuteur);

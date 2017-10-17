@@ -321,7 +321,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 				$scope.oeuvre=data.data;
 				alert("ajouté à la bd");
 				
-				$http.post("http://localhost:8080/ProjetFinalGroupe3/attibuerOeuvreAuteur", {params:{idOeuvre: $scope.oeuvre.idOeuvre, idAuteur: $scope.lauteur}})
+				$http.get("http://localhost:8080/ProjetFinalGroupe3/attibuerOeuvreAuteur", {params:{idOeuvre: $scope.oeuvre.idOeuvre, idAuteur: $scope.lauteur}})
 				.then(function(data) {
 					$scope.oeuvre=data.data;
 					alert("associé");
@@ -339,7 +339,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 					alert($scope.oeuvre.idOeuvre);
 					alert("modifié");
 					
-					$http.post("http://localhost:8080/ProjetFinalGroupe3/attibuerOeuvreAuteur", {params:{idOeuvre: $scope.oeuvre.idOeuvre, idAuteur: $scope.lauteur}})
+					$http.get("http://localhost:8080/ProjetFinalGroupe3/attibuerOeuvreAuteur", {params:{idOeuvre: $scope.oeuvre.idOeuvre, idAuteur: $scope.lauteur}})
 					.then(function(data) {
 						$scope.oeuvre=data.data;
 						alert("associé");
