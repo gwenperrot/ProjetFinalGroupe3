@@ -315,7 +315,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 	};
 	
 	$scope.validerOeuvre = function() {
-		alert($scope.oeuvre.titres);
+		alert($scope.oeuvre.titre);
 		if($scope.oeuvre.idOeuvre==0){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveOeuvre", $scope.oeuvre).then(function(data) {
 				$scope.oeuvre=data;
