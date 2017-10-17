@@ -162,11 +162,11 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	}
 
 
-	@Override
-	public List<Oeuvre> findByTitre(String titre) {
-		// TODO Auto-generated method stub
-		return oeuvreDAO.findByTitre(titre);
-	}
-	
+//	@Override
+//	public List<Oeuvre> findByTitre(String titre) {
+//		// TODO Auto-generated method stub
+//		return oeuvreDAO.findByTitre(titre);
+//	}
+//	
 
 }

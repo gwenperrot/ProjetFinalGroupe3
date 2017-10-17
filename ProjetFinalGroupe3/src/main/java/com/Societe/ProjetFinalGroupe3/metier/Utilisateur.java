@@ -1,4 +1,5 @@
 package com.Societe.ProjetFinalGroupe3.metier;
+import javax.persistence.Column;
 /*
  * La classe m�re Utilisateur est la classe dont h�rite administrateur et adherent.
  * Le but : facilit� l'authentification 
@@ -27,11 +28,19 @@ public class Utilisateur {
 	private String login;
 	private String mdp;
 	private boolean admin;
+	@Column(insertable=false, updatable = false)
+	protected String TYPE_Utilisateur;
 	
 	
 	
 	
 	
+	public String getTYPE_Utilisateur() {
+		return TYPE_Utilisateur;
+	}
+	public void setTYPE_Utilisateur(String tYPE_Utilisateur) {
+		TYPE_Utilisateur = tYPE_Utilisateur;
+	}
 	public boolean isAdmin() {
 		return admin;
 	}

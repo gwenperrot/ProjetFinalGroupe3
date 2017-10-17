@@ -39,18 +39,24 @@ public class ConnexionController {
 	}
 
 	@RequestMapping(value = "/connexion", method = RequestMethod.GET)
-	public String connexion(@RequestBody String login, @RequestBody String mdp) {
-		if (service.rechercheByLogin(login) != null) {
+	public String connexion( String login, String mdp) {
+		if (service.rechercheByLogin(login) != null && service.rechercheByMdp(mdp) !=null) {
 			u = service.rechercheByLogin(login);
-			if (u.getMdp() == mdp) {
-				return service.rechercherType(u);
-			} else {
-				return "visiteur";
+			System.out.println(service.rechercherType(u));
+			if (service.rechercherType(u).equals("Adherent")){
+				return "adherent";
 			}
-
+			else if (service.rechercherType(u).equals("Administrateur")){
+				return "admin";
+			}
+			else {
+				return "Erreur contacter Admin";
+			}
+				
 		} else {
 			return "visiteur";
 		}
+		
 
 	}
 

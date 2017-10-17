@@ -44,6 +44,8 @@ public interface IServiceAdministrateur {
 		public void attribuerOeuvreAuteur(Oeuvre o, Auteur a);
 		public Utilisateur rechercheByLogin (String login);
 		public String rechercherType(Utilisateur u);
+		public Utilisateur rechercheByMdp(String mdp);
+		
 	}
 
 
