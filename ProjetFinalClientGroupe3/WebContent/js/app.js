@@ -402,7 +402,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 	$scope.ajouterLivre = function() {
 		$scope.varOeuvre="livre";
 	};
-	$scope.livre={};
+	$scope.livre={}; 
 	$scope.validerLivre = function() {
 		alert("");
 		if($scope.livre.idLivre==null){
