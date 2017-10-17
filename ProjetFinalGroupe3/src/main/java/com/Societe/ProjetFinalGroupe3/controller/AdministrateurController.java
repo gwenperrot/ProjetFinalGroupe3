@@ -161,12 +161,20 @@ public class AdministrateurController {
 //		return service.rechercherParId(idUtilisateur);
 //	}
 	@RequestMapping(value = "/attibuerOeuvreAuteur " ,  method = RequestMethod.POST)
-	public void attribuerOeuvreAuteur(@RequestBody Oeuvre o, Auteur a) {
+	public void attribuerOeuvreAuteur(@RequestBody long idOeuvre, long idAuteur) {
+		
+		Auteur a = service.getAuteur(idAuteur);
+		Oeuvre o = service.getOeuvre(idOeuvre);
+		
 		service.attribuerOeuvreAuteur(o, a);
 	}
 		
 	@RequestMapping(value = "/attibuerLivreOeuvre " ,  method = RequestMethod.POST)
-	public void attribuerLivreOeuvre(@RequestBody Livre l , Oeuvre o ) {
+	public void attribuerLivreOeuvre(@RequestBody long idLivre, long idOeuvre) {
+		
+		Livre l = service.getLivre(idLivre);
+		Oeuvre o = service.getOeuvre(idOeuvre);
+		
 		service.attribuerLivreOeuvre(l, o);
 	}
 	

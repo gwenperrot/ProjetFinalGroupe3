@@ -219,6 +219,7 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	
 	@Override
 	public void attribuerOeuvreAuteur(Oeuvre o, Auteur a) {
+		
 			o.setLauteur(a);
 			oeuvreDAO.saveAndFlush(o);
 	}
