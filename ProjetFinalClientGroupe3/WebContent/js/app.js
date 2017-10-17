@@ -391,24 +391,49 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 	};
 	$scope.livre={};
 	$scope.validerLivre = function() {
-		if($scope.livre.id!=0){
-		$http.post("http://localhost:8080/ProjetFinalGroupe3/saveLivre", $scope.livre).then(function(data) {
-			$scope.livre=data;
-			alert("ajouté à la bd");
-		}).catch(function(reason) {
-			alert("Pas ajouté, erreur");
-			console.log(reason);
-		});
-		}else{
-			$http.post("http://localhost:8080/ProjetFinalGroupe3/updateLivre", $scope.livre).then(function(data) {
-				$scope.livre=data;
+		alert("");
+		if($scope.livre.idLivre==null){
+			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveLivre", $scope.livre).then(function(response) {
+				$scope.livre=response.data;
 				alert("ajouté à la bd");
+				
+				$http.get("http://localhost:8080/ProjetFinalGroupe3/attibuerLivreOeuvre", {params:{idLivre: $scope.livre.idLivre, idOeuvre: $scope.loeuvre}})
+				.then(function(response) {
+					$scope.livre=response.data;
+					alert("associé");
+				}).catch(function(reason) {
+					alert("Pas associé");
+					console.log(reason);
+				});
 			}).catch(function(reason) {
 				alert("Pas ajouté, erreur");
 				console.log(reason);
 			});
-		}
-		$scope.varOeuvre="oeuvre";
+			}else{
+				$http.post("http://localhost:8080/ProjetFinalGroupe3/updateLivre", $scope.livre).then(function(response) {
+					$scope.livre=response.data;
+					alert($scope.livre.idLivre);
+					alert("modifié");
+					
+					$http.get("http://localhost:8080/ProjetFinalGroupe3/attibuerLivreOeuvre", {params:{idLivre: $scope.livre.idLivre, idOeuvre: $scope.loeuvre}})
+					.then(function(response) {
+						$scope.livre=response.data;
+						alert("associé");
+					}).catch(function(reason) {
+						alert("Pas associé");
+						console.log(reason);
+					});
+				}).catch(function(reason) {
+					alert("Pas ajouté, erreur");
+					console.log(reason);
+				});			
+			}
+
+		
+
+			$scope.livre={};
+			$scope.varLivre="livre";
+		
 	};
 	$scope.editerLivre = function() {
 		$http.get("http://localhost:8080/ProjetFinalGroupe3/getLivre").then(function(response) {

@@ -57,7 +57,7 @@
 				</tr>
 				<tr ng-repeat="o in oeuvres">
 					<td>{{o.titre}}</td>
-					<th>auteur</th>
+					<th>{{o.lauteur.prenom}} {{o.lauteur.nom}}</th>
 					<td>{{o.nbLivreLibre}}</td>
 					<td><a ng-click="ajouterLivre()">Ajouter/Modifier un livre</a></td>
 					<td><a ng-click="editerOeuvre()">Editer</a></td>
@@ -120,9 +120,9 @@
 					<th></th>
 				</tr>
 				<tr ng-repeat="l in livres">
-					<td>{{i.numInventaire}}</td>
-					<td>{{i.dispo}}</td>
-					<th>{{i.loeuvre}}
+					<td>{{l.numInventaire}}</td>
+					<td>{{l.dispo}}</td>
+					<td>{{l.loeuvre.titre}}</td>
 					<td><a ng-click="editerLivre()">Editer</a></td>
 					<td><a ng-click="supprimerLivre()">Supprimer</a></td>
 				</tr>
