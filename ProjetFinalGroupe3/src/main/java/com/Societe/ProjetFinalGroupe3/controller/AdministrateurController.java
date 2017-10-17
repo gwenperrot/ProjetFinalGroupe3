@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Societe.ProjetFinalGroupe3.metier.Adherent;
@@ -33,13 +34,15 @@ public class AdministrateurController {
 	}
 
 	@RequestMapping(value = "/saveAuteur", method = RequestMethod.POST)
-	public void save(@RequestBody Auteur a) {
-		service.createAuteur(a);
+	public Auteur save(@RequestBody Auteur a) {
+		
+		return service.createAuteur(a);
 	}
 
 	@RequestMapping(value = "/updateAuteur", method = RequestMethod.POST)
-	public void updateAuteur(@RequestBody Auteur a) {
-		service.updateAuteur(a);
+	public Auteur updateAuteur(@RequestBody Auteur a) {
+		
+		return service.updateAuteur(a);
 	}
 	
 	@RequestMapping(value = "/getAuteur", method = RequestMethod.POST)
@@ -61,13 +64,15 @@ public class AdministrateurController {
 	
 
 	@RequestMapping(value = "/saveAdherentAdmin", method = RequestMethod.POST)
-	public void save(@RequestBody Adherent ad) {
-		service.createAdherent(ad);
+	public Adherent save(@RequestBody Adherent ad) {
+		
+		return service.createAdherent(ad);
 	}
 
 	@RequestMapping(value = "/updateAdherentAdmin", method = RequestMethod.POST)
-	public void updateAdherent(@RequestBody Adherent ad) {
-		service.updateAdherent(ad);
+	public Adherent updateAdherent(@RequestBody Adherent ad) {
+		
+		return service.updateAdherent(ad);
 	}
 
 	@RequestMapping(value =  "/getAdherentAdmin", method = RequestMethod.POST)
@@ -89,13 +94,15 @@ public class AdministrateurController {
 	/*CRUD Oeuvre*/
 	
 	@RequestMapping(value = "/saveOeuvre", method = RequestMethod.POST)
-	public void save(@RequestBody Oeuvre o) {
-		service.createOeuvre(o);
+	public Oeuvre save(@RequestBody Oeuvre o) {
+		
+		return service.createOeuvre(o);
 	}
 
 	@RequestMapping(value = "/updateOeuvre", method = RequestMethod.POST)
-	public void updateOeuvre(@RequestBody Oeuvre o) {
-		service.updateOeuvre(o);
+	public Oeuvre updateOeuvre(@RequestBody Oeuvre o) {
+		
+		return service.updateOeuvre(o);
 	}
 
 	@RequestMapping(value = "/getOeuvre", method = RequestMethod.POST)
@@ -116,13 +123,15 @@ public class AdministrateurController {
 	/*CRUD Livre*/
 	
 	@RequestMapping(value = "/saveLivre", method = RequestMethod.POST)
-	public void save(@RequestBody Livre l) {
-		service.createLivre(l);
+	public Livre save(@RequestBody Livre l) {
+		
+		return service.createLivre(l);
 	}
 
 	@RequestMapping(value = "/updateLivre l", method = RequestMethod.POST)
-	public void updateLivre(@RequestBody Livre l) {
-		service.updateLivre(l);
+	public Livre updateLivre(@RequestBody Livre l) {
+		
+		return service.updateLivre(l);
 	}
 
 	@RequestMapping(value = "/getLivre", method = RequestMethod.POST)
@@ -170,7 +179,7 @@ public class AdministrateurController {
 	}
 		
 	@RequestMapping(value = "/attibuerLivreOeuvre " ,  method = RequestMethod.POST)
-	public void attribuerLivreOeuvre(@RequestBody long idLivre, long idOeuvre) {
+	public void attribuerLivreOeuvre(@RequestParam long idLivre,@RequestParam long idOeuvre) {
 		
 		Livre l = service.getLivre(idLivre);
 		Oeuvre o = service.getOeuvre(idOeuvre);

@@ -10,26 +10,26 @@ import com.Societe.ProjetFinalGroupe3.metier.Oeuvre;
 import com.Societe.ProjetFinalGroupe3.metier.Utilisateur;
 
 public interface IServiceAdministrateur {
-		public void createAuteur(Auteur a );
-		public void updateAuteur(Auteur a);
+		public Auteur createAuteur(Auteur a );
+		public Auteur updateAuteur(Auteur a);
 		public Auteur getAuteur(long idAuteur);
 		List<Auteur> findAllAuteur();
 		public void deleteAuteur(long idAuteur);
 		
-		public void createAdherent(Adherent ad );
-		public void updateAdherent(Adherent ad);
+		public Adherent createAdherent(Adherent ad );
+		public Adherent updateAdherent(Adherent ad);
 		public Adherent getAdherent(long idAdherent);
 		List<Adherent> findAllAdherent();
 		public void deleteAdherent(long idAdherent);
 		
-		public void createOeuvre(Oeuvre o );
-		public void updateOeuvre(Oeuvre o);
+		public Oeuvre createOeuvre(Oeuvre o );
+		public Oeuvre updateOeuvre(Oeuvre o);
 		public Oeuvre getOeuvre(long idOeuvre);
 		List<Oeuvre> findAllOeuvre();
 		public void deleteOeuvre(long idOeuvre);
 		
-		public void createLivre(Livre l );
-		public void updateLivre(Livre l);
+		public Livre createLivre(Livre l );
+		public Livre updateLivre(Livre l);
 		public Livre getLivre(long idLivre);
 		public List<Livre> findAllLivre();
 		public void deleteLivre(long idLivre);

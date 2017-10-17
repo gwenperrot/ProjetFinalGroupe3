@@ -318,7 +318,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 		alert($scope.oeuvre.titre);
 		if($scope.oeuvre.idOeuvre==0){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveOeuvre", $scope.oeuvre).then(function(data) {
-				$scope.oeuvre=data;
+				$scope.oeuvre=data.data;
 				alert("ajouté à la bd");
 			}).catch(function(reason) {
 				alert("Pas ajouté, erreur");
@@ -326,18 +326,18 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 			});
 			}else{
 				$http.post("http://localhost:8080/ProjetFinalGroupe3/updateOeuvre", $scope.oeuvre).then(function(data) {
-					$scope.oeuvre=data;
-					alert("ajouté à la bd");
+					$scope.oeuvre=data.data;
+					alert("modifié");
 				}).catch(function(reason) {
 					alert("Pas ajouté, erreur");
 					console.log(reason);
 				});
 			}
-		alert($scope.oeuvre.idOeuvre);
+		
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/attibuerOeuvreAuteur", {params:{idOeuvre: $scope.oeuvre.idOeuvre, idAuteur: $scope.auteur.idAuteur}})
 		.then(function(data) {
 			$scope.oeuvre=data;
-			alert("ajouté à la bd");
+			alert("associé");
 		}).catch(function(reason) {
 			alert("Pas ajouté, erreur");
 			console.log(reason);
