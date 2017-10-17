@@ -263,9 +263,16 @@ app.controller("gestionAdherentsCtrl", function($scope,$http,$route) {
 });
 // définition du controller de la page gestionLivres
 app.controller("gestionLivresCtrl", function($scope,$http,$route) {
+	$http.get("http://localhost:8080/ProjetFinalGroupe3/allAuteur")
+    .then(function(response) {
+        $scope.auteurs = response.data;
+       
+    })
+    .catch (function(reason){
+    	alert("erreur de récupération des données");
+    	console.log(reason);	
+    });
 
-
-	
 	$scope.validerAuteur = function() {
 		if($scope.auteur.id==0){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAuteur", $scope.auteur).then(function(data) {
@@ -308,7 +315,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 	};
 	
 	$scope.validerOeuvre = function() {
-		
+		alert($scope.oeuvre.titres);
 		if($scope.oeuvre.idOeuvre==0){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveOeuvre", $scope.oeuvre).then(function(data) {
 				$scope.oeuvre=data;
