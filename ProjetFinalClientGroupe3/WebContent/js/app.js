@@ -221,7 +221,7 @@ app.controller("gestionAdherentsCtrl", function($scope,$http,$route) {
 	$scope.msg = "Adherents";
 	$scope.gererAdherent = function() {
 		
-		if($scope.adherent.idUtilisateur==0){
+		if($scope.adherent.idUtilisateur==null){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAdherent", $scope.adherent).then(function(data) {
 				$scope.adherent=data;
 				alert("ajouté à la bd");
@@ -274,7 +274,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
     });
 
 	$scope.validerAuteur = function() {
-		if($scope.auteur.id==0){
+		if($scope.auteur.idAuteur==null){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAuteur", $scope.auteur).then(function(data) {
 				$scope.auteur=data;
 				alert("ajouté à la bd");
@@ -315,11 +315,20 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 	};
 	$scope.validerOeuvre = function() {
 		alert($scope.oeuvre.titre);
-		alert($scope.lauteur.idAuteur);	
-		if($scope.oeuvre.idOeuvre==0){
+		alert($scope.oeuvre.idOeuvre);
+		if($scope.oeuvre.idOeuvre==null){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveOeuvre", $scope.oeuvre).then(function(data) {
 				$scope.oeuvre=data.data;
 				alert("ajouté à la bd");
+				
+				$http.post("http://localhost:8080/ProjetFinalGroupe3/attibuerOeuvreAuteur", {params:{idOeuvre: $scope.oeuvre.idOeuvre, idAuteur: $scope.lauteur}})
+				.then(function(data) {
+					$scope.oeuvre=data.data;
+					alert("associé");
+				}).catch(function(reason) {
+					alert("Pas associé");
+					console.log(reason);
+				});
 			}).catch(function(reason) {
 				alert("Pas ajouté, erreur");
 				console.log(reason);
@@ -329,22 +338,23 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 					$scope.oeuvre=data.data;
 					alert($scope.oeuvre.idOeuvre);
 					alert("modifié");
+					
+					$http.post("http://localhost:8080/ProjetFinalGroupe3/attibuerOeuvreAuteur", {params:{idOeuvre: $scope.oeuvre.idOeuvre, idAuteur: $scope.lauteur}})
+					.then(function(data) {
+						$scope.oeuvre=data.data;
+						alert("associé");
+					}).catch(function(reason) {
+						alert("Pas associé");
+						console.log(reason);
+					});
 				}).catch(function(reason) {
 					alert("Pas ajouté, erreur");
 					console.log(reason);
-				});
-				
+				});			
 			}
-			
-		$http.post("http://localhost:8080/ProjetFinalGroupe3/attibuerOeuvreAuteur", {params:{idOeuvre: $scope.oeuvre.idOeuvre, idAuteur: $scope.lauteur.idAuteur}})
-		.then(function(data) {
-			$scope.oeuvre=data.data;
-			alert("associé");
-		}).catch(function(reason) {
-			alert("Pas ajouté, erreur");
-			console.log(reason);
-		});
-		alert($scope.oeuvre.lauteur);
+
+		
+
 			$scope.oeuvre={};
 			$scope.varOeuvre="oeuvre";
 		};
