@@ -333,6 +333,15 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 					console.log(reason);
 				});
 			}
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/attibuerOeuvreAuteur", {params:{idOeuvre: $scope.oeuvre.idOeuvre, idAuteur: $scope.auteur.idAuteur}})
+		.then(function(data) {
+			$scope.oeuvre=data;
+			alert("ajouté à la bd");
+		}).catch(function(reason) {
+			alert("Pas ajouté, erreur");
+			console.log(reason);
+		});
+		
 			$scope.oeuvre={};
 			$scope.varOeuvre="oeuvre";
 		};
