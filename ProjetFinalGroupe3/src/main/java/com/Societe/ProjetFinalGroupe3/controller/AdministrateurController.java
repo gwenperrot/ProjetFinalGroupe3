@@ -176,15 +176,16 @@ public class AdministrateurController {
 		Oeuvre o = service.getOeuvre(idOeuvre);
 		
 		service.attribuerOeuvreAuteur(o, a);
+		
 	}
 		
-	@RequestMapping(value = "/attibuerLivreOeuvre " ,  method = RequestMethod.POST)
-	public void attribuerLivreOeuvre(@RequestParam long idLivre,@RequestParam long idOeuvre) {
-		
+	@RequestMapping(value = "/attibuerLivreOeuvre " ,  method = RequestMethod.GET)
+	public void attribuerLivreOeuvre(long idLivre, long idOeuvre) {
 		Livre l = service.getLivre(idLivre);
 		Oeuvre o = service.getOeuvre(idOeuvre);
-		
+		int nbs = o.getNbLivreLibre();
 		service.attribuerLivreOeuvre(l, o);
+		nbs++;
 	}
 	
 }

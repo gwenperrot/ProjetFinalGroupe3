@@ -42,7 +42,6 @@ public class ConnexionController {
 	public String connexion(@RequestBody String login,@RequestBody String mdp) {
 		if (service.rechercheByLogin(login) != null && service.rechercheByMdp(mdp) !=null) {
 			u = service.rechercheByLogin(login);
-			System.out.println(service.rechercherType(u));
 			if (service.rechercherType(u).equals("Adherent")){
 				return "adherent";
 			}
