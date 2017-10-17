@@ -86,13 +86,13 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	}
 
 	@Override
-	public void createAuteur(Auteur a) {
-		auteurDAO.save(a);
+	public Auteur createAuteur(Auteur a) {
+		return auteurDAO.save(a);
 	}
 
 	@Override
-	public void updateAuteur(Auteur a) {
-		auteurDAO.saveAndFlush(a);
+	public Auteur updateAuteur(Auteur a) {
+		return auteurDAO.saveAndFlush(a);
 	}
 	
 	@Override
@@ -113,13 +113,13 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	/*CRUD Adherent*/
 
 	@Override
-	public void createAdherent(Adherent ad) {
-		adherentDAO.save(ad);
+	public Adherent createAdherent(Adherent ad) {
+		return adherentDAO.save(ad);
 	}
 
 	@Override
-	public void updateAdherent(Adherent ad) {
-		adherentDAO.saveAndFlush(ad);
+	public Adherent updateAdherent(Adherent ad) {
+		return adherentDAO.saveAndFlush(ad);
 	}
 	
 	@Override
@@ -140,13 +140,14 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	/*CRUD Oeuvre*/
 	
 	@Override
-	public void createOeuvre(Oeuvre o) {
-		oeuvreDAO.save(o);
+	public Oeuvre createOeuvre(Oeuvre o) {
+		
+		return oeuvreDAO.save(o);
 	}
 
 	@Override
-	public void updateOeuvre(Oeuvre o) {
-		oeuvreDAO.saveAndFlush(o);
+	public Oeuvre updateOeuvre(Oeuvre o) {
+		return oeuvreDAO.saveAndFlush(o);
 	}
 	
 	@Override
@@ -167,13 +168,13 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	/*CRUD Livre*/
 	
 	@Override
-	public void createLivre(Livre l) {
-		livreDAO.save(l);
+	public Livre createLivre(Livre l) {
+		return livreDAO.save(l);
 	}
 
 	@Override
-	public void updateLivre(Livre l) {
-		livreDAO.saveAndFlush(l);
+	public Livre updateLivre(Livre l) {
+		return livreDAO.saveAndFlush(l);
 	}
 	
 	@Override
@@ -243,7 +244,7 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	
 	@Override
 	public String rechercherType(Utilisateur u) {
-		return utilisateurDAO.rechercherType(u);
+		return "";//utilisateurDAO.rechercherType(u);
 	}
 
 	
