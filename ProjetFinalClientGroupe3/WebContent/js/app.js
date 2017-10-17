@@ -172,10 +172,8 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 		$scope.varLogin = "afficherLogin";
 	};
 });
-
 // définition du controller de la page rechercheLivre
 app.controller("rechercheLivreCtrl", function($scope,$http) {
-	
 	// définition de la fonction de recherche de livre
 	$scope.rechercherLivre = function(typeRecherche) {
 		alert(typeRecherche);
@@ -211,7 +209,7 @@ app.controller("rechercheLivreCtrl", function($scope,$http) {
 	};
 });
 // définition du controller de la page gestionAdherents
-app.controller("gestionAdherentsCtrl", function($scope,$http) {
+app.controller("gestionAdherentsCtrl", function($scope,$http,$route) {
 	$scope.msg = "Adherents";
 	$scope.gererAdherent = function() {
 		
@@ -232,6 +230,7 @@ app.controller("gestionAdherentsCtrl", function($scope,$http) {
 					console.log(reason);
 				});
 			};
+			$route.reload();
 		$scope.adherent={};
 	};
 	$scope.editerAdherent = function(idUtilisateur) {
@@ -246,6 +245,7 @@ app.controller("gestionAdherentsCtrl", function($scope,$http) {
 	$scope.supprimerAdherent = function(idUtilisateur) {
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/deleteAdherentAdmin",idUtilisateur).then(function(response) {
 			alert("supprimé");
+			$route.reload();
 	    }).catch(function(reason) {
 
 	    	alert("Erreur récupération");
@@ -254,7 +254,7 @@ app.controller("gestionAdherentsCtrl", function($scope,$http) {
 	};
 });
 // définition du controller de la page gestionLivres
-app.controller("gestionLivresCtrl", function($scope,$http) {
+app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 
 
 	
@@ -276,20 +276,22 @@ app.controller("gestionLivresCtrl", function($scope,$http) {
 					console.log(reason);
 				});
 			};
+			$route.reload();
 			$scope.auteur={};
 	};
 	$scope.editerAuteur = function(idAuteur) {
-		$http.post("http://localhost:8080/ProjetFinalGroupe3/getAuteur",idAuteur).then(function(response) {
-	        $scope.adherent = response.data;
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/getAuteur", idAuteur).then(function(response) {
+	        $scope.auteur = response.data;
 	    }).catch(function(reason) {
 
 	    	alert("Erreur récupération");
 	    	console.log(reason);
 	    });
 	};
-	$scope.supprimerAuteur = function() {
-		$http.post("http://localhost:8080/ProjetFinalGroupe3/deleteAuteur",idUtilisateur).then(function(response) {
+	$scope.supprimerAuteur = function(idAuteur) {
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/deleteAuteur",idAuteur).then(function(response) {
 			alert("supprimé");
+			$route.reload();
 	    }).catch(function(reason) {
 
 	    	alert("Erreur récupération");
@@ -328,7 +330,16 @@ app.controller("gestionLivresCtrl", function($scope,$http) {
 		    	console.log(reason);
 		    });
 		};
-	
+		$scope.supprimerOeuvre = function(idOeuvre) {
+			$http.post("http://localhost:8080/ProjetFinalGroupe3/deleteOeuvre",idOeuvre).then(function(response) {
+				alert("supprimé");
+				$route.reload();
+		    }).catch(function(reason) {
+
+		    	alert("Erreur récupération");
+		    	console.log(reason);
+		    });
+		};
 	$scope.ajouterLivre = function() {
 		$scope.varOeuvre="livre";
 	};
