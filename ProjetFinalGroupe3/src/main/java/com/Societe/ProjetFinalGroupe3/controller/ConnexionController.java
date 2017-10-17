@@ -39,7 +39,7 @@ public class ConnexionController {
 	}
 
 	@RequestMapping(value = "/connexion", method = RequestMethod.POST)
-	public String connexion( String login, String mdp) {
+	public String connexion(@RequestBody String login,@RequestBody String mdp) {
 		if (service.rechercheByLogin(login) != null && service.rechercheByMdp(mdp) !=null) {
 			u = service.rechercheByLogin(login);
 			System.out.println(service.rechercherType(u));
