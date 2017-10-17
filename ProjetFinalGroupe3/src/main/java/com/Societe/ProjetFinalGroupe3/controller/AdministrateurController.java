@@ -170,7 +170,7 @@ public class AdministrateurController {
 //		return service.rechercherParId(idUtilisateur);
 //	}
 	@RequestMapping(value = "/attibuerOeuvreAuteur " ,  method = RequestMethod.POST)
-	public void attribuerOeuvreAuteur(@RequestBody long idOeuvre, long idAuteur) {
+	public void attribuerOeuvreAuteur(@RequestParam long idOeuvre,@RequestParam long idAuteur) {
 		
 		Auteur a = service.getAuteur(idAuteur);
 		Oeuvre o = service.getOeuvre(idOeuvre);
