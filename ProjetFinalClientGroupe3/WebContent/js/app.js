@@ -176,28 +176,36 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 app.controller("rechercheLivreCtrl", function($scope,$http) {
 	// définition de la fonction de recherche de livre
 	$scope.rechercherLivre = function(typeRecherche) {
-		alert(typeRecherche);
-		if(typeRecherche=="auteur"){
-			$http.get("http://localhost:8080/ProjetFinalGroupe3/livreParAuteurAdmin")
+		
+		switch (typeRecherche) {
+		
+		case "auteur":
+			$http.post("http://localhost:8080/ProjetFinalGroupe3/livreParAuteurAdmin?mc=",$scope.rechercheLivre)
 		    .then(function(response) {
-		        $scope.livres = response.data;
+		        $scope.oeuvres = response.data;
+		    })
+		    .catch (function(reason){
+		    	alert("erreur de récupération des données");
+		    	console.log(reason);	
+		    })
+			break;
+		
+		case "titre":
+			$http.post("http://localhost:8080/ProjetFinalGroupe3/livreParMCAdmin?mc=", $scope.rechercheLivre )
+			.then(function(response) {
+
+		        $scope.oeuvres = response.data;
 		       
 		    })
 		    .catch (function(reason){
 		    	alert("erreur de récupération des données");
 		    	console.log(reason);	
 		    })
-		}else if (typeRecherche=="livre"){
-			$http.get("http://localhost:8080/ProjetFinalGroupe3/livreParMCAdmin")
-		    .then(function(response) {
-		        $scope.livres = response.data;
-		       
-		    })
-		    .catch (function(reason){
-		    	alert("erreur de récupération des données");
-		    	console.log(reason);	
-		    })
-		} else { alert("erreur");}
+			break;
+		default:
+			alert("erreur");
+			break;
+		}
 	};
 
 	$scope.reserver = function() {
