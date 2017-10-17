@@ -35,11 +35,20 @@ app.config(function($routeProvider) {
 	});
 });
 // définition du crontroller de la page index
-app.controller("indexCtrl", function($scope) {
+app.controller("indexCtrl", function($scope,$http) {
 
 	$scope.seConnecter = function() {
-		$scope.varConnecte = "connecte";
-		$scope.typeUtilisateur = "admin";
+		
+		$http.get("http://localhost:8080/ProjetFinalGroupe3/connexion", {params: {login: $scope.login, mdp: $scope.mdp}}).then(function(value) {
+			$scope.typeUtilisateur=value;
+			$scope.varConnecte = "connecte";
+
+			alert("connecté");
+		}).catch(function(reason) {
+			alert("erreur de connexion");
+			console.log(reason);
+		});
+		
 
 	};
 	$scope.seDeconnecter = function() {
