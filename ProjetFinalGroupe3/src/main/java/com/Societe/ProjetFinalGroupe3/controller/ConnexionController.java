@@ -11,7 +11,7 @@ import com.Societe.ProjetFinalGroupe3.metier.Utilisateur;
 @CrossOrigin
 @RestController
 public class ConnexionController {
-	@Autowired
+
 	Utilisateur u = new Utilisateur();
 
 	public Utilisateur getU() {
