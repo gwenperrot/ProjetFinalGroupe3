@@ -179,7 +179,7 @@ public class AdministrateurController {
 		
 	}
 		
-	@RequestMapping(value = "/attibuerLivreOeuvre " ,  method = RequestMethod.GET)
+	@RequestMapping(value = "/attibuerLivreOeuvre" ,  method = RequestMethod.GET)
 	public void attribuerLivreOeuvre(@RequestParam long idLivre,@RequestParam long idOeuvre) {
 		Livre l = service.getLivre(idLivre);
 		Oeuvre o = service.getOeuvre(idOeuvre);

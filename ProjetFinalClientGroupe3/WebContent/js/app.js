@@ -402,12 +402,14 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
     	console.log(reason);	
     });
 	
-	$scope.livre={}; 
+ 
 	$scope.validerLivre = function(response) {
-		alert($scope.livre.numInventaire);
+		alert("3"+$scope.livre.numInventaire);
 		if($scope.livre.idLivre==null){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveLivre", $scope.livre).then(function(data) {
+				
 				$scope.livre=data.data;
+				alert("1"+ $scope.livre.numInventaire+" "+$scope.livre.idLivre);
 				alert("ajouté à la bd");
 				
 				$http.get("http://localhost:8080/ProjetFinalGroupe3/attibuerLivreOeuvre", {params:{idLivre: $scope.livre.idLivre, idOeuvre: $scope.loeuvre}})
@@ -425,7 +427,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 			}else{
 				$http.post("http://localhost:8080/ProjetFinalGroupe3/updateLivre", $scope.livre).then(function(data) {
 					$scope.livre=data.data;
-					alert($scope.livre.idLivre);
+					alert("2"+$scope.livre.numInventaire);
 					alert("modifié");
 					
 					$http.get("http://localhost:8080/ProjetFinalGroupe3/attibuerLivreOeuvre", {params:{idLivre: $scope.livre.idLivre, idOeuvre: $scope.loeuvre}})
@@ -442,8 +444,6 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 				});			
 			}
 
-
-		
 
 			$scope.livre={};
 			$scope.varLivre="livre";
