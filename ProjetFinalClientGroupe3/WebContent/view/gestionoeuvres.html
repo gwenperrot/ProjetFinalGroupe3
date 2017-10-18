@@ -16,13 +16,13 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="titre">Titre :</label>
 				<div class="col-sm-10">
-				 <input type="text"class="form-control" name="titre" value= "{{oeuvre.titre}}" ng-model="oeuvre.titre"> 
+				 <input type="text"class="form-control" name="titre" value= "{{oeuvre.titre}}" ng-model="$root.oeuvre.titre"> 
 				</div>
 				</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="isbn">isbn :</label>
 				<div class="col-sm-10">
-				 <input type="text"class="form-control" name="isbn" value="{{oeuvre.isbn}}" ng-model="oeuvre.isbn"> 
+				 <input type="text"class="form-control" name="isbn" value="{{oeuvre.isbn}}" ng-model="$root.oeuvre.isbn"> 
 				</div>
 				</div>
 				 
@@ -59,7 +59,7 @@
 					<td>{{o.titre}}</td>
 					<td>{{o.lauteur.prenom}} {{o.lauteur.nom}}</td>
 					<td>{{o.nbLivreLibre}}</td>
-					<td><a ng-click="ajouterLivre(o)">Ajouter/Modifier un livre</a></td>
+					<td><a ng-click="ajouterLivre()">Ajouter/Modifier un livre</a></td>
 					<td><a ng-click="editerOeuvre(o.idOeuvre)">Editer</a></td>
 					<td><a ng-click="supprimerOeuvre(o.idOeuvre)">Supprimer</a></td>
 				</tr>
@@ -71,7 +71,6 @@
 		<div ng-switch-when="livre">
 			<h3>Ajouter un livre</h3>
 			
-			 Oeuvre: {{o.titre}}, Auteur: {{prenomAuteur}} {{nomAuteur}}
 			<form class="form-horizontal">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="num"> Numéro d'inventaire:</label>
@@ -95,7 +94,7 @@
 				 <label class="control-label col-sm-2">Oeuvre :</label>
 				 <select class="col-sm-4" id="select1" ng-model="$root.loeuvre" >
 				 	
-				 	<option ng-repeat="oe in oeuvres" value="{{oe.idOeuvre}}">{{oe.titre}}</option>
+				 	<option ng-repeat="oe in oeuvres" value="{{oe.idOeuvre}}" >{{oe.titre}}</option>
 					
 				</select>
 				
