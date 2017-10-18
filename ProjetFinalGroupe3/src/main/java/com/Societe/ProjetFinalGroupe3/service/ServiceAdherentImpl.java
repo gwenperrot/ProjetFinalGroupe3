@@ -11,6 +11,7 @@ import com.Societe.ProjetFinalGroupe3.dao.LivreAdherentDAO;
 import com.Societe.ProjetFinalGroupe3.dao.LivreDAO;
 import com.Societe.ProjetFinalGroupe3.dao.OeuvreAdherentDAO;
 import com.Societe.ProjetFinalGroupe3.dao.OeuvreDAO;
+import com.Societe.ProjetFinalGroupe3.dao.UtilisateurDAO;
 import com.Societe.ProjetFinalGroupe3.metier.Adherent;
 import com.Societe.ProjetFinalGroupe3.metier.Auteur;
 import com.Societe.ProjetFinalGroupe3.metier.Livre;
@@ -18,6 +19,7 @@ import com.Societe.ProjetFinalGroupe3.metier.LivreAdherent;
 import com.Societe.ProjetFinalGroupe3.metier.LivreAdherentId;
 import com.Societe.ProjetFinalGroupe3.metier.Oeuvre;
 import com.Societe.ProjetFinalGroupe3.metier.OeuvreAdherent;
+import com.Societe.ProjetFinalGroupe3.metier.Utilisateur;
 @Service
 public class ServiceAdherentImpl implements IServiceAdherent {
 	@Autowired
@@ -32,6 +34,8 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	OeuvreAdherentDAO oeuvreAdherentDAO;
 	@Autowired
 	AuteurDAO auteurDAO;
+	@Autowired
+	UtilisateurDAO utilisateurDAO;
 	
 	
 	
@@ -159,6 +163,12 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 		LivreAdherent la = new LivreAdherent(l, ad);
 		livreAdherentDAO.delete(la);;
 		
+	}
+
+
+	@Override
+	public Utilisateur rechercheByLogin(String login) {
+		return utilisateurDAO.rechercheByLogin(login);
 	}
 
 
