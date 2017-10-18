@@ -323,8 +323,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 	    });
 	};
 	$scope.validerOeuvre = function() {
-		alert($scope.oeuvre.titre);
-		alert($scope.oeuvre.idOeuvre);
+		alert($scope.oeuvre.titre+" "+$scope.lauteur);
 		if($scope.oeuvre.idOeuvre==null){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveOeuvre", $scope.oeuvre).then(function(data) {
 				$scope.oeuvre=data.data;
@@ -332,8 +331,11 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 				
 				$http.get("http://localhost:8080/ProjetFinalGroupe3/attibuerOeuvreAuteur", {params:{idOeuvre: $scope.oeuvre.idOeuvre, idAuteur: $scope.lauteur}})
 				.then(function(data) {
-					$scope.oeuvre=data.data;
 					alert("associé");
+					$scope.oeuvre={};
+					$route.reload();
+
+					$scope.varOeuvre="oeuvre";
 				}).catch(function(reason) {
 					alert("Pas associé");
 					console.log(reason);
@@ -350,8 +352,11 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 					
 					$http.get("http://localhost:8080/ProjetFinalGroupe3/attibuerOeuvreAuteur", {params:{idOeuvre: $scope.oeuvre.idOeuvre, idAuteur: $scope.lauteur}})
 					.then(function(data) {
-						$scope.oeuvre=data.data;
 						alert("associé");
+						$scope.oeuvre={};
+						$route.reload();
+
+						$scope.varOeuvre="oeuvre";
 					}).catch(function(reason) {
 						alert("Pas associé");
 						console.log(reason);
@@ -361,14 +366,9 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 					console.log(reason);
 				});			
 			}
-
-		
-
-			$scope.oeuvre={};
-			$scope.varOeuvre="oeuvre";
 		};
 		$scope.editerOeuvre = function(idOeuvre) {
-			$http.post("http://localhost:8080/ProjetFinalGroupe3/getOeuvre", idOeuvre).then(function(response) {
+			$http.post("http://localhost:8080/ProjetFinalGroupe3/getOeuvre",idOeuvre).then(function(response) {
 		        $scope.oeuvre = response.data;
 		    }).catch(function(reason) {
 
@@ -403,7 +403,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
     });
 	
  
-	$scope.validerLivre = function(response) {
+	$scope.validerLivre = function() {
 		alert("3"+$scope.livre.numInventaire);
 		if($scope.livre.idLivre==null){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveLivre", $scope.livre).then(function(data) {
@@ -450,6 +450,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 		
 	};
 	$scope.editerLivre = function(idLivre) {
+		alert(idLivre);
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/getLivre", idLivre).then(function(response) {
 	        $scope.livre = response.data;
 	    }).catch(function(reason) {

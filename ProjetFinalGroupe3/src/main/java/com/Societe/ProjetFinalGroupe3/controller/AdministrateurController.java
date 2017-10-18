@@ -56,7 +56,7 @@ public class AdministrateurController {
 	}
 	
 	@RequestMapping(value = "/deleteAuteur", method = RequestMethod.POST)
-	public void deleteAuteur(long idAuteur) {
+	public void deleteAuteur(@RequestBody long idAuteur) {
 		service.deleteAuteur(idAuteur);
 	}
 	
