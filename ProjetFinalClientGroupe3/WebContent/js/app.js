@@ -450,7 +450,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 		
 	};
 	$scope.editerLivre = function(idLivre) {
-		$http.get("http://localhost:8080/ProjetFinalGroupe3/getLivre").then(function(response) {
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/getLivre", idLivre).then(function(response) {
 	        $scope.livre = response.data;
 	    }).catch(function(reason) {
 
@@ -459,7 +459,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 	    });
 	};
 	$scope.supprimerLivre = function(idLivre) {
-		$http.post("http://localhost:8080/ProjetFinalGroupe3/deleteLivre",idLivre).then(function(response) {
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/deleteLivre", idLivre).then(function(response) {
 			alert("supprimé");
 			$route.reload();
 	    }).catch(function(reason) {
