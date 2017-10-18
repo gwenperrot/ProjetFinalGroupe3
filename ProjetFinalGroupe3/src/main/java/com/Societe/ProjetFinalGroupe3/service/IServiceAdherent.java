@@ -6,6 +6,7 @@ import com.Societe.ProjetFinalGroupe3.metier.Adherent;
 import com.Societe.ProjetFinalGroupe3.metier.Auteur;
 import com.Societe.ProjetFinalGroupe3.metier.Livre;
 import com.Societe.ProjetFinalGroupe3.metier.Oeuvre;
+import com.Societe.ProjetFinalGroupe3.metier.Utilisateur;
 
 public interface IServiceAdherent {
 
@@ -20,6 +21,7 @@ public interface IServiceAdherent {
 	public void emprunter(Livre l, Adherent ad);
 	public void reserver(Oeuvre o, Adherent ad);
 	public void retour(Livre l, Adherent ad);
+	public Utilisateur rechercheByLogin(String login);
 
 	
 }
