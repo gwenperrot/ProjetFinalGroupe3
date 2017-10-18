@@ -94,8 +94,8 @@ app.controller("creerCompteCtrl", function($scope,$http) {
 });
 // définition du controller de la page modifierCompte
 app.controller("modifierCompteCtrl", function($scope,$http) {
-
-	$http.post("http://localhost:8080/ProjetFinalGroupe3/getAdherent", $scope.utilisateur.idUtilisateur).then(function(response) {
+	$scope.idUtilisateur="21";
+	$http.post("http://localhost:8080/ProjetFinalGroupe3/getAdherent", $scope.idUtilisateur).then(function(response) {
         $scope.adherent = response.data;
     }).catch(function(reason) {
 
@@ -444,12 +444,12 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 				});			
 			}
 
-
+			$route.reload();
 			$scope.livre={};
 			$scope.varLivre="livre";
 		
 	};
-	$scope.editerLivre = function() {
+	$scope.editerLivre = function(idLivre) {
 		$http.get("http://localhost:8080/ProjetFinalGroupe3/getLivre").then(function(response) {
 	        $scope.livre = response.data;
 	    }).catch(function(reason) {
@@ -458,8 +458,15 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 	    	console.log(reason);
 	    });
 	};
-	$scope.supprimerLivre = function() {
-		
+	$scope.supprimerLivre = function(idLivre) {
+		$http.post("http://localhost:8080/ProjetFinalGroupe3/deleteLivre",idLivre).then(function(response) {
+			alert("supprimé");
+			$route.reload();
+	    }).catch(function(reason) {
+
+	    	alert("Erreur récupération");
+	    	console.log(reason);
+	    });
 	};
 	
 });
