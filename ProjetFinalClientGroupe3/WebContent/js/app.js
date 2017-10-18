@@ -387,25 +387,35 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 		    });
 		};
 		
-	$scope.ajouterLivre = function(o) {
+	$scope.ajouterLivre = function() {
 		$scope.varOeuvre="livre";
-		alert(o.titre);
 		
 	};
+	
+	$http.get("http://localhost:8080/ProjetFinalGroupe3/allOeuvre")
+    .then(function(response) {
+        $scope.oeuvres = response.data;
+       
+    })
+    .catch (function(reason){
+    	alert("erreur de récupération des données");
+    	console.log(reason);	
+    });
+	
 	$scope.livre={}; 
 	$scope.validerLivre = function(response) {
-		alert("ok");
+		alert($scope.livre.numInventaire);
 		if($scope.livre.idLivre==null){
-			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveLivre", $scope.livre).then(function(response) {
-				$scope.livre=response.data;
+			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveLivre", $scope.livre).then(function(data) {
+				$scope.livre=data.data;
 				alert("ajouté à la bd");
 				
 				$http.get("http://localhost:8080/ProjetFinalGroupe3/attibuerLivreOeuvre", {params:{idLivre: $scope.livre.idLivre, idOeuvre: $scope.loeuvre}})
-				.then(function(response) {
-					$scope.livre=response.data;
+				.then(function(data) {
+					$scope.livre=data.data;
 					alert("associé");
 				}).catch(function(reason) {
-					alert("Pas associé");
+					alert("Pas associé1");
 					console.log(reason);
 				});
 			}).catch(function(reason) {
@@ -413,17 +423,17 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 				console.log(reason);
 			});
 			}else{
-				$http.post("http://localhost:8080/ProjetFinalGroupe3/updateLivre", $scope.livre).then(function(response) {
-					$scope.livre=response.data;
+				$http.post("http://localhost:8080/ProjetFinalGroupe3/updateLivre", $scope.livre).then(function(data) {
+					$scope.livre=data.data;
 					alert($scope.livre.idLivre);
 					alert("modifié");
 					
 					$http.get("http://localhost:8080/ProjetFinalGroupe3/attibuerLivreOeuvre", {params:{idLivre: $scope.livre.idLivre, idOeuvre: $scope.loeuvre}})
-					.then(function(response) {
-						$scope.livre=response.data;
+					.then(function(data) {
+						$scope.livre=data.data;
 						alert("associé");
 					}).catch(function(reason) {
-						alert("Pas associé");
+						alert("Pas associé2");
 						console.log(reason);
 					});
 				}).catch(function(reason) {
@@ -431,6 +441,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 					console.log(reason);
 				});			
 			}
+
 
 		
 
