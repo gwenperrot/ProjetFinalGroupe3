@@ -42,7 +42,6 @@ public class ConnexionController {
 	@RequestMapping(value = "/connexion", method = RequestMethod.GET)
 	public Utilisateur connexion(@RequestParam String login,@RequestParam String mdp) {
 		u = service.rechercheByLogin(login);
-
 		
 		if (u != null && u.getMdp().equals(mdp)) {		
 				return u;
