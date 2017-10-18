@@ -94,8 +94,8 @@ app.controller("creerCompteCtrl", function($scope,$http) {
 });
 // définition du controller de la page modifierCompte
 app.controller("modifierCompteCtrl", function($scope,$http) {
-	$scope.idUtilisateur="21";
-	$http.post("http://localhost:8080/ProjetFinalGroupe3/getAdherent", $scope.idUtilisateur).then(function(response) {
+
+	$http.post("http://localhost:8080/ProjetFinalGroupe3/getAdherent", $scope.utilisateur.idUtilisateur).then(function(response) {
         $scope.adherent = response.data;
     }).catch(function(reason) {
 
