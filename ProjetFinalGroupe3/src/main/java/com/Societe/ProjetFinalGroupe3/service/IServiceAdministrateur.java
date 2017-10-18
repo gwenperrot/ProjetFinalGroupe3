@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.Societe.ProjetFinalGroupe3.dao.AdministrateurDAO;
 import com.Societe.ProjetFinalGroupe3.metier.Adherent;
+import com.Societe.ProjetFinalGroupe3.metier.Administrateur;
 import com.Societe.ProjetFinalGroupe3.metier.Auteur;
 import com.Societe.ProjetFinalGroupe3.metier.Livre;
 import com.Societe.ProjetFinalGroupe3.metier.Oeuvre;
@@ -34,11 +35,19 @@ public interface IServiceAdministrateur {
 		public List<Livre> findAllLivre();
 		public void deleteLivre(long idLivre);
 		
+		public Administrateur createAdministrateur(Administrateur admin);
+		public Administrateur updateAdministrateur(Administrateur admin);
+		public Administrateur getAdministrateur(long idadmin);
+		public void deleteAdministrateur(long idadmin);
+		List<Administrateur> findAllAdministrateur();
+		
+		
 		public List<Oeuvre> rechercherParMC(String mc);
 		public List<Auteur> rechercherParAuteur(String auteur);
 		public List<Oeuvre> rechercheParOeuvre(String oeuvre);
 	//	public List<Adherent> rechercherParId(long idAdherent);
 		public List<Oeuvre> findByTitre(String titre);
+		
 		
 		public void attribuerLivreOeuvre(Livre l , Oeuvre o );
 		public void attribuerOeuvreAuteur(Oeuvre o, Auteur a);

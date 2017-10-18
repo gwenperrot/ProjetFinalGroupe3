@@ -12,6 +12,7 @@ import com.Societe.ProjetFinalGroupe3.dao.LivreDAO;
 import com.Societe.ProjetFinalGroupe3.dao.OeuvreDAO;
 import com.Societe.ProjetFinalGroupe3.dao.UtilisateurDAO;
 import com.Societe.ProjetFinalGroupe3.metier.Adherent;
+import com.Societe.ProjetFinalGroupe3.metier.Administrateur;
 import com.Societe.ProjetFinalGroupe3.metier.Auteur;
 import com.Societe.ProjetFinalGroupe3.metier.Livre;
 import com.Societe.ProjetFinalGroupe3.metier.LivreAdherent;
@@ -246,6 +247,37 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	@Override
 	public String rechercherType(Utilisateur u) {
 		return utilisateurDAO.rechercherType(u);
+	}
+	
+	//CRUD Administrateur
+
+	@Override
+	public Administrateur createAdministrateur(Administrateur admin) {
+
+		return administrateurDAO.save(admin);
+	}
+
+	@Override
+	public Administrateur updateAdministrateur(Administrateur admin) {
+
+		return administrateurDAO.saveAndFlush(admin);
+	}
+
+	@Override
+	public Administrateur getAdministrateur(long idadmin) {
+				return administrateurDAO.findById(idadmin).get();
+	}
+
+	@Override
+	public void deleteAdministrateur(long idadmin) {
+
+		 administrateurDAO.deleteById(idadmin);;
+	}
+
+	@Override
+	public List<Administrateur> findAllAdministrateur() {
+		
+		return administrateurDAO.findAll();
 	}
 
 	
