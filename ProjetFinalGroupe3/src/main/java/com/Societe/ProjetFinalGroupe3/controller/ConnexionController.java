@@ -40,22 +40,14 @@ public class ConnexionController {
 	}
 
 	@RequestMapping(value = "/connexion", method = RequestMethod.GET)
-	public String connexion(@RequestParam String login,@RequestParam String mdp) {
+	public Utilisateur connexion(@RequestParam String login,@RequestParam String mdp) {
 		u = service.rechercheByLogin(login);
-		if (u != null && u.getMdp().equals(mdp)) {
-			
-			if (service.rechercherType(u).equals("Adherent")){
-				return "adherent";
-			}
-			else if (service.rechercherType(u).equals("Administrateur")){
-				return "admin";
-			}
-			else {
-				return "Erreur contacter Admin";
-			}
-				
-		} else {
-			return "visiteur";
+
+		
+		if (u != null && u.getMdp().equals(mdp)) {		
+				return u;
+		} else {			
+			return null;
 		}
 		
 
