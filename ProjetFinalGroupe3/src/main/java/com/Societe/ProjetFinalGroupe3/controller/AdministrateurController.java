@@ -128,7 +128,7 @@ public class AdministrateurController {
 		return service.createLivre(l);
 	}
 
-	@RequestMapping(value = "/updateLivre l", method = RequestMethod.POST)
+	@RequestMapping(value = "/updateLivre", method = RequestMethod.POST)
 	public Livre updateLivre(@RequestBody Livre l) {
 		
 		return service.updateLivre(l);
