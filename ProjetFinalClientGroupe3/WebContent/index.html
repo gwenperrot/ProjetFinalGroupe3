@@ -35,10 +35,10 @@
 				<!-- Containeur gauche contenant les fonctionnalités  -->
 				<div id="fonctionnalite" class="col-sm-2 sidenav">
 					<div ng-switch="typeUtilisateur">
-						<div ng-switch-when="admin">
+						<div ng-switch-when="Administrateur">
 							<div ng-include=" 'view/navigationadmin.html' "></div>
 						</div>
-						<div ng-switch-when="adherent">
+						<div ng-switch-when="Adherent">
 							<div ng-include=" 'view/navigationadherent.html' "></div>
 						</div>
 						<div ng-switch-default="visiteur">
