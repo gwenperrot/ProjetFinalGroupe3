@@ -389,22 +389,14 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 		    });
 		};
 		
-		$http.get("http://localhost:8080/ProjetFinalGroupe3/allOeuvres")
-	    .then(function(response) {
-	        $scope.oeuvres = response.data;
-	       
-	    })
-	    .catch (function(reason){
-	    	alert("erreur de récupération des données");
-	    	console.log(reason);	
-	    });
-		
-	$scope.ajouterLivre = function() {
+	$scope.ajouterLivre = function(o) {
 		$scope.varOeuvre="livre";
+		alert(o.titre);
+		
 	};
 	$scope.livre={}; 
-	$scope.validerLivre = function() {
-		alert("");
+	$scope.validerLivre = function(response) {
+		alert("ok");
 		if($scope.livre.idLivre==null){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveLivre", $scope.livre).then(function(response) {
 				$scope.livre=response.data;
@@ -547,7 +539,7 @@ app.controller("allOeuvresCtrl",function($scope, $http){
 app.controller("allLivresCtrl",function($scope, $http){
 	$http.get("http://localhost:8080/ProjetFinalGroupe3/allLivre")
     .then(function(response) {
-        $scope.oeuvres = response.data;
+        $scope.livres = response.data;
        
     })
     .catch (function(reason){
