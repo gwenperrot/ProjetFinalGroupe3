@@ -242,11 +242,7 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 		
 	}
 	
-	@Override
-	public Utilisateur rechercheByMdp(String mdp) {
-		return utilisateurDAO.rechercheByMdp(mdp);
-		
-	}
+
 	@Override
 	public String rechercherType(Utilisateur u) {
 		return utilisateurDAO.rechercherType(u);

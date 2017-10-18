@@ -15,8 +15,7 @@ public interface UtilisateurDAO extends JpaRepository<Utilisateur, Long> {
 	List<Utilisateur>findByLogin(String Login);
 	@Query("select u from Utilisateur u where u.login like :l")
 	Utilisateur rechercheByLogin (@Param ("l") String login );
-	@Query("select u from Utilisateur u where u.mdp like :m")
-	Utilisateur rechercheByMdp (@Param ("m") String mdp );
+
 	
 	
 	@Query("select u.TYPE_Utilisateur from Utilisateur u where u like :p")

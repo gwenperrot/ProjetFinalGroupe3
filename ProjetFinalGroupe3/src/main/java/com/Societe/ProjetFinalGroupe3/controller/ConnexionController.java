@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Societe.ProjetFinalGroupe3.metier.Utilisateur;
@@ -38,10 +39,11 @@ public class ConnexionController {
 		this.u = u;
 	}
 
-	@RequestMapping(value = "/connexion", method = RequestMethod.POST)
-	public String connexion(@RequestBody String login,@RequestBody String mdp) {
-		if (service.rechercheByLogin(login) != null && service.rechercheByMdp(mdp) !=null) {
-			u = service.rechercheByLogin(login);
+	@RequestMapping(value = "/connexion", method = RequestMethod.GET)
+	public String connexion(@RequestParam String login,@RequestParam String mdp) {
+		u = service.rechercheByLogin(login);
+		if (u != null && u.getMdp().equals(mdp)) {
+			
 			if (service.rechercherType(u).equals("Adherent")){
 				return "adherent";
 			}
