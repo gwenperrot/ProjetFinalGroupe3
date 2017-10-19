@@ -15,7 +15,8 @@ import com.Societe.ProjetFinalGroupe3.metier.Oeuvre;
 import com.Societe.ProjetFinalGroupe3.service.IServiceAdministrateur;
 import com.Societe.ProjetFinalGroupe3.service.ServiceAdministrateurImpl;
 
-
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = {"webapp/WEB-INF/web.xml"})
 public class TestAdmin {
 	@Autowired
 	AdherentDAO adherentDAO;

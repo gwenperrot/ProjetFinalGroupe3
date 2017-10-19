@@ -1,6 +1,7 @@
 package com.Societe.ProjetFinalGroupe3.Tests;
 
 import org.junit.Ignore;
+
 import org.junit.Test;
 
 import com.Societe.ProjetFinalGroupe3.metier.Adherent;
@@ -9,6 +10,8 @@ import com.Societe.ProjetFinalGroupe3.metier.LivreAdherent;
 import com.Societe.ProjetFinalGroupe3.service.IServiceAdherent;
 import com.Societe.ProjetFinalGroupe3.service.ServiceAdherentImpl;
 
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = {"webapp/WEB-INF/web.xml"})
 public class TestAdherent {
 	Adherent adherent = new Adherent ();
 	IServiceAdherent serviceAdherent = new ServiceAdherentImpl();
