@@ -6,20 +6,26 @@
 <link rel="styleSheet" type="text/css" href="../css/bootstrap.min.css" />
 <link rel="styleSheet" type="text/css" href="../css/style.css" />
 </head>
-
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse" style="background-color: #2F5E35;">
   <div class="container-fluid">
     <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
       <a class="navbar-brand" href="#">Ma Bibliothèque</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li><a href="#" ng-click="gestionAutres()">Home</a></li>
-      <li><a href="#!monCompte" ng-click="gestionAutres()">Mon compte</a></li>
-      <li><a href="#!mesReservations" ng-click="gestionAutres()">Mes réservations/Mes emprunts</a></li>
-      <li><a href="#" ng-click="seDeconnecter()">Déconnexion</a></li>
-    </ul>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#/index" ng-click="gestionAutres()">Home</a></li>
+      	<li><a href="#!monCompte" ng-click="gestionAutres()">Mon compte</a></li>
+      	<li><a href="#!mesReservations" ng-click="gestionAutres()">Mes réservations/Mes emprunts</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#!" ng-click="seDeconnecter()"><span class="glyphicon glyphicon-log-in"></span> Deconnexion</a></li>
+      </ul>
+    </div>
   </div>
 </nav>
-
-
 </html>

@@ -7,16 +7,18 @@
 	<div class="list-group navig">
 		<a href="#"class="list-group-item" ng-click="gestionAutres()">Rechercher</a>
 		<a href="#!gestionAdherents" class="list-group-item" ng-click="gestionAutres()">Gestion des adhérents</a>
-		<a href="" ng-click="gestionLivres()" class="list-group-item">Gestion des livres</a>
-		<div  ng-switch="varGestionLivres">
-			
-			<div ng-switch-default="vide"></div>
-			<div ng-switch-when="liens">
-				<a href="#!gestionAuteurs"  class="list-group-item" ng-click="gererAuteurs()">Gestion des auteurs</a> 
-				<a href="#!gestionOeuvres"  class="list-group-item" ng-click="gererOeuvres()">Gestion des oeuvres</a>
-			</div>
-		</div>
-		<a href="#!gestionReservations" class="list-group-item" ng-click="gestionAutres()">Reservations/Emprunts</a>
+		
+		<div class="dropdown">
+		<a href="" ng-click="gestionLivres()" class="list-group-item dropdown-toggle" data-toggle="dropdown">Gestion des livres <span class="caret"></span></a>
+			<div  ng-switch="varGestionLivres">
+				<div ng-switch-default="vide"></div>
+				<div ng-switch-when="liens">
+      			<a href="#!gestionAuteurs"  class="list-group-item" ng-click="gererAuteurs()">Gestion des auteurs</a>
+      			<a href="#!gestionOeuvres"  class="list-group-item" ng-click="gererOeuvres()">Gestion des oeuvres</a>
+   		 </div></div>
+		
+
+		<!--  <a href="#!gestionReservations" class="list-group-item" ng-click="gestionAutres()">Reservations/Emprunts</a>-->
 
 </div>
 </html>

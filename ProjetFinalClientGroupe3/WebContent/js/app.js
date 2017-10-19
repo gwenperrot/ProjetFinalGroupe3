@@ -36,24 +36,38 @@ app.config(function($routeProvider) {
 });
 //définition du crontroller de la page index
 app.controller("indexCtrl", function($scope,$http) {
-
+	$scope.showMe2 = true;
 	$scope.seConnecter = function() {
+		
 		$http.get("http://localhost:8080/ProjetFinalGroupe3/connexion", {params:{login: $scope.login, mdp: $scope.mdp}}).then(function(value) {
-
 			$scope.utilisateur=value.data;
 			$scope.varConnecte = "connecte";
 			$scope.typeUtilisateur=$scope.utilisateur.type_Utilisateur;
+			$scope.idUtilisateur=$scope.utilisateur.idUtilisateur;
 			alert("connecté");
+			$scope.showMe2 = false;
+			$scope.hideMe = false;
 		}).catch(function(reason) {
 			alert("erreur de connexion");
 			console.log(reason);
 		});
 
 
-	};
+	}
+	
+	$scope.showMe = false;
+	$scope.hideMe = false;
+    $scope.showFunc = function() {
+        $scope.showMe = !$scope.showMe;
+        $scope.hideMe = !$scope.hideMe;
+    };
+    
+	
 	$scope.seDeconnecter = function() {
 		$scope.varConnecte = "deconnecte";
 		$scope.typeUtilisateur = "visiteur";
+		$scope.showMe2 = true;
+		$scope.hideMe = true;
 	};
 
 
@@ -94,7 +108,7 @@ app.controller("creerCompteCtrl", function($scope,$http) {
 });
 //définition du controller de la page modifierCompte
 app.controller("modifierCompteCtrl", function($scope,$http) {
-	$scope.idUtilisateur="21";
+
 	$http.post("http://localhost:8080/ProjetFinalGroupe3/getAdherent", $scope.idUtilisateur).then(function(response) {
 		$scope.adherent = response.data;
 	}).catch(function(reason) {
