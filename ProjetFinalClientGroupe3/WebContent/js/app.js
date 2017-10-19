@@ -96,9 +96,9 @@ app.controller("creerCompteCtrl", function($scope,$http) {
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAdherent", $scope.adherent).then(function(value) {
 			alert($scope.adherent.nom);
 			$scope.adherent=value;
-			alert("ajouté à la bd");
+			
 		}).catch(function(reason) {
-			alert("Pas ajouté, erreur");
+			alert("Erreur");
 			console.log(reason);
 		});
 
@@ -125,7 +125,7 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
 			alert("modifié");
 		}).catch(function(reason) {
-			alert("Pas ajouté, erreur");
+			alert("Erreur");
 			console.log(reason);
 		});
 		$scope.varNom = "afficherNom";
@@ -136,9 +136,9 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 	};
 	$scope.changerPrenom = function() {
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
-			alert("modifié");
+			
 		}).catch(function(reason) {
-			alert("Pas ajouté, erreur");
+			alert("Erreur");
 			console.log(reason);
 		});
 		$scope.varPrenom = "afficherPrenom";
@@ -149,9 +149,9 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 	};
 	$scope.changerTel = function() {
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
-			alert("modifié");
+			
 		}).catch(function(reason) {
-			alert("Pas ajouté, erreur");
+			alert("Erreur");
 			console.log(reason);
 		});
 		$scope.varTel = "afficherTel";
@@ -162,9 +162,9 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 	};
 	$scope.changerVille = function() {
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
-			alert("modifié");
+			
 		}).catch(function(reason) {
-			alert("Pas ajouté, erreur");
+			alert("Erreur");
 			console.log(reason);
 		});
 		$scope.varVille = "afficherVille";
@@ -175,9 +175,9 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 	};
 	$scope.changerCodePostal = function() {
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
-			alert("modifié");
+			
 		}).catch(function(reason) {
-			alert("Pas ajouté, erreur");
+			alert("Erreur");
 			console.log(reason);
 		});
 		$scope.varCodePostal = "afficherCodePostal";
@@ -187,9 +187,9 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 	};
 	$scope.changerLogin = function() {
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
-			alert("modifié");
+			
 		}).catch(function(reason) {
-			alert("Pas ajouté, erreur");
+			alert("Erreur");
 			console.log(reason);
 		});
 		$scope.varLogin = "afficherLogin";
@@ -226,7 +226,7 @@ app.controller("rechercheLivreCtrl", function($scope,$http) {
 			})
 			break;
 		default:
-			alert("erreur");
+			alert("Erreur");
 		break;
 		}
 	};
@@ -247,17 +247,17 @@ app.controller("gestionAdherentsCtrl", function($scope,$http,$route) {
 		if($scope.adherent.idUtilisateur==null){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAdherent", $scope.adherent).then(function(data) {
 				$scope.adherent=data;
-				alert("ajouté à la bd");
+				
 			}).catch(function(reason) {
-				alert("Pas ajouté, erreur");
+				alert("Erreur");
 				console.log(reason);
 			});
 		}else{
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
 				$scope.adherent=data;
-				alert("modifié");
+				
 			}).catch(function(reason) {
-				alert("Pas ajouté, erreur");
+				alert("Erreur");
 				console.log(reason);
 			});
 		};
@@ -300,7 +300,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 		if($scope.auteur.idAuteur==null){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAuteur", $scope.auteur).then(function(data) {
 				$scope.auteur=data;
-				alert("ajouté à la bd");
+				
 			}).catch(function(reason) {
 				alert("Pas ajouté, erreur");
 				console.log(reason);
@@ -308,7 +308,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 		}else{
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAuteur", $scope.auteur).then(function(data) {
 				$scope.auteur=data;
-				alert("ajouté à la bd");
+				
 			}).catch(function(reason) {
 				alert("Pas ajouté, erreur");
 				console.log(reason);
@@ -337,46 +337,46 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 		});
 	};
 	$scope.validerOeuvre = function() {
-		alert($scope.oeuvre.titre+" "+$scope.lauteur);
+		
 		if($scope.oeuvre.idOeuvre==null){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveOeuvre", $scope.oeuvre).then(function(data) {
 				$scope.oeuvre=data.data;
-				alert("ajouté à la bd");
+				
 
 				$http.get("http://localhost:8080/ProjetFinalGroupe3/attibuerOeuvreAuteur", {params:{idOeuvre: $scope.oeuvre.idOeuvre, idAuteur: $scope.lauteur}})
 				.then(function(data) {
-					alert("associé");
+					
 					$scope.oeuvre={};
 					$route.reload();
 
 					$scope.varOeuvre="oeuvre";
 				}).catch(function(reason) {
-					alert("Pas associé");
+					
 					console.log(reason);
 				});
 			}).catch(function(reason) {
-				alert("Pas ajouté, erreur");
+				alert("Erreur");
 				console.log(reason);
 			});
 		}else{
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/updateOeuvre", $scope.oeuvre).then(function(data) {
 				$scope.oeuvre=data.data;
 				alert($scope.oeuvre.idOeuvre);
-				alert("modifié");
+				alert("Modifié");
 
 				$http.get("http://localhost:8080/ProjetFinalGroupe3/attibuerOeuvreAuteur", {params:{idOeuvre: $scope.oeuvre.idOeuvre, idAuteur: $scope.lauteur}})
 				.then(function(data) {
-					alert("associé");
+					
 					$scope.oeuvre={};
 					$route.reload();
 
 					$scope.varOeuvre="oeuvre";
 				}).catch(function(reason) {
-					alert("Pas associé");
+					
 					console.log(reason);
 				});
 			}).catch(function(reason) {
-				alert("Pas ajouté, erreur");
+				alert("Erreur");
 				console.log(reason);
 			});			
 		}
@@ -392,7 +392,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 	};
 	$scope.supprimerOeuvre = function(idOeuvre) {
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/deleteOeuvre",idOeuvre).then(function(response) {
-			alert("supprimé");
+			alert("Supprimé");
 			$route.reload();
 		}).catch(function(reason) {
 
@@ -427,28 +427,27 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveLivre", $scope.livre).then(function(data) {
 
 				$scope.livre=data.data;
-				alert("1"+ $scope.livre.numInventaire+" "+$scope.livre.idLivre);
-				alert("ajouté à la bd");
+				
 
 				$http.get("http://localhost:8080/ProjetFinalGroupe3/attibuerLivreOeuvre", {params:{idLivre: $scope.livre.idLivre, idOeuvre: $scope.loeuvre}})
 				.then(function(data) {
 					$scope.livre=data.data;
-					alert("associé");
+					
 				}).catch(function(reason) {
-					alert("Pas associé1");
+					
 					console.log(reason);
 				});
 			}).catch(function(reason) {
-				alert("Pas ajouté, erreur");
+				alert("Erreur");
 				console.log(reason);
 			});
 		}else{
 			
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/updateLivre", {params:{l: $scope.livre, etatPrecedent: $scope.etatPrecedent}}).then(function(data) {
 				$scope.livre=data.data;
-				alert("modifié");
+				
 			}).catch(function(reason) {
-				alert("Pas modifié, erreur");
+				alert("Erreur");
 				console.log(reason);
 			});			
 		}
@@ -472,7 +471,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 	};
 	$scope.supprimerLivre = function(idLivre) {
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/deleteLivre", idLivre).then(function(response) {
-			alert("supprimé");
+			alert("Supprimé");
 			$route.reload();
 		}).catch(function(reason) {
 

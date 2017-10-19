@@ -12,15 +12,22 @@
 			<div ng-switch-default="afficherNom">
 				<label class="control-label" for="nom">Nom :</label>
 				 {{adherent.nom}} <a ng-click="modifierNom()">Editer</a>
-			</div>
+			</div> 
 			<div ng-switch-when="modifierNom">
+			
+			<div>
 				<form class="form-horizontal" action="#!monCompte">
-					<div class="col-sm-8">
+					<div class="row">
+					<div class="col-sm-8 col-sm-offset-1">
+					<div class="form-group">
 					<label class="control-label" for="prenom">Nom :</label>
 					<input type="text" class="form-control" value="adherent.nom" name="nom" ng-model="adherent.nom">
 				</div>
-				<div class="col-sm-4">
+				
+				<div class="col-sm-3">
 					<button class="btn btn-default" ng-click="changerNom()">Valider</button>
+				</div>
+				</div>
 				</div>
 				</form>
 			</div>
@@ -36,13 +43,15 @@
 		</div>
 		<div ng-switch-when="modifierPrenom">
 		<form class="form-horizontal" action="#!monCompte">
-			<div class="col-sm-8">
+			<div class="row">
+					<div class="col-sm-8 col-sm-offset-1">
+					<div class="form-group">
 				<label class="control-label" for="prenom">Prenom :</label>
 				<input type="text" class="form-control" value="adherent.prenom" name="prenom" ng-model="adherent.prenom">
 				</div>
 				<div class="col-sm-4">
 				<button class="btn btn-default" ng-click="changerPrenom()">Valider</button>
-				</div>
+				</div></div></div>
 		</form>		
 		</div>
 	</div>
@@ -56,13 +65,15 @@
 		</div>
 		<div ng-switch-when="modifierTel">
 			<form class="form-horizontal" action="#!monCompte">
-				<div class="col-sm-8">
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-1">
+					<div class="form-group">
 				<label class="control-label" for="telephone">Téléphone :</label>
 				<input type="text" class="form-control" value="adherent.numTel" name="telephone" ng-model="adherent.numTel">
 				</div>
 				<div class="col-sm-4">
 				<button class="btn btn-default" ng-click="changerTel()">Valider</button>
-				</div>
+				</div></div></div>
 			</form>
 		</div>
 	</div>
@@ -75,13 +86,15 @@
 		</div>
 		<div ng-switch-when="modifierVille">
 			<form class="form-horizontal" action="#!monCompte">
-				<div class="col-sm-8">
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-1">
+					<div class="form-group">
 				<label class="control-label" for="ville">Ville :</label>
 				<input type="text" class="form-control" value="adherent.ville" name="ville" ng-model="adherent.ville">
 				</div>
 				<div class="col-sm-4">
 				<button  class="btn btn-default" ng-click="changerVille()">Valider</button>
-				</div>
+				</div></div></div>
 			</form>
 		</div>
 	</div>
@@ -94,13 +107,15 @@
 		</div>
 		<div ng-switch-when="modifierCodePostal">
 			<form class="form-horizontal" action="#!monCompte">
-			<div class="col-sm-8">
+			<div class="row">
+					<div class="col-sm-8 col-sm-offset-1">
+					<div class="form-group">
 				<label class="control-label" for="cp">Code postal :</label>
 				<input type="text" class="form-control" value="adherent.codePostal" name="cp" ng-model="adherent.codePostal">
 			</div>
 			<div class="col-sm-4">	
 				<button class="btn btn-default" ng-click="changerCodePostal()">Valider</button>
-			</div>	
+			</div></div></div>	
 			</form>
 		</div>
 	</div>
@@ -113,13 +128,15 @@
 		</div>
 		<div ng-switch-when="modifierLogin">
 			<form class="form-horizontal" action="#!monCompte">
-			<div class="col-sm-8">
+			<div class="row">
+					<div class="col-sm-8 col-sm-offset-1">
+					<div class="form-group">
 				<label class="control-label" for="login">Login :</label>
 				<input type="text" class="form-control" value="adherent.login" name="login" ng-model="adherent.login">
 			</div>
 			<div class="col-sm-4">	
 				<button class="btn btn-default" ng-click="changerLogin()">Valider</button>
-			</div>	
+			</div></div></div>	
 			</form>
 		</div>
 	</div>

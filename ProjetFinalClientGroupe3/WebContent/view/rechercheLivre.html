@@ -47,7 +47,7 @@
     		</thead>
     		<tbody>
       		<tr ng-repeat="o in oeuvres">
-        			<td>{{o.titre}}</td>
+        			<td>{{o.titre}}{{o.nom}}</td>
         			
         			<td><a ng-click="reserver()">Réserver</a></td>
         			<td><a ng-click="emprunter()">Emprunter</a></td>
