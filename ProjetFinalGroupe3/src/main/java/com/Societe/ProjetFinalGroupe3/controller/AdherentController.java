@@ -33,7 +33,7 @@ public class AdherentController {
 		this.service = service;
 	}
 
-	@RequestMapping(value = "/saveAdherent", method = RequestMethod.GET)
+	@RequestMapping(value = "/saveAdherent", method = RequestMethod.POST)
 	public void save(Adherent ad) {
 		String login = ad.getLogin();
 

@@ -230,6 +230,7 @@ public class ServiceAdministrateurImpl implements IServiceAdministrateur {
 	public void attribuerLivreOeuvre(Livre l, Oeuvre o) {
 			l.setLoeuvre(o);
 			livreDAO.saveAndFlush(l);
+			oeuvreDAO.saveAndFlush(o);
 			
 	}
 
