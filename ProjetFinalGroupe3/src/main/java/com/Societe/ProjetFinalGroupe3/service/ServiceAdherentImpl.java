@@ -146,9 +146,11 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	/*Methode d'emprunt et de reservation de livres*/
 	
 	@Override
-	public void emprunter(Livre l , Adherent ad) {
+	public void emprunter(Oeuvre o, Livre l , Adherent ad) {
 		LivreAdherent la = new LivreAdherent(l, ad);
 		livreAdherentDAO.save(la);	
+		livreDAO.saveAndFlush(l);
+		oeuvreDAO.saveAndFlush(o);
 	}
 	
 	@Override
@@ -161,7 +163,7 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	@Override
 	public void retour (Livre l, Adherent ad) {
 		LivreAdherent la = new LivreAdherent(l, ad);
-		livreAdherentDAO.delete(la);;
+		livreAdherentDAO.delete(la);
 		
 	}
 
@@ -179,4 +181,8 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 //	}
 //	
 
+	@Override
+	public Oeuvre getOeuvre(long idOeuvre) {
+		return 	oeuvreDAO.findById(idOeuvre).get();
+	}
 }

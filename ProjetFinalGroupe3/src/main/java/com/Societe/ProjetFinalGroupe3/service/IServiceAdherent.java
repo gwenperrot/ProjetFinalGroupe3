@@ -18,10 +18,12 @@ public interface IServiceAdherent {
 	public List<Oeuvre> rechercherParMC(String mc);
 	public List<Auteur> rechercherParAuteur(String a);
 	public List<Oeuvre> rechercheParOeuvre(String o);
-	public void emprunter(Livre l, Adherent ad);
+	public void emprunter(Oeuvre o, Livre l, Adherent ad);
 	public void reserver(Oeuvre o, Adherent ad);
 	public void retour(Livre l, Adherent ad);
 	public Utilisateur rechercheByLogin(String login);
+	public Oeuvre getOeuvre(long idOeuvre);
+	
 
 	
 }

@@ -1,6 +1,8 @@
 package com.Societe.ProjetFinalGroupe3.controller;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,9 +23,9 @@ public class AdherentController {
 	@Autowired
 	private IServiceAdherent service;
 
-	
+
 	/*CRUD adherent*/
-	
+
 
 	public IServiceAdherent getService() {
 		return service;
@@ -36,18 +38,18 @@ public class AdherentController {
 	@RequestMapping(value = "/saveAdherent", method = RequestMethod.GET)
 	public void save( Adherent ad ){
 		String login = ad.getLogin();
-		
+
 		if (service.rechercheByLogin(login) == null ){
 			service.createAdherent(ad);
 		}
-			
+
 	}
-		
+
 	@RequestMapping(value = "/updateAdherent",method = RequestMethod.POST)
 	public void updateAdherent(@RequestBody Adherent ad) {
 		String login = ad.getLogin();
 		if (service.rechercheByLogin(login) == null)
-		service.updateAdherent(ad);
+			service.updateAdherent(ad);
 	}
 
 	@RequestMapping(value = "/getAdherent", method = RequestMethod.POST)
@@ -59,54 +61,68 @@ public class AdherentController {
 	public List<Adherent> allAdherent() {
 		return service.findAllAdherent();
 	}
-	
+
 	@RequestMapping(value = "/deleteAdherent", method = RequestMethod.POST)
 	public void deleteAdherent(@RequestBody long idUtilisateur) {
 		service.deleteAdherent(idUtilisateur);
 	}
 
 	/*Methodes de recherche pour l'Adherent*/
-	
-	
+
+
 	@RequestMapping(value = "/livreParMC", method = RequestMethod.POST)
 	public List<Oeuvre> rechercherParMC(@RequestBody String mc) {
 		return service.rechercherParMC(mc);
 	}
-	
+
 	@RequestMapping(value = "/livreParAuteur",method = RequestMethod.POST)
 	public List<Auteur> rechercherParAuteur(@RequestBody String a) {
 		return service.rechercherParAuteur(a);
 	}
-	
+
 	@RequestMapping(value = "/parOeuvre",  method = RequestMethod.POST)
 	public List<Oeuvre> rechercherParOeuvre(@RequestBody String o ) {
 		return service.rechercheParOeuvre(o);
 	}
-	
-	
+
+
 	/*Methodes d'emprunt et de reservation pour l'Adherent*/
-	
+
 	@RequestMapping(value = "/emprunterReserver", method = RequestMethod.GET)
-	public void emprunter(Oeuvre o  , Adherent ad) {
-		Livre l = new Livre();
-		l.getIdLivre();
-		ad.getIdUtilisateur();
-		int nbs = o.getNbLivreLibre();
+	public void emprunter(long idOeuvre  , long idAdherent) {
 		
-			service.emprunter(l, ad);
-				nbs--;
+		Adherent ad;
+		Oeuvre o;
+		ad = service.getAdherent(idAdherent);
+		o = service.getOeuvre(idOeuvre);
+		int nbl = o.getNbLivreLibre();
 		
+		if(nbl>0) {
+		Set<Livre> livres = o.getLivres();
+		Livre l =  new Livre ();
+
+		Livre[] ls = (Livre[]) livres.toArray();
+		int t=0;
 		
-			
+			while(!ls[t].isDispo()) {
+				t++;
+			}
+			l=ls[t];
+			l.setDispo(false);
+			o.setNbLivreLibre(nbl--);
+			service.emprunter(o,l, ad);
+			}
+
+
 			service.reserver(o, ad);
-		
-	
+		}
+
+		@RequestMapping(value = "/retour", method = RequestMethod.POST) 
+		public void retour(Livre l , Adherent ad) {
+			Oeuvre o = l.getLoeuvre();
+			int nbl =  o.getNbLivreLibre();
+			service.retour(l, ad);
+			nbl++;
+
+		}
 	}
-	
-	@RequestMapping(value = "/retour", method = RequestMethod.POST) 
-	public void retour(Livre l , Adherent ad) {
-		Oeuvre o ;
-		service.retour(l, ad);
-		
-	}
-}
