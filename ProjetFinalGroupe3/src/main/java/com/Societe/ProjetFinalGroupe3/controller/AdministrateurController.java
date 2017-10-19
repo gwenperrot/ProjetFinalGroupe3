@@ -129,8 +129,16 @@ public class AdministrateurController {
 	}
 
 	@RequestMapping(value = "/updateLivre", method = RequestMethod.POST)
-	public Livre updateLivre(@RequestBody Livre l) {
+	public Livre updateLivre(@RequestParam Livre l,@RequestParam boolean etatPrecedent) {
 		
+		Oeuvre o = l.getLoeuvre();
+		
+		int nbl = o.getNbLivreLibre();	
+		
+		if(etatPrecedent && !l.isDispo()) {nbl--;}else if(!etatPrecedent && l.isDispo()){nbl++;}
+		o.setNbLivreLibre(nbl);
+		
+		service.updateOeuvre(o);
 		return service.updateLivre(l);
 	}
 
@@ -146,7 +154,23 @@ public class AdministrateurController {
 	
 	@RequestMapping(value = "/deleteLivre", method = RequestMethod.POST)
 	public void deleteLivre (@RequestBody long idLivre) {
+		Livre l = service.getLivre(idLivre);
+		Oeuvre o = l.getLoeuvre();
+		
+		int nbl = o.getNbLivreLibre();	
+		int nbc = o.getCompteur();
+		
+		
+		if(l.isDispo()) {nbl--;}
+		nbc--;
+		
+		o.setCompteur(nbc);
+		o.setNbLivreLibre(nbl);
+		
+		service.updateOeuvre(o);
 		service.deleteLivre(idLivre);
+		
+		
 	}
 	
 	/*Methodes de recherche pour l'administrateur*/
@@ -183,9 +207,17 @@ public class AdministrateurController {
 	public void attribuerLivreOeuvre(@RequestParam long idLivre,@RequestParam long idOeuvre) {
 		Livre l = service.getLivre(idLivre);
 		Oeuvre o = service.getOeuvre(idOeuvre);
-		//int nbs = o.getNbLivreLibre();
+	
+		int nbl = o.getNbLivreLibre();	
+		int nbc = o.getCompteur();
+		
+		nbc++;
+		if(l.isDispo()) {nbl++;}
+		
+		o.setCompteur(nbc);
+		o.setNbLivreLibre(nbl);
 		service.attribuerLivreOeuvre(l, o);
-		//nbs++;
+		
 	}
 	
 }

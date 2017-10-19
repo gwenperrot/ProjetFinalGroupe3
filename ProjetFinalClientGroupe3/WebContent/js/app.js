@@ -443,21 +443,12 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 				console.log(reason);
 			});
 		}else{
-			$http.post("http://localhost:8080/ProjetFinalGroupe3/updateLivre", $scope.livre).then(function(data) {
+			
+			$http.post("http://localhost:8080/ProjetFinalGroupe3/updateLivre", {params:{l: $scope.livre, etatPrecedent: $scope.etatPrecedent}}).then(function(data) {
 				$scope.livre=data.data;
-				alert("2"+$scope.livre.numInventaire);
 				alert("modifié");
-
-				$http.get("http://localhost:8080/ProjetFinalGroupe3/attibuerLivreOeuvre", {params:{idLivre: $scope.livre.idLivre, idOeuvre: $scope.loeuvre}})
-				.then(function(data) {
-					$scope.livre=data.data;
-					alert("associé");
-				}).catch(function(reason) {
-					alert("Pas associé2");
-					console.log(reason);
-				});
 			}).catch(function(reason) {
-				alert("Pas ajouté, erreur");
+				alert("Pas modifié, erreur");
 				console.log(reason);
 			});			
 		}
@@ -472,6 +463,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 		$scope.msg="Editer un livre";
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/getLivre", idLivre).then(function(response) {
 			$scope.livre = response.data;
+			$scope.etatPrecedent=$scope.livre.dispo;
 		}).catch(function(reason) {
 
 			alert("Erreur récupération");
