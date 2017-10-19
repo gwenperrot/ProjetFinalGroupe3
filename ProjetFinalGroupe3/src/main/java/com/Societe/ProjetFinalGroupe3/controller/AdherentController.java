@@ -34,7 +34,7 @@ public class AdherentController {
 	}
 
 	@RequestMapping(value = "/saveAdherent", method = RequestMethod.POST)
-	public void save(Adherent ad) {
+	public void save(@RequestBody Adherent ad) {
 		String login = ad.getLogin();
 
 		if (service.rechercheByLogin(login) == null) {
