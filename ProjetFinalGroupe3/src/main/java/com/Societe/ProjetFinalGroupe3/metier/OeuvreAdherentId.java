@@ -15,11 +15,11 @@ public class OeuvreAdherentId implements Serializable{
 /*
  * Clef compos�e d'une oeuvre et d'un adherent
  */
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="Oeuvre_Id")
 	private Oeuvre oeuvre;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="Adherent_Id")
 	private Adherent adherent;
 	

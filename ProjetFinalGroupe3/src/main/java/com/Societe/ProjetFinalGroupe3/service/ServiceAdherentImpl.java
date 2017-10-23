@@ -161,7 +161,9 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 
 
 	@Override
-	public void retour (Livre l, Adherent ad) {
+	public void retour (Long idLivre, Long idAdherent) {
+		Livre l= livreDAO.getOne(idLivre);
+		Adherent ad = adherentDAO.getOne(idAdherent);
 		LivreAdherent la = new LivreAdherent(l, ad);
 		livreAdherentDAO.delete(la);
 		
@@ -184,5 +186,40 @@ public class ServiceAdherentImpl implements IServiceAdherent {
 	@Override
 	public Oeuvre getOeuvre(long idOeuvre) {
 		return 	oeuvreDAO.findById(idOeuvre).get();
+	}
+
+
+	@Override
+	public List<LivreAdherent> findAllEmprunt() {
+		return livreAdherentDAO.findAll();
+	}
+
+
+	@Override
+	public List<LivreAdherent> findByIdAdherent(long idAdherent) {
+		
+		return livreAdherentDAO.findByAdherent(idAdherent);
+	}
+
+
+	@Override
+	public List<OeuvreAdherent> findAllResa() {
+		return oeuvreAdherentDAO.findAll();
+	}
+
+
+	@Override
+	public void annulation(Long idOeuvre, Long idAdherent) {
+		Oeuvre o= oeuvreDAO.getOne(idOeuvre);
+		Adherent ad = adherentDAO.getOne(idAdherent);
+		OeuvreAdherent oa = new OeuvreAdherent(o, ad);
+		oeuvreAdherentDAO.delete(oa);
+		
+	}
+
+
+	@Override
+	public List<OeuvreAdherent> findResaByIdAdherent(long idAdherent) {
+		return oeuvreAdherentDAO.findByAdherent(idAdherent);
 	}
 }

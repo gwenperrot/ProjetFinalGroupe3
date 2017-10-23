@@ -5,6 +5,8 @@ package com.Societe.ProjetFinalGroupe3.metier;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /*
  * Classe repr�sentant la table de jointure entre Oeuvre et Adherent
@@ -16,6 +18,7 @@ public class LivreAdherent{
 	 * D�claration de la clef compos�e
 	 *
 	 */
+	//@JsonIgnore
 	@EmbeddedId
 	private LivreAdherentId idLA;
 	
@@ -57,12 +60,6 @@ public class LivreAdherent{
 		this.numeroEmprunt = numeroEmprunt;
 	}
 
-
-
-
-
-
-	
 	
 
 }

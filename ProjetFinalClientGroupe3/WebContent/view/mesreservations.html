@@ -9,34 +9,36 @@
 
 <div >	
 	<!-- <h3>Mes réservations/Mes emprunts</h3> -->
+	<h3>Mes réservations</h3>
 	<table class="table table-striped">
 		<tr>
-			<th>Titre de l'oeuvre</th>
-			<th>numéro d'emprunt</th>
+			<th>Titre</th>
+			<th>Auteur</th>
+
 			<th></th>
 			
 		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td><a ng-click="annulerReservation()">Annuler/Rendre</a></td>
+		<tr ng-repeat="r in resas">
+			<td>{{r.idOA.oeuvre.titre}}</td>
+			<td>{{r.idOA.oeuvre.lauteur.prenom}} {{r.idOA.oeuvre.lauteur.nom}}</td>
+
+			<td><a ng-click="supprimerResas(r.idOA.oeuvre.idOeuvre)">Annuler</a></td>
 		</tr>
 	</table>
 </div>
 	
-<!-- 	<h3>Mes emprunts</h3>
+ 	<h3>Mes emprunts</h3>
 	<table class="table table-striped">
 		<tr>
-			<th>Oeuvre</th>
-			<th></th>
-			<th></th>
+			<th>Titre</th>
+			<th>Numéro d'inventaire</th>
 			<th></th>
 		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td><a ng-click="rendreEmprunt()">Rendre</a></td>
+		<tr ng-repeat="e in emprunts">
+			<td>{{e.idLA.livre.loeuvre.titre}}</td>
+			<td>{{e.idLA.livre.numInventaire}}</td>
+
 		</tr>
-	</table> -->
+	</table> 
 </div>
 </html>

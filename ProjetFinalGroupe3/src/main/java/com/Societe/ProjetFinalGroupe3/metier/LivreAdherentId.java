@@ -15,11 +15,11 @@ public class LivreAdherentId implements Serializable{
 /*
  * Clef compos�e d'une oeuvre et d'un adherent
  */
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="Livre_Id")
 	private Livre livre;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="ADHERENT_ID")
 	private Adherent adherent;
 	
@@ -35,11 +35,7 @@ public class LivreAdherentId implements Serializable{
 		this.adherent = adherent;
 	}
 	
-	/*
-	 * => 1 Id Compose(vol+CompagnieAerienne) 
-	 * peut contenir plusieurs Id vol
-	 */
-	
+
 
 		public Adherent getAdherent() {
 			return adherent;

@@ -8,7 +8,7 @@
 
 <h2>{{msg}}</h2>
 
-<div ng-switch="varReservation">
+<!--  <div ng-switch="varReservation">
 		<div ng-switch-default="recherche">
 			Rechercher un adhérent par: <select ng-model="typeRechercheEmprunt"><option
 					value="nom">Nom</option>
@@ -35,20 +35,40 @@
 		<div ng-switch-when="modifier">
 		
 		</div>
-	</div>
-	<h3>Liste des réservation</h3>
+	</div>-->
+	<h3>Liste des emprunts</h3>
 	<table class="table table-striped">
 		<tr>
-			<th>Bla</th>
-			<th>Bla</th>
-			<th></th>
+			<th>Titre</th>
+			<th>Numéro d'inventaire</th>
+			<th> Adhérent</th>
+			
 			<th></th>
 		</tr>
+		<tr ng-repeat="e in emprunts">
+			<td>{{e.idLA.livre.loeuvre.titre}}</td>
+			<td>{{e.idLA.livre.numInventaire}}</td>
+			<td>{{e.idLA.adherent.nom}} {{e.idLA.adherent.prenom}}</td>
+			<!-- <td><a ng-click="editerEmprunts()">Editer</a></td> -->
+			<td><a ng-click="supprimerEmprunts(e.idLA.livre.idLivre, e.idLA.adherent.idUtilisateur)">Supprimer</a></td>
+		</tr>
+	</table>
+	
+	<h3>Liste des réservations</h3>
+	<table class="table table-striped">
 		<tr>
-			<td>Blou</td>
-			<td>Blou</td>
-			<td><a ng-click="editerEmprunts()">Editer</a></td>
-			<td><a ng-click="supprimerEmprunts()">Supprimer</a></td>
+			<th>Titre</th>
+			<th>Auteur</th>
+			<th> Adhérent</th>
+			
+			<th></th>
+		</tr>
+		<tr ng-repeat="r in resas">
+			<td>{{r.idOA.oeuvre.titre}}</td>
+			<td>{{r.idOA.oeuvre.lauteur.prenom}} {{r.idOA.oeuvre.lauteur.nom}}</td>
+			<td>{{r.idOA.adherent.nom}} {{r.idOA.adherent.prenom}}</td>
+			<!-- <td><a ng-click="editerEmprunts()">Editer</a></td> -->
+			<td><a ng-click="supprimerResas(r.idOA.oeuvre.idOeuvre, r.idOA.adherent.idUtilisateur)">Annuler la réservation</a></td>
 		</tr>
 	</table>
 </div>

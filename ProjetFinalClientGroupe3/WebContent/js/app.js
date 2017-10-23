@@ -486,7 +486,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 	};
 
 });
-//définition du controller de la page gestionEmprunts
+/*//définition du controller de la page gestionEmprunts
 app.controller("gestionEmpruntsCtrl", function($scope) {
 	$scope.msg = "Emprunts";
 	$scope.adherent={};
@@ -500,18 +500,18 @@ app.controller("gestionEmpruntsCtrl", function($scope) {
 		});
 	};
 	$scope.editerEmprunts = function(){
-
+		alert("reservation2"); 
 	};
 	$scope.supprimerEmprunts = function(){
 
 	};
 
-});
-//définition du controller de la page gestionReservations
-app.controller("gestionReservationsCtrl", function($scope) {
-	$scope.msg = "Reservations";
+});*/
+//définition du controller de la page gestionReservations et Emprunts
+app.controller("gestionReservationsCtrl", function($scope, $http, $route) {
+	$scope.msg = "Emprunts et Reservations";
 	$scope.adherent={};
-	$scope.consulterReservations = function(){
+	/*$scope.consulterReservations = function(){
 		$http.get("http://localhost:8080/ProjetFinalGroupe3/getAdherent").then(function(response) {
 			$scope.adherent = response.data;
 		}).catch(function(reason) {
@@ -519,18 +519,88 @@ app.controller("gestionReservationsCtrl", function($scope) {
 			alert("Erreur récupération");
 			console.log(reason);
 		});
+	};*/
+	
+	$http.get("http://localhost:8080/ProjetFinalGroupe3/allEmprunt")
+	.then(function(response) {
+		$scope.emprunts = response.data;
+	})
+	.catch (function(reason){
+		alert("erreur de récupération des données");
+		console.log(reason);	
+	});
+	
+	$http.get("http://localhost:8080/ProjetFinalGroupe3/allResa")
+	.then(function(response) {
+		$scope.resas = response.data;
+	})
+	.catch (function(reason){
+		alert("erreur de récupération des données");
+		console.log(reason);	
+	});
+	
+	
+/*	$scope.editerEmprunts = function(){
+		alert("editerEmprunts"); 
+	};*/
+	$scope.supprimerEmprunts = function(idLivre, idAdherent){
+		$http.get("http://localhost:8080/ProjetFinalGroupe3/retour", {params:{idLivre: idLivre, idAdherent: idAdherent}})
+		.then(function(response) {
+			alert("Livre retourné");
+			$route.reload();
+		}).catch(function(reason) {
+			alert("Erreur récupération");
+			console.log(reason);
+		});
+
 	};
-
-	$scope.editerReservations = function(){
-
+	$scope.supprimerResas = function(idOeuvre, idAdherent){
+		$http.get("http://localhost:8080/ProjetFinalGroupe3/annulation", {params:{idOeuvre:idOeuvre, idAdherent:idAdherent}})
+		.then(function(response) {
+			alert("Réservation annulée");
+			$route.reload();
+		}).catch(function(reason) {
+			alert("Erreur récupération");
+			console.log(reason);
+		});
+	};
+	
+/*	$scope.editerReservations = function(){
+		alert("reservation"); 
 	};
 	$scope.supprimerReservations = function(){
 
-	};
+	};*/
 });
 
-app.controller("mesReservationsCtrl", function($scope) {
+app.controller("mesReservationsCtrl", function($scope, $http, $route) {
 	$scope.msg = "Mes reservations/emprunts";
+	$http.post("http://localhost:8080/ProjetFinalGroupe3/allResaByAdherent?idAdherent=", $scope.idUtilisateur)
+	.then(function(response) {
+		$scope.resas = response.data;
+	}).catch(function(reason) {
+		alert("Erreur récupération");
+		console.log(reason);
+	});
+	
+	$http.post("http://localhost:8080/ProjetFinalGroupe3/allEmpruntByAdherent?idAdherent=", $scope.idUtilisateur)
+	.then(function(response) {
+		$scope.emprunts = response.data;
+	}).catch(function(reason) {
+		alert("Erreur récupération");
+		console.log(reason);
+	});
+	
+	$scope.supprimerResas = function(idOeuvre){
+		$http.get("http://localhost:8080/ProjetFinalGroupe3/annulation", {params:{idOeuvre:idOeuvre, idAdherent:$scope.idUtilisateur}})
+		.then(function(response) {
+			alert("Réservation annulée");
+			$route.reload();
+		}).catch(function(reason) {
+			alert("Erreur récupération");
+			console.log(reason);
+		});
+	};
 });
 
 app.controller("allAdherentCtrl",function($scope, $http){

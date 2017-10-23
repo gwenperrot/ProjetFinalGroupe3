@@ -9,19 +9,26 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Societe.ProjetFinalGroupe3.metier.Adherent;
 import com.Societe.ProjetFinalGroupe3.metier.Auteur;
 import com.Societe.ProjetFinalGroupe3.metier.Livre;
+import com.Societe.ProjetFinalGroupe3.metier.LivreAdherent;
 import com.Societe.ProjetFinalGroupe3.metier.Oeuvre;
+import com.Societe.ProjetFinalGroupe3.metier.OeuvreAdherent;
 import com.Societe.ProjetFinalGroupe3.service.IServiceAdherent;
+import com.Societe.ProjetFinalGroupe3.service.IServiceAdministrateur;
 
 @CrossOrigin
 @RestController
 public class AdherentController {
 	@Autowired
 	private IServiceAdherent service;
+	
+	@Autowired
+	private IServiceAdministrateur sad;
 
 	/* CRUD adherent */
 
@@ -113,12 +120,38 @@ public class AdherentController {
 		service.reserver(o, ad);}
 	}
 
-	@RequestMapping(value = "/retour", method = RequestMethod.POST)
-	public void retour(Livre l, Adherent ad) {
+	@RequestMapping(value = "/retour", method = RequestMethod.GET)
+	public void retour(@RequestParam Long idLivre, @RequestParam Long idAdherent) {
+		Livre l = sad.getLivre(idLivre);
 		Oeuvre o = l.getLoeuvre();
 		int nbl = o.getNbLivreLibre();
-		service.retour(l, ad);
+		service.retour(idLivre, idAdherent);
 		nbl++;
 
+	}
+	
+	@RequestMapping(value="/annulation", method=RequestMethod.GET)
+	public void annulation(@RequestParam Long idOeuvre, @RequestParam Long idAdherent) {
+		service.annulation(idOeuvre, idAdherent);
+	}
+	
+	@RequestMapping(value="/allEmprunt", method=RequestMethod.GET)
+	public List<LivreAdherent> findAllEmprunt(){
+		return service.findAllEmprunt();
+	}
+	
+	@RequestMapping(value="/allResa", method=RequestMethod.GET)
+	public List<OeuvreAdherent> findAllResa(){
+		return service.findAllResa();
+	}
+	
+	@RequestMapping(value="/allEmpruntByAdherent", method=RequestMethod.POST)
+	public List<LivreAdherent> findByIdAdherent(@RequestBody Long idAdherent){
+		return service.findByIdAdherent(idAdherent);
+	}
+	
+	@RequestMapping(value="/allResaByAdherent", method=RequestMethod.POST)
+	public List<OeuvreAdherent> findResaByIdAdherent(@RequestBody Long idAdherent){
+		return service.findResaByIdAdherent(idAdherent);
 	}
 }

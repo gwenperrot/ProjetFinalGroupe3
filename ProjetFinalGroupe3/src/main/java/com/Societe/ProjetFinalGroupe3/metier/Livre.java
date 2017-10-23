@@ -7,6 +7,7 @@ package com.Societe.ProjetFinalGroupe3.metier;
  * 
  */
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -34,7 +35,7 @@ private boolean dispo ;
 
 @JsonIgnore
 @OneToMany(mappedBy="idLA.livre")
-private List<LivreAdherent> livreAdherent;
+private List<LivreAdherent> livreAdherent = new ArrayList<LivreAdherent>();
 
 
 @ManyToOne
