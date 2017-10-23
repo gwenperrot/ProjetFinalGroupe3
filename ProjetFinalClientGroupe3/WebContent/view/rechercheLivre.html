@@ -47,10 +47,10 @@
     		</thead>
     		<tbody>
       		<tr ng-repeat="o in oeuvres">
-        			<td>{{o.titre}}{{o.nom}}</td>
-        			
-        			<td><a ng-click="reserver()">Réserver</a></td>
-        			<td><a ng-click="emprunter()">Emprunter</a></td>
+        			<td>{{o.titre}}</td>
+        			<td>{{o.nbLivreLibre}}</td>
+        			<!-- <td><a ng-click="reserver()">Réserver</a></td> -->
+        			<td><a ng-click="emprunterReserver(o.idOeuvre,$scope.idUtilisateur)">Emprunter/Réserver</a></td>
       		</tr>
     		</tbody>
     	</table>

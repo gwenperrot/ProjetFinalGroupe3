@@ -92,9 +92,9 @@ app.controller("creerCompteCtrl", function($scope,$http) {
 	// définiton de la fonction de création de compte
 	$scope.adherent={};
 	$scope.creerCompte = function() {
-		alert($scope.adherent.nom);
+		
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/saveAdherent", $scope.adherent).then(function(value) {
-			alert($scope.adherent.nom);
+			
 			$scope.adherent=value;
 			
 		}).catch(function(reason) {
@@ -123,7 +123,7 @@ app.controller("modifierCompteCtrl", function($scope,$http) {
 	};
 	$scope.changerNom = function() {
 		$http.post("http://localhost:8080/ProjetFinalGroupe3/updateAdherent", $scope.adherent).then(function(data) {
-			alert("modifié");
+		
 		}).catch(function(reason) {
 			alert("Erreur");
 			console.log(reason);
@@ -231,14 +231,20 @@ app.controller("rechercheLivreCtrl", function($scope,$http) {
 		}
 	};
 
-	$scope.reserver = function() {
-		alert("Je reserve un livre");
-	};
-
-	$scope.emprunter = function() {
-		alert("J'emprunte un livre");
-	};
+	$scope.emprunterReserver = function(idOeuvre) {
+		
+		$http.get("http://localhost:8080/ProjetFinalGroupe3/emprunterReserver", {params:{idOeuvre: idOeuvre, idAdherent: $scope.idUtilisateur}}).then(function(data) {
+			$scope.emprunt=data.data;
+			alert("livre emprunté");
+		}).catch(function(reason) {
+			if($scope.idAdherent==null){alert("Veuillez vous connecter pour emprunter un livre");}
+			else{alert("Erreur");}
+			console.log(reason);
+		});
+};
 });
+
+
 //définition du controller de la page gestionAdherents
 app.controller("gestionAdherentsCtrl", function($scope,$http,$route) {
 	$scope.msg = "Adherents";
@@ -302,7 +308,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 				$scope.auteur=data;
 				
 			}).catch(function(reason) {
-				alert("Pas ajouté, erreur");
+				alert("Erreur");
 				console.log(reason);
 			});
 		}else{
@@ -310,7 +316,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 				$scope.auteur=data;
 				
 			}).catch(function(reason) {
-				alert("Pas ajouté, erreur");
+				alert("Erreur");
 				console.log(reason);
 			});
 		};
@@ -361,8 +367,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 		}else{
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/updateOeuvre", $scope.oeuvre).then(function(data) {
 				$scope.oeuvre=data.data;
-				alert($scope.oeuvre.idOeuvre);
-				alert("Modifié");
+				
 
 				$http.get("http://localhost:8080/ProjetFinalGroupe3/attibuerOeuvreAuteur", {params:{idOeuvre: $scope.oeuvre.idOeuvre, idAuteur: $scope.lauteur}})
 				.then(function(data) {
@@ -422,7 +427,7 @@ app.controller("gestionLivresCtrl", function($scope,$http,$route) {
 
 
 	$scope.validerLivre = function() {
-		alert($scope.loeuvre);
+	
 		if($scope.livre.idLivre==null){
 			$http.post("http://localhost:8080/ProjetFinalGroupe3/saveLivre", $scope.livre).then(function(data) {
 
@@ -567,7 +572,7 @@ app.controller("allLivresCtrl",function($scope, $http){
 	$http.get("http://localhost:8080/ProjetFinalGroupe3/allLivre")
 	.then(function(response) {
 		$scope.livres = response.data;
-		alert($scope.livres.length);
+		
 		$scope.livresOeuvre={};
 		n=0;
 		for(var i=0;i<$scope.livres.length;i++){
