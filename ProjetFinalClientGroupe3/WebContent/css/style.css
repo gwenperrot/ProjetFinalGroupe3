@@ -42,4 +42,10 @@ h3{
       }
       .row.content {height: auto;} 
     }
-    
+    .carousel-page
+{
+width:100%;
+height:400px;
+background-color:#5f666d;
+color:black;
+}

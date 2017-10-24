@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <link rel="styleSheet" type="text/css" href="./css/style.css" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body ng-controller="indexCtrl">
 
@@ -13,8 +13,12 @@
 
 <div class="row">
   <div class="col-sm-12">
-			<h1>MA BIBLIOTHEQUE</h1>
-			<p>Bienvenue sur notre site d'emprunt en ligne.</p>
+  <table>
+  	<tr>
+  <th><img src="./img/1118_WVeducate1.jpg" class="img-rounded" alt="livre" width="304" height="236"> </th>
+			<th><h1>MA BIBLIOTHEQUE</h1></br><p>Bienvenue sur notre site d'emprunt en ligne.</p></th>
+	</tr>
+	</table>		
 	</div>
 </div>
 <div  ng-show="showMe2">
@@ -103,23 +107,27 @@
 
 				<!-- containeur droit - corps-->
 				<div class="col-sm-9">
-						<div ng-view></div>
-				</div>
+				
+					<div ng-view></div>
+			</div>
 				
 			</div>
 </div>
 </div>
+
 
 	<!--  Pied de page -->
 	<footer id="footer" class="container-fluid text-center">
 		<p>Copyrigth DGJM</p>
 	</footer>
 	
-	
+
 	<script type="text/javascript" src="./angular/angular.min.js"></script>
 	<script type="text/javascript" src="./angular/angular-route.js"></script>
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="./js/app.js"></script>
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 </body>
 </html>
